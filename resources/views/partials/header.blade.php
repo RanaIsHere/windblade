@@ -8,22 +8,29 @@
     <div class="flex-1 px-2 mx-2">
         <div class="items-stretch flex">
             <div class="dropdown dropdown-end">
-                <div tabindex="0" class="m-1 btn btn-ghost btn-sm text-xs md:text-lg">Management</div>
+                <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">Management</div>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Dashboard </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Customers </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Outlet Management </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Package Management </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> User Management </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Transactions </a></li>
-                    <li><a class="btn btn-primary btn-sm rounded-btn h-full"> Reports </a></li>
-                    <li class="flex md:hidden"><a class="btn btn-primary btn-sm rounded-btn h-full"> Account </a></li>
+                    <li><a href="/dashboard" class="btn btn-primary btn-sm rounded-btn h-full"> Dashboard </a></li>
+                    <li><a class="dropdown-btn"> Customers </a></li>
+                    <li><a class="dropdown-btn"> Outlet Management </a></li>
+                    <li><a class="dropdown-btn"> Package Management </a></li>
+                    <li><a class="dropdown-btn"> User Management </a></li>
+                    <li><a class="dropdown-btn"> Transactions </a></li>
+                    <li><a class="dropdown-btn"> Reports </a></li>
+                    <li class="flex md:hidden"><a href="" class="dropdown-btn"> Account </a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="flex-none hidden md:flex">
-        <a class="btn btn-ghost btn-sm rounded-btn">Account</a>
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">Account</div>
+            
+            <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-secondary rounded-box w-52">
+                <a class="dropdown-btn my-1">Profile</a>
+                <a href="/" class="dropdown-btn my-1">Logout</a>
+            </ul>
+        </div>
     </div>
 </div>

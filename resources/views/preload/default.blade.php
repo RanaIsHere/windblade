@@ -13,5 +13,7 @@
         <div class="default-body">
             @yield('container')
         </div>
+
+        <script src="{{ asset('js/windblade.js') }}"></script>
     </body>
 </html>
