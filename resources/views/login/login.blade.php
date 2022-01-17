@@ -19,15 +19,15 @@
                 <form action="/dashboard" {{-- method="post" --}}>
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text">Email</span>
+                            <span class="label-text">Username</span>
                         </label>
-                        <input type="text" name="email_address" placeholder="email" class="input input-bordered">
+                        <input type="text" name="username" placeholder="username" class="input input-bordered">
                     </div>
                     <div class="form-control">
                         <label class="label">
                             <span class="label-text">Password</span>
                         </label>
-                        <input type="text" name="password" placeholder="password" class="input input-bordered">
+                        <input type="password" name="password" placeholder="password" class="input input-bordered">
                         <label class="label">
                             <a href="#" class="label-text-alt">Forgot password?</a>
                         </label>
