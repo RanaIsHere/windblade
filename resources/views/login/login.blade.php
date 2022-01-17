@@ -27,7 +27,7 @@
                         <label class="label">
                             <span class="label-text">Password</span>
                         </label>
-                        <input type="text" name="password" placeholder="password" class="input input-bordered">
+                        <input type="password" name="password" placeholder="password" class="input input-bordered">
                         <label class="label">
                             <a href="#" class="label-text-alt">Forgot password?</a>
                         </label>
