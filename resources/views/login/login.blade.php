@@ -16,7 +16,8 @@
 
         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
-                <form action="/dashboard" {{-- method="post" --}}>
+                <form action="/login" method="post">
+                    @csrf
                     <div class="form-control">
                         <label class="label">
                             <span class="label-text">Username</span>

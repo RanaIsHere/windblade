@@ -29,7 +29,7 @@
             
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-secondary rounded-box w-52">
                 <a class="dropdown-btn my-1">Profile</a>
-                <a href="/" class="dropdown-btn my-1">Logout</a>
+                <a href="/logout" class="dropdown-btn my-1">Logout</a>
             </ul>
         </div>
     </div>

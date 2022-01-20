@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'view_login']);
-Route::get('/dashboard', [DashboardController::class, 'view_dashboard']);
+Route::get('/', [AuthController::class, 'view_login'])->name('page_login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware(['auth.basic'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
