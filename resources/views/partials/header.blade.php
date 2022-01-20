@@ -11,9 +11,9 @@
                 <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">Management</div>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
                     <li><a href="/dashboard" class="btn btn-primary btn-sm rounded-btn h-full"> Dashboard </a></li>
-                    <li><a class="dropdown-btn"> Customers </a></li>
-                    <li><a class="dropdown-btn"> Outlet Management </a></li>
-                    <li><a class="dropdown-btn"> Package Management </a></li>
+                    <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
+                    <li><a href="/outlets" class="dropdown-btn"> Outlet Management </a></li>
+                    <li><a href="/packages" class="dropdown-btn"> Package Management </a></li>
                     <li><a class="dropdown-btn"> User Management </a></li>
                     <li><a class="dropdown-btn"> Transactions </a></li>
                     <li><a class="dropdown-btn"> Reports </a></li>
@@ -25,7 +25,7 @@
 
     <div class="flex-none hidden md:flex">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">Account</div>
+        <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">{{ Auth::user()->name }}</div>
             
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-secondary rounded-box w-52">
                 <a class="dropdown-btn my-1">Profile</a>
