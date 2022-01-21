@@ -15,5 +15,8 @@
         </div>
 
         <script src="{{ asset('js/windblade.js') }}"></script>
+        <script src="{{ asset('js/package.js') }}"></script>
+        <script src="{{ asset('js/outlet.js') }}"></script>
+        <script src="{{ asset('js/customer.js') }}"></script>
     </body>
 </html>
