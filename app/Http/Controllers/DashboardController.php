@@ -29,6 +29,7 @@ class DashboardController extends Controller
     public function view_packages()
     {
         $packageData = Packages::all();
-        return view('dashboard.package', ['page_name' => 'Packages', 'packageData' => $packageData]);
+        $outletData = Outlets::all();
+        return view('dashboard.package', ['page_name' => 'Packages', 'packageData' => $packageData, 'outletData' => $outletData]);
     }
 }

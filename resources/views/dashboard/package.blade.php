@@ -2,9 +2,11 @@
 
 @section('container')
 
+@include('partials.modals')
+
 @include('partials.header')
 
-<div class="text-center my-10">   
+<div class="text-center my-10">
     <div class="btn-group inline-block">
         <button class="btn btn-outline btn-active w-32" id="package-view-btn">View</button>
         <button class="btn btn-outline w-32" id="package-creation-btn">Create</button>
@@ -26,15 +28,15 @@
             </thead>
 
             <tbody>
-                @foreach ($packageData as $pkg)                    
-                    <tr>
-                        <th>{{ $pkg->id }}</th>
-                        <td>{{ $pkg->outlet_id }}</td>
-                        <td>{{ $pkg->package_name }}</td>
-                        <td>{{ $pkg->package_type }}</td>
-                        <td>{{ $pkg->package_price }}</td>
-                        <th><button type="button" class="btn btn-primary">Edit</button></th>
-                    </tr>
+                @foreach ($packageData as $pkg)
+                <tr>
+                    <th>{{ $pkg->id }}</th>
+                    <td>{{ $pkg->outlet_id }}</td>
+                    <td>{{ $pkg->package_name }}</td>
+                    <td>{{ $pkg->package_type }}</td>
+                    <td>{{ $pkg->package_price }}</td>
+                    <th><button type="button" class="btn btn-primary">Edit</button></th>
+                </tr>
                 @endforeach
             </tbody>
         </table>
@@ -52,9 +54,10 @@
                     </label>
 
                     <div class="input-group">
-                        <input type="text" name="id_outlet" id="outlet_input" class="input input-bordered w-full"
+                        <input type="hidden" name="outlet_id" id="outlet_input_real">
+                        <input type="text" id="outlet_input" class="input input-bordered w-full"
                             readonly>
-                        <button type="button" class="btn btn-primary mx-2" id="outlet_search"> Find Outlet </button>
+                        <button type="button" id="outlet-search-btn" class="btn btn-primary mx-2"> Find Outlet </button>
                     </div>
                 </div>
             </div>
@@ -67,7 +70,7 @@
 
                     <div class="flex-row">
                         <input type="text" name="package_name" id="name_input" class="input input-bordered w-full"
-                            maxlength="100">
+                            maxlength="100" required>
                     </div>
                 </div>
 
@@ -94,7 +97,7 @@
 
                     <div class="input-group">
                         <span>Rp.</span>
-                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full">
+                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full" required>
                     </div>
                 </div>
             </div>

@@ -2800,8 +2800,13 @@ html {
 .m-1 {
   margin: 0.25rem;
 }
-.m-4 {
-  margin: 1rem;
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .mx-2 {
   margin-left: 0.5rem;
@@ -2810,30 +2815,6 @@ html {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-}
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-.mx-52 {
-  margin-left: 13rem;
-  margin-right: 13rem;
 }
 .mb-5 {
   margin-bottom: 1.25rem;
@@ -2846,9 +2827,6 @@ html {
 }
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-.block {
-  display: block;
 }
 .inline-block {
   display: inline-block;
@@ -2868,8 +2846,8 @@ html {
 .min-h-screen {
   min-height: 100vh;
 }
-.w-6\/12 {
-  width: 50%;
+.w-32 {
+  width: 8rem;
 }
 .w-full {
   width: 100%;
@@ -2877,14 +2855,41 @@ html {
 .w-52 {
   width: 13rem;
 }
-.w-56 {
-  width: 14rem;
+.w-\[2vh\] {
+  width: 2vh;
 }
-.w-32 {
-  width: 8rem;
+.w-6\/12 {
+  width: 50%;
+}
+.w-9\/12 {
+  width: 75%;
+}
+.w-10\/12 {
+  width: 83.333333%;
+}
+.w-11\/12 {
+  width: 91.666667%;
+}
+.w-\[500px\] {
+  width: 500px;
+}
+.w-\[20vh\] {
+  width: 20vh;
+}
+.w-\[200vh\] {
+  width: 200vh;
+}
+.w-\[500vh\] {
+  width: 500vh;
 }
 .min-w-full {
   min-width: 100%;
+}
+.min-w-\[100px\] {
+  min-width: 100px;
+}
+.min-w-\[500px\] {
+  min-width: 500px;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -2903,9 +2908,6 @@ html {
 }
 .flex-col {
   flex-direction: column;
-}
-.\!flex-wrap {
-  flex-wrap: wrap !important;
 }
 .items-stretch {
   align-items: stretch;
@@ -2995,18 +2997,6 @@ html {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.menu li>:where(a.hover\:active:hover) {
-  --tw-bg-opacity: 1;
-  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
-  --tw-text-opacity: 1;
-  color: hsla(var(--pc) / var(--tw-text-opacity, 1));
-}
-
-.table tr.hover\:active:hover:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
-  --tw-bg-opacity: 1;
-  background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
 }
 
 @media (min-width: 768px) {

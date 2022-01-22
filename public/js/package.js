@@ -22,4 +22,28 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     })
 
+    document.getElementById('outlet-search-btn').addEventListener('click', function (e) {
+        e.preventDefault()
+
+        if (!document.getElementById('addmembertopackage').classList.contains('modal-open')) {
+            document.getElementById('addmembertopackage').classList.add('modal-open')
+        }
+    })
 })
+
+
+/*
+    This function gets the placement of th and td within <tr>
+    then places it within two specific input, and to close the modal.
+*/
+function getNameAndId(el, placement, casual_input, real_input, modal) {
+    let table_element = el.parentElement.parentElement
+    let id = table_element.querySelector('th').innerHTML
+    let name = table_element.querySelectorAll('td')[placement].innerHTML
+
+    console.log(table_element)
+
+    document.getElementById(casual_input).value = name
+    document.getElementById(real_input).value = id
+    document.getElementById(modal).classList.remove('modal-open')
+}
