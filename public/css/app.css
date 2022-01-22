@@ -2882,6 +2882,9 @@ html {
 .w-\[500vh\] {
   width: 500vh;
 }
+.w-72 {
+  width: 18rem;
+}
 .min-w-full {
   min-width: 100%;
 }
