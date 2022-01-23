@@ -55,6 +55,7 @@ function request_info(el, casual_input, real_input, modal) {
     console.log(table_element)
 
     document.getElementById(modal).classList.add('modal-open')
+    document.getElementById('package_id').value = id
 
     var request = new XMLHttpRequest();
 

@@ -70,6 +70,8 @@
         <form action="/edit-package" method="post">
             @csrf
 
+            <input type="hidden" name="package_id" id="package_id">
+
             <div class="flex flex-row">
                 <div class="flex-1 mx-4 w-full">
                     <div class="form-control">
@@ -128,8 +130,12 @@
             </div>
 
             <button type="submit" class="btn btn-primary my-10 mx-2">Edit Package</button>
+
             <button type="button" class="btn btn-primary my-10 mx-2"
                 onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Cancel</button>
+
+            <button type="button" class="btn bg-red-500 hover:bg-red-800 my-10 mx-2"
+                onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Delete</button>
         </form>
     </div>
 </div>

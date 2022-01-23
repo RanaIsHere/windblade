@@ -84,7 +84,27 @@ class InputController extends Controller
 
     public function edit_package(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'package_id' => ['required'],
+            'outlet_id' => ['required'],
+            'package_name' => ['required'],
+            'package_type' => ['required'],
+            'package_price' => ['required']
+        ]);
+
+        $package = Packages::find($validatedData['package_id']);
+
+        if ($package->outlet_id == $validatedData['outlet_id']) {
+            $package->package_name = $validatedData['package_name'];
+            $package->package_type = $validatedData['package_type'];
+            $package->package_price = $validatedData['package_price'];
+
+            if ($package->update()) {
+                return redirect()->back()->with('success', 'Package edited successfully!');
+            } else {
+                return redirect()->back()->with('success', 'Package failed to edit.');
+            }
+        }
     }
 
     public function get_package(Request $request)
