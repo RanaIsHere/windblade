@@ -36,7 +36,7 @@
                     <td>{{ $pkg->package_type }}</td>
                     <td>{{ $pkg->package_price }}</td>
                     <th><button type="button" class="btn btn-primary"
-                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
+                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editpackages')">Edit</button>
                     </th>
                 </tr>
                 @endforeach

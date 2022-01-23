@@ -119,4 +119,22 @@ class InputController extends Controller
             return response()->json(['response' => $pkgData, 'outlet_name' => $pkgData->outlets->outlet_name]);
         }
     }
+
+    public function delete_item(Request $request)
+    {
+        $validatedData = $request->validate([
+            'delete_id' => ['required'],
+            'model_type' => ['required']
+        ]);
+
+        if ($validatedData['model_type'] == 'packages') {
+            $package = Packages::find($validatedData['delete_id']);
+
+            if ($package->delete()) {
+                return redirect('/packages')->with('success', 'Deleted successfully!');
+            } else {
+                return redirect('/packages')->with('failure', 'Invalid deletion.');
+            }
+        }
+    }
 }

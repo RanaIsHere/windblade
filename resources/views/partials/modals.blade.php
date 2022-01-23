@@ -61,9 +61,29 @@
 </div>
 @endif
 
+<div id="deleteModal" class="modal">
+    <div class="modal-box">
+        <p class="font-bold">Are you sure that you wish to delete this item permanently?</p>
+
+        <form action="/delete-item" method="post">
+            @csrf
+
+            <input type="hidden" name="delete_id" id="delete_id">
+            <input type="hidden" name="model_type" id="model_type">
+
+            <div class="modal-action my-4">
+                <button type="submit"
+                    class="btn btn-ghost bg-red-500 outline-red-500 hover:bg-red-700 hover:outline-red-700">Delete</button>
+                <button type="button" class="btn btn-primary"
+                    onclick="document.getElementById('deleteModal').classList.remove('modal-open')">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 @if ($page_name == 'Packages')
 
-<div id="editoutlets" class="modal">
+<div id="editpackages" class="modal">
     <div class="modal-box min-w-full text-center">
         <p>Change information related to this package</p>
 
@@ -132,10 +152,11 @@
             <button type="submit" class="btn btn-primary my-10 mx-2">Edit Package</button>
 
             <button type="button" class="btn btn-primary my-10 mx-2"
-                onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Cancel</button>
+                onclick="document.getElementById('editpackages').classList.remove('modal-open')">Cancel</button>
 
-            <button type="button" class="btn bg-red-500 hover:bg-red-800 my-10 mx-2"
-                onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Delete</button>
+            <button type="button"
+                class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
+                onclick="deleteItem('outlet_input_real_modal', 'packages', 'editpackages')">Delete</button>
         </form>
     </div>
 </div>

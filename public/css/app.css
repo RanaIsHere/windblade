@@ -2016,10 +2016,19 @@ html {
 .btn.glass:focus-visible {
   box-shadow: 0 0 0 2px currentColor;
 }
+.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 1px;
+  color: currentColor;
+}
 .btn-ghost.btn-active,.btn-ghost:hover {
   --tw-bg-opacity: 0.2;
   background-color: hsla(var(--bc) / var(--tw-bg-opacity, 1));
   --tw-border-opacity: 0;
+}
+.btn-ghost:focus-visible {
+  box-shadow: 0 0 0 2px currentColor;
 }
 .btn-link.btn-active,.btn-link:hover {
   background-color: transparent;
@@ -2229,6 +2238,9 @@ html {
 }
 .drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-primary {
   box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p));
+}
+.drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-ghost {
+  box-shadow: 0 0 0 2px currentColor;
 }
 .dropdown.dropdown-hover:hover .dropdown-content,.dropdown.dropdown-open .dropdown-content,.dropdown:focus-within .dropdown-content,.dropdown:focus .dropdown-content {
   --tw-scale-x: 1;
@@ -2816,6 +2828,10 @@ html {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -2972,10 +2988,25 @@ html {
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.outline-red-500 {
+  outline-color: #ef4444;
+}
+.outline-red-700 {
+  outline-color: #b91c1c;
+}
 
 .hover\:bg-red-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.hover\:outline-red-700:hover {
+  outline-color: #b91c1c;
 }
 
 @media (min-width: 768px) {
