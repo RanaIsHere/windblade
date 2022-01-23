@@ -81,4 +81,22 @@ class InputController extends Controller
             return redirect()->back()->with('success', 'Member registration failed.');
         }
     }
+
+    public function edit_package(Request $request)
+    {
+        //
+    }
+
+    public function get_package(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            $pkgData = Packages::find($validatedData['id']);
+
+            return response()->json(['response' => $pkgData, 'outlet_name' => $pkgData->outlets->outlet_name]);
+        }
+    }
 }

@@ -2852,47 +2852,14 @@ html {
 .w-full {
   width: 100%;
 }
-.w-52 {
-  width: 13rem;
-}
-.w-\[2vh\] {
-  width: 2vh;
-}
-.w-6\/12 {
-  width: 50%;
-}
-.w-9\/12 {
-  width: 75%;
-}
-.w-10\/12 {
-  width: 83.333333%;
-}
-.w-11\/12 {
-  width: 91.666667%;
-}
-.w-\[500px\] {
-  width: 500px;
-}
-.w-\[20vh\] {
-  width: 20vh;
-}
-.w-\[200vh\] {
-  width: 200vh;
-}
-.w-\[500vh\] {
-  width: 500vh;
-}
 .w-72 {
   width: 18rem;
 }
+.w-52 {
+  width: 13rem;
+}
 .min-w-full {
   min-width: 100%;
-}
-.min-w-\[100px\] {
-  min-width: 100px;
-}
-.min-w-\[500px\] {
-  min-width: 500px;
 }
 .max-w-sm {
   max-width: 24rem;

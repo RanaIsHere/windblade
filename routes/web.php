@@ -29,4 +29,8 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
     Route::post('/customer', [InputController::class, 'create_customer'])->name('create_customer');
+
+    Route::post('/get-package', [InputController::class, 'get_package'])->name('get_package');
+
+    Route::post('/edit-package', [InputController::class, 'edit_package'])->name('edit_package');
 });
