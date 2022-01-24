@@ -184,7 +184,20 @@
                         <div class="input-group">
                             <input type="hidden" name="outlet_id" id="outlet_input_real_modal">
                             <input type="text" id="outlet_input_modal" class="input input-bordered w-full" readonly>
-                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Business Status</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <select name="status" id="type_input_edit" class="select select-bordered w-full">
+                                <option value="ACTIVE">Active</option>
+                                <option value="CLOSED">Closed</option>
+                                <option value="BANKRUPT">Bankrupt</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -233,7 +246,7 @@
 
             <button type="button"
                 class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
-                onclick="deleteItem('outlet_input_real_modal', 'packages', 'editoutlets')">Delete</button>
+                onclick="deleteItem('outlet_input_real_modal', 'outlets', 'editoutlets')">Delete</button>
         </form>
     </div>
 </div>

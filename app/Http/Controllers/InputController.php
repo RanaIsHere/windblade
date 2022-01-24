@@ -119,6 +119,8 @@ class InputController extends Controller
 
         $outlet = Outlets::find($validatedData['outlet_id']);
 
+        $validatedData['outlet_phone'] = '62' . $validatedData['outlet_phone'];
+
         $outlet->outlet_name = $validatedData['outlet_name'];
         $outlet->outlet_address = $validatedData['outlet_address'];
         $outlet->outlet_phone = $validatedData['outlet_phone'];
@@ -128,6 +130,32 @@ class InputController extends Controller
             return redirect()->back()->with('success', 'Outlet edited successfully.');
         } else {
             return redirect()->back()->with('success', 'Outlet failed to edit.');
+        }
+    }
+
+    public function edit_customer(Request $request)
+    {
+        $validatedData = $request->validate([
+            'member_id' => ['required'],
+            'member_name' => ['required'],
+            'member_address' => ['required'],
+            'member_phone' => ['required'],
+            'member_gender' => ['required']
+        ]);
+
+        dd($validatedData);
+    }
+
+    public function get_customer(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            $memberData = Members::find($validatedData['id']);
+
+            return response()->json(['response' => $memberData]);
         }
     }
 
@@ -168,9 +196,25 @@ class InputController extends Controller
             $package = Packages::find($validatedData['delete_id']);
 
             if ($package->delete()) {
-                return redirect('/packages')->with('success', 'Deleted successfully!');
+                return redirect()->back()->with('success', 'Deleted successfully!');
             } else {
-                return redirect('/packages')->with('failure', 'Invalid deletion.');
+                return redirect()->back()->with('failure', 'Invalid deletion.');
+            }
+        } else if ($validatedData['model_type'] == 'outlets') {
+            $outlet = Outlets::find($validatedData['delete_id']);
+
+            if ($outlet->delete()) {
+                return redirect()->back()->with('success', 'Deleted successfully!');
+            } else {
+                return redirect()->back()->with('failure', 'Invalid deletion.');
+            }
+        } else if ($validatedData['model_type'] == 'members') {
+            $member = Members::find($validatedData['delete_id']);
+
+            if ($member->delete()) {
+                return redirect()->back()->with('success', 'Deleted successfully!');
+            } else {
+                return redirect()->back()->with('failure', 'Invalid deletion.');
             }
         }
     }

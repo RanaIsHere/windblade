@@ -48,6 +48,7 @@
 <div id="outlet-creation" class="hidden">
     <form action="/outlet" method="post" class="text-center">
         @csrf
+
         <div class="flex flex-row">
             <div class="flex-1 mx-4 w-full">
                 <div class="form-control">
