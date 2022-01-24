@@ -143,7 +143,20 @@ class InputController extends Controller
             'member_gender' => ['required']
         ]);
 
-        dd($validatedData);
+        $member = Members::find($validatedData['member_id']);
+
+        $validatedData['member_phone'] = '62' . $validatedData['member_phone'];
+
+        $member->member_name = $validatedData['member_name'];
+        $member->member_address = $validatedData['member_address'];
+        $member->member_phone = $validatedData['member_phone'];
+        $member->member_gender = $validatedData['member_gender'];
+
+        if ($member->save()) {
+            return redirect()->back()->with('success', 'Customer edited successfully.');
+        } else {
+            return redirect()->back()->with('failure', 'Customer failed to edit.');
+        }
     }
 
     public function get_customer(Request $request)

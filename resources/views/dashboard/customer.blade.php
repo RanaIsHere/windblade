@@ -2,9 +2,11 @@
 
 @section('container')
 
+@include('partials.modals')
+
 @include('partials.header')
 
-<div class="text-center my-10">   
+<div class="text-center my-10">
     <div class="btn-group inline-block">
         <button class="btn btn-outline btn-active w-32" id="customer-view-btn">View</button>
         <button class="btn btn-outline w-32" id="customer-creation-btn">Create</button>
@@ -26,15 +28,17 @@
             </thead>
 
             <tbody>
-                @foreach ($customerData as $member)                    
-                    <tr>
-                        <th>{{ $member->id }}</th>
-                        <td>{{ $member->member_name }}</td>
-                        <td>{{ $member->member_address }}</td>
-                        <td>{{ $member->member_phone }}</td>
-                        <td>{{ $member->member_gender }}</td>
-                        <th><button type="button" class="btn btn-primary">Edit</button></th>
-                    </tr>
+                @foreach ($customerData as $member)
+                <tr>
+                    <th>{{ $member->id }}</th>
+                    <td>{{ $member->member_name }}</td>
+                    <td>{{ $member->member_address }}</td>
+                    <td>{{ $member->member_phone }}</td>
+                    <td>{{ $member->member_gender }}</td>
+                    <th><button type="button" class="btn btn-primary"
+                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editcustomers')">Edit</button>
+                    </th>
+                </tr>
                 @endforeach
             </tbody>
         </table>
@@ -78,7 +82,8 @@
                     </label>
 
                     <div class="flex-row">
-                        <input type="text" name="member_address" id="address_input" class="input input-bordered w-full" required>
+                        <input type="text" name="member_address" id="address_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
 
@@ -89,7 +94,8 @@
 
                     <div class="input-group">
                         <span>+62</span>
-                        <input type="text" name="member_phone" id="contact_input" class="input input-bordered w-full" required>
+                        <input type="text" name="member_phone" id="contact_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     })
 })
 
+// Modular Functions
+
 /*
     This function gets the placement of th and td within <tr>
     then places it within two specific input, and to close the modal.
@@ -27,6 +29,11 @@ function getNameAndId(el, placement, casual_input, real_input, modal) {
     document.getElementById(real_input).value = id
     document.getElementById(modal).classList.remove('modal-open')
 }
+
+/*
+    This function deletes the item mentioned by the id_element within the modal, and
+    specified with the delete button of the current model type.
+*/
 
 function deleteItem(id_element, model_type, modal) {
     let id = document.getElementById(id_element).value

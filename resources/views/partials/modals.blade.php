@@ -252,3 +252,92 @@
 </div>
 
 @endif
+
+@if ($page_name == 'Customers')
+
+<div id="editcustomers" class="modal">
+    <div class="modal-box min-w-full text-center">
+        <p>Change information related to this customer</p>
+
+        <form action="/edit-customer" method="post">
+            @csrf
+
+            <input type="hidden" name="member_id" id="member_id">
+
+            <div class="flex flex-row">
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Member</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="hidden" name="outlet_id" id="outlet_input_real_modal">
+                            <input type="text" id="outlet_input_modal" class="input input-bordered w-full" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Gender</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <select name="member_gender" id="type_input_edit" class="select select-bordered w-full">
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Customer Name</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="text" name="member_name" id="name_input_edit"
+                                class="input input-bordered w-full" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Customer Address</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="text" name="member_address" id="address_input_edit"
+                                class="input input-bordered w-full" required>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Customer Phone Number</span>
+                        </label>
+
+                        <div class="input-group">
+                            <span>+62</span>
+                            <input type="text" name="member_phone" id="phone_input_edit"
+                                class="input input-bordered w-full" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary my-10 mx-2">Edit Customer</button>
+
+            <button type="button" class="btn btn-primary my-10 mx-2"
+                onclick="document.getElementById('editcustomers').classList.remove('modal-open')">Cancel</button>
+
+            <button type="button"
+                class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
+                onclick="deleteItem('outlet_input_real_modal', 'members', 'editcustomers')">Delete</button>
+        </form>
+    </div>
+</div>
+
+@endif

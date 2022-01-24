@@ -19,9 +19,18 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/windblade.js') }}"></script>
+
+    @if($page_name == 'Packages')
     <script src="{{ asset('js/package.js') }}"></script>
+    @endif
+
+    @if($page_name == 'Outlets')
     <script src="{{ asset('js/outlet.js') }}"></script>
+    @endif
+
+    @if($page_name == 'Customers')
     <script src="{{ asset('js/customer.js') }}"></script>
+    @endif
 </body>
 
 </html>
