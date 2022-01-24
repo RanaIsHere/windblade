@@ -7,6 +7,7 @@ use App\Models\Outlets;
 use App\Models\Packages;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -23,7 +24,7 @@ class DashboardController extends Controller
 
     public function view_outlets()
     {
-        $outletData = Outlets::all();
+        $outletData = Outlets::where('id', Auth::user()->outlet_id)->get();
         return view('dashboard.outlet', ['page_name' => 'Outlets', 'outletData' => $outletData]);
     }
 

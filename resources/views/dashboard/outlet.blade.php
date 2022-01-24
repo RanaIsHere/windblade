@@ -8,8 +8,8 @@
 
 <div class="text-center my-10">
     <div class="btn-group inline-block">
-        <button class="btn btn-outline btn-active w-32" id="outlet-view-btn">View</button>
-        <button class="btn btn-outline w-32" id="outlet-creation-btn">Create</button>
+        <button type="button" class="btn btn-primary"
+            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
     </div>
 </div>
 
@@ -23,21 +23,17 @@
                     <th>Outlet Address</th>
                     <th>Outlet Contact</th>
                     <th>Status</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach ($outletData as $util)
                 <tr>
-                    <th>{{ $util->id }}</th>
+                    <th id="table_outlet_id">{{ $util->id }}</th>
                     <td>{{ $util->outlet_name }}</td>
                     <td>{{ $util->outlet_address }}</td>
                     <td>{{ $util->outlet_phone }}</td>
                     <td>{{ $util->status }}</td>
-                    <th><button type="button" class="btn btn-primary"
-                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
-                    </th>
                 </tr>
                 @endforeach
             </tbody>

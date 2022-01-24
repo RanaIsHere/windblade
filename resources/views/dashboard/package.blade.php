@@ -56,9 +56,10 @@
                     </label>
 
                     <div class="input-group">
-                        <input type="hidden" name="outlet_id" id="outlet_input_real">
-                        <input type="text" id="outlet_input" class="input input-bordered w-full" readonly>
-                        <button type="button" id="outlet-search-btn" class="btn btn-primary mx-2"> Find Outlet </button>
+                        <input type="hidden" name="outlet_id" id="outlet_input_real"
+                            value="{{ Auth::user()->outlet_id }}">
+                        <input type="text" id="outlet_input" class="input input-bordered w-full"
+                            value="{{ Auth::user()->outlets->outlet_name }}" readonly>
                     </div>
                 </div>
             </div>

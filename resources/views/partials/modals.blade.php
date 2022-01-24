@@ -244,9 +244,12 @@
             <button type="button" class="btn btn-primary my-10 mx-2"
                 onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Cancel</button>
 
-            <button type="button"
-                class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
-                onclick="deleteItem('outlet_input_real_modal', 'outlets', 'editoutlets')">Delete</button>
+
+            <div data-tip="Cannot delete your own outlet yet" class="tooltip">
+                <button type="button"
+                    class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2 opacity-50 pointer-events-none"
+                    onclick="deleteItem('outlet_input_real_modal', 'outlets', 'editoutlets')">Delete</button>
+            </div>
         </form>
     </div>
 </div>
