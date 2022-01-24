@@ -31,11 +31,13 @@
                 @foreach ($packageData as $pkg)
                 <tr>
                     <th>{{ $pkg->id }}</th>
-                    <td>{{ $pkg->outlet_id }}</td>
+                    <td>{{ $pkg->outlets->outlet_name }}</td>
                     <td>{{ $pkg->package_name }}</td>
                     <td>{{ $pkg->package_type }}</td>
                     <td>{{ $pkg->package_price }}</td>
-                    <th><button type="button" class="btn btn-primary">Edit</button></th>
+                    <th><button type="button" class="btn btn-primary"
+                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editpackages')">Edit</button>
+                    </th>
                 </tr>
                 @endforeach
             </tbody>
@@ -55,8 +57,7 @@
 
                     <div class="input-group">
                         <input type="hidden" name="outlet_id" id="outlet_input_real">
-                        <input type="text" id="outlet_input" class="input input-bordered w-full"
-                            readonly>
+                        <input type="text" id="outlet_input" class="input input-bordered w-full" readonly>
                         <button type="button" id="outlet-search-btn" class="btn btn-primary mx-2"> Find Outlet </button>
                     </div>
                 </div>
@@ -97,7 +98,8 @@
 
                     <div class="input-group">
                         <span>Rp.</span>
-                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full" required>
+                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
             </div>

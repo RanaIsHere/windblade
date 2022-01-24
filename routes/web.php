@@ -29,4 +29,13 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
     Route::post('/customer', [InputController::class, 'create_customer'])->name('create_customer');
+
+    Route::post('/get-package', [InputController::class, 'get_package'])->name('get_package');
+    Route::post('/get-outlet', [InputController::class, 'get_outlet'])->name('get_outlet');
+    Route::post('/get-customer', [InputController::class, 'get_customer'])->name('get_customer');
+
+    Route::post('/delete-item', [InputController::class, 'delete_item'])->name('delete_item');
+    Route::post('/edit-package', [InputController::class, 'edit_package'])->name('edit_package');
+    Route::post('/edit-outlet', [InputController::class, 'edit_outlet'])->name('edit_outlet');
+    Route::post('/edit-customer', [InputController::class, 'edit_customer'])->name('edit_customer');
 });
