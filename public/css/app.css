@@ -2991,14 +2991,6 @@ html {
 .outline-red-500 {
   outline-color: #ef4444;
 }
-.outline-red-700 {
-  outline-color: #b91c1c;
-}
-
-.hover\:bg-red-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
-}
 
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;

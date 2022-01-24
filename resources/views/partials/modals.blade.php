@@ -162,3 +162,85 @@
 </div>
 
 @endif
+
+@if ($page_name == 'Outlets')
+
+<div id="editoutlets" class="modal">
+    <div class="modal-box min-w-full text-center">
+        <p>Change information related to this package</p>
+
+        <form action="/edit-package" method="post">
+            @csrf
+
+            <input type="hidden" name="package_id" id="package_id">
+
+            <div class="flex flex-row">
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Outlet ID</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="hidden" name="outlet_id" id="outlet_input_real_modal">
+                            <input type="text" id="outlet_input_modal" class="input input-bordered w-full" readonly>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Package Name</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="text" name="package_name" id="name_input_edit"
+                                class="input input-bordered w-full" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Package Type</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <select name="package_type" id="type_input_edit" class="select select-bordered w-full">
+                                <option value="HEAVY">Heavy-Duty</option>
+                                <option value="BLANKET">Blanket</option>
+                                <option value="BED_COVER">Bed Cover</option>
+                                <option value="SHIRTS">Shirt</option>
+                                <option value="OTHERS">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Package Price</span>
+                        </label>
+
+                        <div class="input-group">
+                            <span>Rp.</span>
+                            <input type="number" name="package_price" id="price_input_edit"
+                                class="input input-bordered w-full" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary my-10 mx-2">Edit Package</button>
+
+            <button type="button" class="btn btn-primary my-10 mx-2"
+                onclick="document.getElementById('editpackages').classList.remove('modal-open')">Cancel</button>
+
+            <button type="button"
+                class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
+                onclick="deleteItem('outlet_input_real_modal', 'packages', 'editpackages')">Delete</button>
+        </form>
+    </div>
+</div>
+
+@endif

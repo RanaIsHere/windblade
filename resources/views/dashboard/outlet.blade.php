@@ -33,7 +33,7 @@
                         <td>{{ $util->outlet_address }}</td>
                         <td>{{ $util->outlet_phone }}</td>
                         <td>{{ $util->status }}</td>
-                        <th><button type="button" class="btn btn-primary">Edit</button></th>
+                        <th><button type="button" class="btn btn-primary" onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button></th>
                     </tr>
                 @endforeach
             </tbody>
