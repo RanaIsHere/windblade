@@ -21,6 +21,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware(['auth.basic'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+    Route::get('/users', [DashboardController::class, 'view_users'])->name('view_users');
     Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
     Route::get('/outlets', [DashboardController::class, 'view_outlets'])->name('page_outlets');
     Route::get('/packages', [DashboardController::class, 'view_packages'])->name('page_packages');

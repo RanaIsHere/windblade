@@ -14,7 +14,7 @@
                     <li><a href="/outlets" class="dropdown-btn"> Outlet Management </a></li>
                     <li><a href="/packages" class="dropdown-btn"> Package Management </a></li>
                     <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
-                    <li><a class="dropdown-btn"> User Management </a></li>
+                    <li><a href="/users" class="dropdown-btn"> User Management </a></li>
                     <li><a class="dropdown-btn"> Transactions </a></li>
                     <li><a class="dropdown-btn"> Reports </a></li>
                     <li class="flex md:hidden"><a href="" class="dropdown-btn"> Account </a></li>
