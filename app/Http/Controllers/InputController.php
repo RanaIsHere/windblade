@@ -107,6 +107,30 @@ class InputController extends Controller
         }
     }
 
+    public function edit_outlet(Request $request)
+    {
+        $validatedData = $request->validate([
+            'outlet_id' => ['required'],
+            'outlet_name' => ['required'],
+            'outlet_address' => ['required'],
+            'outlet_phone' => ['required'],
+            'status' => ['required']
+        ]);
+
+        $outlet = Outlets::find($validatedData['outlet_id']);
+
+        $outlet->outlet_name = $validatedData['outlet_name'];
+        $outlet->outlet_address = $validatedData['outlet_address'];
+        $outlet->outlet_phone = $validatedData['outlet_phone'];
+        $outlet->status = $validatedData['status'];
+
+        if ($outlet->save()) {
+            return redirect()->back()->with('success', 'Outlet edited successfully.');
+        } else {
+            return redirect()->back()->with('success', 'Outlet failed to edit.');
+        }
+    }
+
     public function get_package(Request $request)
     {
         if ($request->ajax()) {
@@ -117,6 +141,19 @@ class InputController extends Controller
             $pkgData = Packages::find($validatedData['id']);
 
             return response()->json(['response' => $pkgData, 'outlet_name' => $pkgData->outlets->outlet_name]);
+        }
+    }
+
+    public function get_outlet(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            $utilData = Outlets::find($validatedData['id']);
+
+            return response()->json(['response' => $utilData, 'outlet_name' => $utilData->outlet_name]);
         }
     }
 

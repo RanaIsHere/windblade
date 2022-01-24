@@ -2,9 +2,11 @@
 
 @section('container')
 
+@include('partials.modals')
+
 @include('partials.header')
 
-<div class="text-center my-10">   
+<div class="text-center my-10">
     <div class="btn-group inline-block">
         <button class="btn btn-outline btn-active w-32" id="outlet-view-btn">View</button>
         <button class="btn btn-outline w-32" id="outlet-creation-btn">Create</button>
@@ -26,15 +28,17 @@
             </thead>
 
             <tbody>
-                @foreach ($outletData as $util)                    
-                    <tr>
-                        <th>{{ $util->id }}</th>
-                        <td>{{ $util->outlet_name }}</td>
-                        <td>{{ $util->outlet_address }}</td>
-                        <td>{{ $util->outlet_phone }}</td>
-                        <td>{{ $util->status }}</td>
-                        <th><button type="button" class="btn btn-primary" onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button></th>
-                    </tr>
+                @foreach ($outletData as $util)
+                <tr>
+                    <th>{{ $util->id }}</th>
+                    <td>{{ $util->outlet_name }}</td>
+                    <td>{{ $util->outlet_address }}</td>
+                    <td>{{ $util->outlet_phone }}</td>
+                    <td>{{ $util->status }}</td>
+                    <th><button type="button" class="btn btn-primary"
+                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
+                    </th>
+                </tr>
                 @endforeach
             </tbody>
         </table>
@@ -79,7 +83,8 @@
                     </label>
 
                     <div class="flex-row">
-                        <input type="text" name="outlet_address" id="address_input" class="input input-bordered w-full" required>
+                        <input type="text" name="outlet_address" id="address_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
 
@@ -90,7 +95,8 @@
 
                     <div class="input-group">
                         <span>+62</span>
-                        <input type="text" name="outlet_phone" id="contact_input" class="input input-bordered w-full" required>
+                        <input type="text" name="outlet_phone" id="contact_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
             </div>
