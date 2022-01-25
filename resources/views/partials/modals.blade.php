@@ -156,7 +156,7 @@
 
             <button type="button"
                 class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
-                onclick="deleteItem('outlet_input_real_modal', 'packages', 'editpackages')">Delete</button>
+                onclick="deleteItem('package_id', 'packages', 'editpackages')">Delete</button>
         </form>
     </div>
 </div>
@@ -239,10 +239,11 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary my-10 mx-2">Edit Package</button>
+            <button type="submit" class="btn btn-primary my-10 mx-2">Edit Outlet</button>
 
             <button type="button" class="btn btn-primary my-10 mx-2"
                 onclick="document.getElementById('editoutlets').classList.remove('modal-open')">Cancel</button>
+
 
             <button type="button"
                 class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"

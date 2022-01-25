@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'view_login'])->name('page_login');
+Route::get('/register', [AuthController::class, 'view_register'])->name('view_register');
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register-owner', [UserManagementController::class, 'register_owner'])->name('register');
 
 Route::middleware(['auth.basic'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+    Route::get('/users', [DashboardController::class, 'view_users'])->name('view_users');
     Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
     Route::get('/outlets', [DashboardController::class, 'view_outlets'])->name('page_outlets');
     Route::get('/packages', [DashboardController::class, 'view_packages'])->name('page_packages');

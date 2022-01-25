@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Members;
 use App\Models\Outlets;
 use App\Models\Packages;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InputController extends Controller
 {
@@ -215,11 +217,17 @@ class InputController extends Controller
             }
         } else if ($validatedData['model_type'] == 'outlets') {
             $outlet = Outlets::find($validatedData['delete_id']);
+            $user = User::where('outlet_id', $outlet->id);
+            $packages = Packages::where('outlet_id', $outlet->id);
 
             if ($outlet->delete()) {
-                return redirect()->back()->with('success', 'Deleted successfully!');
-            } else {
-                return redirect()->back()->with('failure', 'Invalid deletion.');
+                if ($user->delete()) {
+                    if ($packages->delete()) {
+                        return redirect()->route('page_login')->with('success', 'Deleted successfully!');
+                    } else {
+                        return redirect()->back()->with('failure', 'Invalid deletion.');
+                    }
+                }
             }
         } else if ($validatedData['model_type'] == 'members') {
             $member = Members::find($validatedData['delete_id']);

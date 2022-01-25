@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Members;
 use App\Models\Outlets;
 use App\Models\Packages;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -22,14 +24,20 @@ class DashboardController extends Controller
 
     public function view_outlets()
     {
-        $outletData = Outlets::all();
+        $outletData = Outlets::where('id', Auth::user()->outlet_id)->get();
         return view('dashboard.outlet', ['page_name' => 'Outlets', 'outletData' => $outletData]);
     }
 
     public function view_packages()
     {
-        $packageData = Packages::all();
+        $packageData = Packages::where('outlet_id', Auth::user()->outlet_id)->get();
         $outletData = Outlets::all();
         return view('dashboard.package', ['page_name' => 'Packages', 'packageData' => $packageData, 'outletData' => $outletData]);
+    }
+
+    public function view_users()
+    {
+        $userData = User::where('outlet_id', Auth::user()->outlet_id)->get();
+        return view('dashboard.users', ['page_name' => 'Users', 'userData' => $userData]);
     }
 }
