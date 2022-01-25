@@ -1521,6 +1521,16 @@ html {
 .card figure,.card figure>* {
   width: 100%;
 }
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-left: -.25rem;
+  margin-right: -.25rem;
+}
+.card-actions>* {
+  margin: .25rem;
+}
 .card.image-full {
   display: grid;
 }
@@ -2261,6 +2271,11 @@ html {
   border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
   border-width: 1px;
 }
+.card-bordered {
+  --tw-border-opacity: 1;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+  border-width: 1px;
+}
 .card.compact .card-body {
   font-size: .875rem;
   line-height: 1.25rem;
@@ -2268,6 +2283,18 @@ html {
 }
 .card.compact .card-title {
   margin-bottom: .25rem;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: .75rem;
+}
+.card-actions:first-child {
+  margin-bottom: .5rem;
+}
+.card-actions:last-child {
+  margin-top: 1.5rem;
 }
 @-webkit-keyframes checkmark {
 
@@ -2928,6 +2955,10 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -2978,6 +3009,9 @@ html {
 }
 .w-52 {
   width: 13rem;
+}
+.w-6\/12 {
+  width: 50%;
 }
 .min-w-full {
   min-width: 100%;
@@ -3043,11 +3077,30 @@ html {
 .bg-transparent {
   background-color: transparent;
 }
+.bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+.bg-primary-content {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--pc) / var(--tw-bg-opacity));
+}
+.bg-base-300 {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b3) / var(--tw-bg-opacity));
+}
 .stroke-current {
   stroke: currentColor;
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -3056,6 +3109,10 @@ html {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .text-center {
   text-align: center;
@@ -3079,6 +3136,10 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;
@@ -3147,6 +3208,22 @@ html {
 }
 
 @media (min-width: 1024px) {
+
+  .lg\:card-side {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .lg\:card-side>figure {
+    height: 100%;
+    max-width: none;
+    width: auto;
+  }
+
+  .lg\:card-side>figure>* {
+    width: auto;
+    max-width: none;
+  }
 
   .lg\:flex-row {
     flex-direction: row;

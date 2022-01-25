@@ -27,98 +27,43 @@
 
 <div class="text-center my-10">
     <div class="btn-group inline-block">
-        <button type="button" class="btn btn-primary"
-            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
+        <p class="text-xl font-bold">OUTLET MANAGEMENT</p>
     </div>
 </div>
 
 <div id="outlet-view" class="">
-    <div class="overflow-x-auto">
-        <table class="table w-full">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Outlet Name</th>
-                    <th>Outlet Address</th>
-                    <th>Outlet Contact</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+    @foreach ($outletData as $util)
+    <div class="card lg:card-side card-bordered text-center bg-base-200 rounded-box mx-10">
+        <div class="card-body">
+            <div class="my-10">
+                <h2 class="text-sm font-bold">STATUS</h2>
+                <h2 class="text-xl font-bold">{{ $util->status }}</h2>
+            </div>
 
-            <tbody>
-                @foreach ($outletData as $util)
-                <tr>
-                    <th id="table_outlet_id">{{ $util->id }}</th>
-                    <td>{{ $util->outlet_name }}</td>
-                    <td>{{ $util->outlet_address }}</td>
-                    <td>{{ $util->outlet_phone }}</td>
-                    <td>{{ $util->status }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
+            <div class="flex">
+                <div class="flex-1">
+                    <p class="text-xl font-bold"> {{ $util->outlet_name }} </p>
+                    <p class="font-sm opacity-50" id="table_outlet_id">{{ $util->id }}</p>
+                </div>
 
-<div id="outlet-creation" class="hidden">
-    <form action="/outlet" method="post" class="text-center">
-        @csrf
-
-        <div class="flex flex-row">
-            <div class="flex-1 mx-4 w-full">
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Business Status</span>
-                    </label>
-
-                    <div class="flex-row">
-                        <select name="status" id="type_input" class="select select-lg select-bordered w-full">
-                            <option value="CLOSED">Closed</option>
-                            <option value="ACTIVE">Active</option>
-                            <option value="BANKRUPT">Bankrupt</option>
-                        </select>
-                    </div>
+                <div class="flex-1">
+                    <p class="font-bold text-xl">"{{ $util->outlet_address }}"</p>
+                    <p class="text-sm">{{ $util->outlet_phone }}</p>
                 </div>
             </div>
 
-            <div class="flex-1 mx-4 w-full">
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Outlet Name</span>
-                    </label>
+            <div class="my-10">
+                <h2 class="text-sm font-bold">Workers</h2>
+                <h2 class="text-xl font-bold">{{ $util->user->count() }}</h2>
+            </div>
 
-                    <div class="flex-row">
-                        <input type="text" name="outlet_name" id="name_input" class="input input-bordered w-full"
-                            maxlength="100" required>
-                    </div>
-                </div>
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Outlet Address</span>
-                    </label>
-
-                    <div class="flex-row">
-                        <input type="text" name="outlet_address" id="address_input" class="input input-bordered w-full"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Outlet Phone Number</span>
-                    </label>
-
-                    <div class="input-group">
-                        <span>+62</span>
-                        <input type="text" name="outlet_phone" id="contact_input" class="input input-bordered w-full"
-                            required>
-                    </div>
-                </div>
+            <div class="card-actions inline-block">
+                <button type="button" class="btn btn-primary"
+                    onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
             </div>
         </div>
+    </div>
+    @endforeach
 
-        <button type="submit" class="btn btn-primary my-10">Create Outlet</button>
-    </form>
 </div>
 @endsection
