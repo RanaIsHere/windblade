@@ -12,6 +12,11 @@ class AuthController extends Controller
         return view('login.login', ['page_name' => 'Login']);
     }
 
+    public function view_register()
+    {
+        return view('login.register', ['page_name' => 'Register']);
+    }
+
     public function login(Request $request)
     {
         $auth_data = $request->validate([

@@ -25,6 +25,6 @@ class Outlets extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'outlet_id');
+        return $this->hasMany(User::class, 'outlet_id');
     }
 }

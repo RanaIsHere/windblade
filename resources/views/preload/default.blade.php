@@ -20,6 +20,10 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/windblade.js') }}"></script>
 
+    @if($page_name == 'Register')
+    <script src="{{ asset('js/register.js') }}"></script>
+    @endif
+
     @if($page_name == 'Packages')
     <script src="{{ asset('js/package.js') }}"></script>
     @endif

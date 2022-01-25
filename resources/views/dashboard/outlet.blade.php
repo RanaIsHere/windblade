@@ -42,13 +42,15 @@
 
             <div class="flex">
                 <div class="flex-1">
+                    <h2 class="text-sm font-bold">NAME</h2>
                     <p class="text-xl font-bold"> {{ $util->outlet_name }} </p>
                     <p class="font-sm opacity-50" id="table_outlet_id">{{ $util->id }}</p>
                 </div>
 
                 <div class="flex-1">
+                    <h2 class="text-sm font-bold">ADDRESS</h2>
                     <p class="font-bold text-xl">"{{ $util->outlet_address }}"</p>
-                    <p class="text-sm">{{ $util->outlet_phone }}</p>
+                    <p class="text-sm">+{{ $util->outlet_phone }}</p>
                 </div>
             </div>
 

@@ -30,14 +30,14 @@ class DashboardController extends Controller
 
     public function view_packages()
     {
-        $packageData = Packages::all();
+        $packageData = Packages::where('outlet_id', Auth::user()->outlet_id)->get();
         $outletData = Outlets::all();
         return view('dashboard.package', ['page_name' => 'Packages', 'packageData' => $packageData, 'outletData' => $outletData]);
     }
 
     public function view_users()
     {
-        $userData = User::all();
+        $userData = User::where('outlet_id', Auth::user()->outlet_id)->get();
         return view('dashboard.users', ['page_name' => 'Users', 'userData' => $userData]);
     }
 }
