@@ -23,13 +23,11 @@ Route::get('/register', [AuthController::class, 'view_register'])->name('view_re
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register-owner', [UserManagementController::class, 'register_owner'])->name('register');
 
-Route::middleware(['auth.basic'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::get('/users', [DashboardController::class, 'view_users'])->name('view_users');
-    Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
     Route::get('/outlets', [DashboardController::class, 'view_outlets'])->name('page_outlets');
+    Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
     Route::get('/packages', [DashboardController::class, 'view_packages'])->name('page_packages');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
@@ -43,4 +41,9 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::post('/edit-package', [InputController::class, 'edit_package'])->name('edit_package');
     Route::post('/edit-outlet', [InputController::class, 'edit_outlet'])->name('edit_outlet');
     Route::post('/edit-customer', [InputController::class, 'edit_customer'])->name('edit_customer');
+});
+
+Route::middleware(['auth.basic'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
