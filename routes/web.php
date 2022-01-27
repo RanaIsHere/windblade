@@ -43,6 +43,8 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/edit-package', [InputController::class, 'edit_package'])->name('edit_package');
     Route::post('/edit-outlet', [InputController::class, 'edit_outlet'])->name('edit_outlet');
     Route::post('/edit-customer', [InputController::class, 'edit_customer'])->name('edit_customer');
+
+    Route::post('/register-user', [UserManagementController::class, 'register_user'])->name('register_user');
 });
 
 Route::middleware(['auth.basic'])->group(function () {

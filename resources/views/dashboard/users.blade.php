@@ -3,6 +3,11 @@
 @section('container')
 @include('partials.header')
 @include('partials.modals')
+
+<div class="text-center">
+    <button type="button" class="btn btn-primary my-5" onclick="document.getElementById('createUserModal').classList.add('modal-open')">Add User</button>
+</div>
+
 <div class="overflow-x-auto mx-4 border-primary-focus border-2">
     <table class="table w-full text-center">
         <thead>

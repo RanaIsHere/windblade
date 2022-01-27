@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Outlets;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
@@ -80,7 +81,26 @@ class UserManagementController extends Controller
 
     public function register_user(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required'],
+            'username' => ['required'],
+            'password' => ['required'],
+            'roles' => ['required']
+        ]);
+
+        $user = new User;
+
+        $user->name = $validatedData['name'];
+        $user->outlet_id = Auth::user()->outlet_id;
+        $user->username = $validatedData['username'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->roles = $validatedData['roles'];
+
+        if ($user->save()) {
+            return redirect()->back()->with('success', 'Registration successful!');
+        } else {
+            return redirect()->back()->with('success', 'Registration failed!');
+        }
     }
 
     public function get_user(Request $request)
