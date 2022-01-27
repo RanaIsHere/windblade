@@ -9,3 +9,7 @@ function next_page(current, next, count) {
     nextPage.classList.remove('hidden')
     steps.querySelectorAll('li')[count].classList.add('step-primary')
 }
+
+document.getElementById('register-owner-page').addEventListener('submit', function (e) {
+    e.preventDefault();
+})

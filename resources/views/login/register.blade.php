@@ -10,7 +10,7 @@
     </ul>
 </div>
 
-<form action="/register-owner" method="post">
+<form action="/register-owner" method="post" id="register-owner-page">
     @csrf
 
     <div class="flex m-0 lg:m-10 bg-base-200 px-1 lg:px-60" id="basic_user_information">
@@ -40,7 +40,7 @@
 
             <div class="my-6 text-center">
                 <button type="button" class="btn btn-primary"
-                    onclick="next_page('basic_user_information', 'outlet_information', 1)">
+                    onclick="next_page('basic_user_information', 'outlet_information', 1)" onkeydown="">
                     Next
                 </button>
             </div>

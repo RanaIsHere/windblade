@@ -237,6 +237,21 @@ class InputController extends Controller
             } else {
                 return redirect()->back()->with('failure', 'Invalid deletion.');
             }
+        } else if ($validatedData['model_type'] == 'users') {
+            $user = User::find($validatedData['delete_id']);
+            $user_outlet = Outlets::find($user->outlet_id);
+            $package_outlet = Packages::where('outlet_id', $user->outlet_id);
+
+            if ($user->delete()) {
+                if ($user->count() == 0) {
+                    $user_outlet->delete();
+                    $package_outlet->delete();
+                }
+
+                return redirect()->back()->with('success', 'Deleted successfully!');
+            } else {
+                return redirect()->back()->with('failure', 'Invalid deletion.');
+            }
         }
     }
 }

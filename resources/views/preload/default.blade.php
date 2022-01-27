@@ -35,6 +35,10 @@
     @if($page_name == 'Customers')
     <script src="{{ asset('js/customer.js') }}"></script>
     @endif
+
+    @if ($page_name == 'Users')
+        <script src="{{ asset('js/user.js') }}"></script>
+    @endif
 </body>
 
 </html>

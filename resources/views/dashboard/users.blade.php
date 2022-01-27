@@ -1,9 +1,8 @@
 @extends('preload.default')
 
 @section('container')
-
 @include('partials.header')
-
+@include('partials.modals')
 <div class="overflow-x-auto mx-4 border-primary-focus border-2">
     <table class="table w-full text-center">
         <thead>
@@ -37,7 +36,7 @@
                 </td>
                 <td>{{ $user->outlets->outlet_name }}</td>
                 <th>
-                    <button class="btn btn-primary" onclick="request_info">Edit</button>
+                    <button class="btn btn-primary" onclick="request_info(this, 'user_id_modal', 'user_id_real_modal', 'editusers')">Edit</button>
                 </th>
             </tr>
             @endforeach
@@ -53,7 +52,5 @@
         </tfoot>
     </table>
 </div>
-
-
 
 @endsection

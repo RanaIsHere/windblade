@@ -49,7 +49,6 @@ class UserManagementController extends Controller
         $user_admin->username = $validatedData['admin_username'];
         $user_admin->password = Hash::make($validatedData['password']);
 
-
         if ($outlet->save()) {
             $outlet_creation = true;
 
@@ -82,5 +81,40 @@ class UserManagementController extends Controller
     public function register_user(Request $request)
     {
         //
+    }
+
+    public function get_user(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            $userData = User::find($validatedData['id']);
+
+            return response()->json(['response' => $userData]);
+        }
+    }
+
+    public function edit_user(Request $request)
+    {
+        $validatedData = $request->validate([
+            'user_id' => ['required'],
+            'roles' => ['required'],
+            'name' => ['required'],
+            'username' => ['required'],
+        ]);
+
+        $user = User::find($validatedData['user_id']);
+
+        $user->roles = $validatedData['roles'];
+        $user->name = $validatedData['name'];
+        $user->username = $validatedData['username'];
+
+        if ($user->save()) {
+            return redirect()->back()->with('success', 'User edited successfully!');
+        } else {
+            return redirect()->back()->with('success', 'User failed to edit!');
+        }
     }
 }
