@@ -1,3 +1,5 @@
+var PRICE = 0
+
 function update_stats()
 {
 	document.getElementById('fee_view').innerText = document.getElementById('fee_price').value
@@ -62,11 +64,41 @@ function get_package(entity, index)
 			document.getElementById('package_input').value = response.response.package_name
 
 			document.getElementById('transaction_price').value = response.response.package_price
-			document.getElementById('quantity_input').removeAttribute('disabled')
+			PRICE = response.response.package_price
+
+			document.getElementById('quantity_input').classList.remove('pointer-events-none')
 
 			document.getElementById('find_package').classList.remove('modal-open')
 
 			update_stats()
 		}
 	})
+}
+
+function enable_cash_pay(entity)
+{
+	document.getElementById('paid_today_with_cash').value = 1
+	document.getElementById('paid_today_with_card').value = 0
+
+	entity.classList.add('pointer-events-none')
+	entity.classList.add('opacity-50')
+
+	document.getElementById('pay_with_card').classList.remove('pointer-events-none')
+	document.getElementById('pay_with_card').classList.remove('opacity-50')
+
+	document.getElementById('instant-pay-digital').classList.add('hidden')
+}
+
+function enable_card_pay(entity)
+{
+	document.getElementById('paid_today_with_cash').value = 0
+	document.getElementById('paid_today_with_card').value = 1
+
+	entity.classList.add('pointer-events-none')
+	entity.classList.add('opacity-50')
+
+	document.getElementById('pay_with_cash').classList.remove('pointer-events-none')
+	document.getElementById('pay_with_cash').classList.remove('opacity-50')
+
+	document.getElementById('instant-pay-digital').classList.remove('hidden')
 }
