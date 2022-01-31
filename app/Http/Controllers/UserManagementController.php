@@ -74,11 +74,6 @@ class UserManagementController extends Controller
         }
     }
 
-    public function register_admin(Request $request)
-    {
-        //
-    }
-
     public function register_user(Request $request)
     {
         $validatedData = $request->validate([

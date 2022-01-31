@@ -16,8 +16,8 @@
                         <li><a href="/packages" class="dropdown-btn"> Package Management </a></li>
                         <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
                         <li><a href="/users" class="dropdown-btn"> User Management </a></li>
-                        <li><a class="dropdown-btn"> Transactions </a></li>
-                        <li><a class="dropdown-btn"> Reports </a></li>
+                        <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
+                        <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
                     @endif
 
                     @if (Auth::user()->roles == 'OWNER')
@@ -30,7 +30,7 @@
                     @endif
 
 
-                    <li class="flex md:hidden"><a href="" class="dropdown-btn"> Account </a></li>
+                    <li class="flex md:hidden"><a href="/profile" class="dropdown-btn"> Account </a></li>
                 </ul>
             </div>
         </div>
