@@ -53,6 +53,12 @@
 			<input type="hidden" name="tax_price" id="tax_price" value="0">
 		</div>
 
+		<div class="flex flex-row">
+			<div class="flex-1 my-2 w-full">
+				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_card" onclick="enable_card_pay(this)">Pay now with card</button>
+			</div>
+		</div>
+
 		<div class="flex flex-row hidden" id="instant-pay-digital">
 			<div class="flex-1 mx-4 w-full">
 				<div class="form-control my-2">
@@ -71,7 +77,7 @@
 					</label>
 
 					<div class="flex-row">
-						<input type="text" id="card_input" class="input input-bordered w-full" required>
+						<input type="text" id="card_input" class="input input-bordered w-full" maxlength="16" required>
 					</div>
 				</div>
 
@@ -82,7 +88,7 @@
 						</label>
 
 						<div class="flex-row">
-							<input type="text" id="expire_input" class="input input-bordered w-full" required>
+							<input type="text" id="expire_input" class="input input-bordered w-full" maxlength="5" required>
 						</div>
 					</div>
 
@@ -92,14 +98,14 @@
 						</label>
 
 						<div class="flex-row">
-							<input type="text" id="cvc_input" class="input input-bordered w-full" required>
+							<input type="text" id="cvc_input" class="input input-bordered w-full" maxlength="4" required>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="flex-1 mx-4 w-full">
-				<div class="flex h-full">
+				<div class="flex h-full w-full">
 					<div class="card mx-2 card-bordered card-compact lg:card-normal bg-blue-600">
 					  	<figure>
 					    	<img src="https://picsum.photos/id/1005/400/250">
@@ -191,8 +197,7 @@
 					</div>
 
 					<div class="flex-row mt-2">
-						<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now with cash</button>
-						<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_card" onclick="enable_card_pay(this)">Pay now with card</button>
+						
 					</div>
 				</div>
 

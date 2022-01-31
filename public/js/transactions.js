@@ -1,13 +1,11 @@
 var PRICE = 0
 
-function update_stats()
-{
+function update_stats() {
 	document.getElementById('fee_view').innerText = document.getElementById('fee_price').value
 	document.getElementById('price_view').innerText = document.getElementById('transaction_price').value
 }
 
-function catch_price_information()
-{
+function catch_price_information() {
 	$.ajax({
 		type: 'POST',
 		url: '/get-price-information'
@@ -15,8 +13,7 @@ function catch_price_information()
 	});
 }
 
-function toggle_note(entity)
-{
+function toggle_note(entity) {
 	entity.checked != entity.checked
 	document.getElementById('note_textarea').classList.toggle('hidden')
 
@@ -33,8 +30,7 @@ function toggle_note(entity)
 	update_stats()
 }
 
-function get_member(entity, index)
-{
+function get_member(entity, index) {
 	let table_element = entity.parentElement.parentElement
 	let id = table_element.querySelectorAll('th')[index].innerText
 
@@ -50,8 +46,7 @@ function get_member(entity, index)
 	});
 }
 
-function get_package(entity, index)
-{
+function get_package(entity, index) {
 	let table_element = entity.parentElement.parentElement
 	let id = table_element.querySelectorAll('th')[index].innerText
 
@@ -75,30 +70,12 @@ function get_package(entity, index)
 	})
 }
 
-function enable_cash_pay(entity)
-{
-	document.getElementById('paid_today_with_cash').value = 1
-	document.getElementById('paid_today_with_card').value = 0
+function enable_card_pay(entity) {
+	document.getElementById('paid_today_with_card').value = !1
 
-	entity.classList.add('pointer-events-none')
-	entity.classList.add('opacity-50')
+	entity.classList.toggle('opacity-50')
 
-	document.getElementById('pay_with_card').classList.remove('pointer-events-none')
-	document.getElementById('pay_with_card').classList.remove('opacity-50')
+	document.getElementById('instant-pay-digital').classList.toggle('hidden')
 
-	document.getElementById('instant-pay-digital').classList.add('hidden')
-}
-
-function enable_card_pay(entity)
-{
-	document.getElementById('paid_today_with_cash').value = 0
-	document.getElementById('paid_today_with_card').value = 1
-
-	entity.classList.add('pointer-events-none')
-	entity.classList.add('opacity-50')
-
-	document.getElementById('pay_with_cash').classList.remove('pointer-events-none')
-	document.getElementById('pay_with_cash').classList.remove('opacity-50')
-
-	document.getElementById('instant-pay-digital').classList.remove('hidden')
+	console.log(document.getElementById('paid_today_with_card').value)
 }
