@@ -342,3 +342,151 @@
 </div>
 
 @endif
+
+@if ($page_name == 'Users')
+    <div id="editusers" class="modal">
+        <div class="modal-box min-w-full text-center">
+            <p>Change information related to this user</p>
+
+            <form action="/edit-user" method="post">
+                @csrf
+
+                <input type="hidden" name="user_id" id="user_id">
+
+                <div class="flex flex-row">
+                    <div class="flex-1 mx-4 w-full">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Current Full Name</span>
+                            </label>
+
+                            <div class="input-group">
+                                <input type="hidden" name="user_id" id="user_id_real_modal">
+                                <input type="text" id="user_id_modal" class="input input-bordered w-full" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Roles</span>
+                            </label>
+
+                            <div class="flex-row">
+                                <select name="roles" id="role_input_edit" class="select select-bordered w-full">
+                                    <option value="OWNER">Owner</option>
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="CASHIER">Cashier</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 mx-4 w-full">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Full Name</span>
+                            </label>
+
+                            <div class="flex-row">
+                                <input type="text" name="name" id="full_name_input_edit"
+                                    class="input input-bordered w-full" maxlength="100" required>
+                            </div>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Username</span>
+                            </label>
+
+                            <div class="flex-row">
+                                <input type="text" name="username" id="name_input_edit"
+                                    class="input input-bordered w-full" maxlength="100" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary my-10 mx-2">Edit Customer</button>
+
+                <button type="button" class="btn btn-primary my-10 mx-2"
+                    onclick="document.getElementById('editusers').classList.remove('modal-open')">Cancel</button>
+
+                <button type="button"
+                    class="btn btn-ghost bg-red-500 hover:bg-red-700 outline-red-500 hover:outline-red-700 my-10 mx-2"
+                    onclick="deleteItem('user_id_real_modal', 'users', 'editusers')">Delete</button>
+            </form>
+        </div>
+    </div>
+@endif
+
+@if ($page_name == 'Users')
+<div id="createUserModal" class="modal">
+    <div class="modal-box min-w-full text-center">
+        <p>Change information related to this user</p>
+
+        <form action="/register-user" method="post">
+            @csrf
+
+            <input type="hidden" name="user_id" id="user_id">
+
+            <div class="flex flex-row">
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Roles</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <select name="roles" id="role_input_edit" class="select select-bordered w-full">
+                                <option value="OWNER">Owner</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="CASHIER">Cashier</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 mx-4 w-full">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Full Name</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="text" name="name" id="full_name_input_edit"
+                                class="input input-bordered w-full" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Username</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="text" name="username" id="name_input_edit"
+                                class="input input-bordered w-full" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+
+                        <div class="flex-row">
+                            <input type="password" name="password" id="password_input_edit"
+                                class="input input-bordered w-full" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary my-10 mx-2">Add User</button>
+
+            <button type="button" class="btn btn-primary my-10 mx-2"
+                onclick="document.getElementById('createUserModal').classList.remove('modal-open')">Cancel</button>
+        </form>
+    </div>
+</div>
+@endif

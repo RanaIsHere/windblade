@@ -24,7 +24,7 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($auth_data)) {
+        if (Auth::attempt($auth_data, true)) {
             $request->session()->regenerate();
 
             return redirect()->route('page_dashboard')->with('success', 'Login successful!');
