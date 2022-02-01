@@ -53,9 +53,17 @@
 			<input type="hidden" name="tax_price" id="tax_price" value="0">
 		</div>
 
+		
 		<div class="flex flex-row">
 			<div class="flex-1 my-2 w-full">
+				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now with cash</button>
 				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_card" onclick="enable_card_pay(this)">Pay now with card</button>
+			</div>
+		</div>
+		
+		<div class="flex flex-row">
+			<div class="flex-1 my-2 w-full">
+				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_later" onclick="enable_pay_later(this)">Pay later</button>
 			</div>
 		</div>
 
@@ -112,7 +120,7 @@
 					  	</figure> 
 					  	<div class="card-body place-items-center">
 					    	<h2 class="card-title">VISA</h2>
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-accent outline-green-400 border-2" value=""> Choose 
+					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
 					 	</div>
 					</div>
 
@@ -122,7 +130,7 @@
 					  	</figure> 
 					  	<div class="card-body place-items-center">
 					    	<h2 class="card-title">Mastercard</h2> 
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-accent outline-green-400 border-2" value=""> Choose 
+					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
 					 	</div>
 					</div>
 
@@ -132,7 +140,7 @@
 					  	</figure> 
 					  	<div class="card-body place-items-center">
 					    	<h2 class="card-title">Debit</h2> 
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-accent border-green-400 border-2" value=""> Choose 
+					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
 					 	</div>
 					</div>
 				</div>
@@ -210,9 +218,9 @@
 						<input type="hidden" name="package_id" id="package_input_real"
 							value="">
 						<input type="text" id="package_input" class="input input-bordered w-full"
-							value="" readonly>
+							value="" placeholder="Choose a package" readonly>
 
-						<input type="number" name="package_quantity" id="quantity_input" class="input input-bordered w-2/12 pointer-events-none" value="1" min="1" required>
+						<input type="number" name="package_quantity" id="quantity_input" class="input input-bordered w-2/12 pointer-events-none" value="1" min="1" oninput="update_quantity(this)" required>
 
 						<button type="button" class="btn btn-primary w-2/12" 
 								onclick="document.getElementById('find_package').classList.add('modal-open')">Find</button>
@@ -225,7 +233,7 @@
 					</label>
 
 					<div class="flex-row">
-						<select name="package_type" id="type_input" class="select select-bordered w-full">
+						<select name="package_type" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
 							<option value="0">No Discount</option>
 							<option value="10">10% Discount</option>
 							<option value="20">20% Discount</option>
