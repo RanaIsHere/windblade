@@ -12,6 +12,11 @@ class AuthController extends Controller
         return view('login.login', ['page_name' => 'Login']);
     }
 
+    public function view_register()
+    {
+        return view('login.register', ['page_name' => 'Register']);
+    }
+
     public function login(Request $request)
     {
         $auth_data = $request->validate([
@@ -19,7 +24,7 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($auth_data)) {
+        if (Auth::attempt($auth_data, true)) {
             $request->session()->regenerate();
 
             return redirect()->route('page_dashboard')->with('success', 'Login successful!');

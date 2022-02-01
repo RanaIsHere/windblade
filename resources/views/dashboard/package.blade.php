@@ -6,6 +6,25 @@
 
 @include('partials.header')
 
+@if(Session::has('success'))
+<div class="alert alert-success" id="alert-div">
+    <div class="flex-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+        </svg>
+        <label>{{ Session::get('success') }}</label>
+    </div>
+
+    <button class="btn bg-transparent hover:bg-transparent" onclick="document.getElementById('alert-div').remove()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            class="inline-block w-6 h-6 mr-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+</div>
+@endif
+
 <div class="text-center my-10">
     <div class="btn-group inline-block">
         <button class="btn btn-outline btn-active w-32" id="package-view-btn">View</button>
@@ -31,11 +50,13 @@
                 @foreach ($packageData as $pkg)
                 <tr>
                     <th>{{ $pkg->id }}</th>
-                    <td>{{ $pkg->outlet_id }}</td>
+                    <td>{{ $pkg->outlets->outlet_name }}</td>
                     <td>{{ $pkg->package_name }}</td>
                     <td>{{ $pkg->package_type }}</td>
                     <td>{{ $pkg->package_price }}</td>
-                    <th><button type="button" class="btn btn-primary">Edit</button></th>
+                    <th><button type="button" class="btn btn-primary"
+                            onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editpackages')">Edit</button>
+                    </th>
                 </tr>
                 @endforeach
             </tbody>
@@ -54,10 +75,10 @@
                     </label>
 
                     <div class="input-group">
-                        <input type="hidden" name="outlet_id" id="outlet_input_real">
+                        <input type="hidden" name="outlet_id" id="outlet_input_real"
+                            value="{{ Auth::user()->outlet_id }}">
                         <input type="text" id="outlet_input" class="input input-bordered w-full"
-                            readonly>
-                        <button type="button" id="outlet-search-btn" class="btn btn-primary mx-2"> Find Outlet </button>
+                            value="{{ Auth::user()->outlets->outlet_name }}" readonly>
                     </div>
                 </div>
             </div>
@@ -97,7 +118,8 @@
 
                     <div class="input-group">
                         <span>Rp.</span>
-                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full" required>
+                        <input type="number" name="package_price" id="price_input" class="input input-bordered w-full"
+                            required>
                     </div>
                 </div>
             </div>

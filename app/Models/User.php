@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function outlets()
     {
-        return $this->hasOne(Outlets::class, 'outlet_id');
+        return $this->belongsTo(Outlets::class, 'outlet_id');
     }
 
     public function transactions()
