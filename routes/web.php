@@ -44,6 +44,8 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/catch-member', [TransactionController::class, 'get_member'])->name('get_member');
     Route::post('/catch-package', [TransactionController::class, 'get_package'])->name('get_package');
 
+    Route::post('/transaction', [TransactionController::class, 'start_transaction'])->name('start_transaction');
+
     // Transaction END
 
     Route::post('/delete-item', [InputController::class, 'delete_item'])->name('delete_item');

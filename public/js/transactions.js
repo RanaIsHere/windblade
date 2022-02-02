@@ -13,7 +13,7 @@ function update_discount(entity) {
 		let calculated_discount = PRICE * (document.getElementById('discount_input').value / 100)
 		calculated_price = calculated_price - calculated_discount
 
-		TAX = calculated_price * (4 / 100)
+		TAX = calculated_price * (2 / 100)
 		document.getElementById('price_view').innerText = parseInt(calculated_price)
 		document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
 		document.getElementById('transaction_price').value = parseInt(calculated_price)

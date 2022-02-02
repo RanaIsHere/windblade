@@ -42,18 +42,8 @@
 		</div>
 	</div>
 
-	<form action="/transaction" method="post" class="text-center">
-		@csrf
-
-		<div id="the-changeling">
-			<input type="hidden" name="paid_today_with_card" id="paid_today_with_card" value="0">
-			<input type="hidden" name="paid_today_with_cash" id="paid_today_with_cash" value="0">
-			<input type="hidden" name="transaction_price" id="transaction_price" value="0">
-			<input type="hidden" name="fee_price" id="fee_price" value="0">
-			<input type="hidden" name="tax_price" id="tax_price" value="0">
-		</div>
-
-		
+	
+	<div class="text-center">	
 		<div class="flex flex-row">
 			<div class="flex-1 my-2 w-full">
 				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now with cash</button>
@@ -63,7 +53,7 @@
 		
 		<div class="flex flex-row">
 			<div class="flex-1 my-2 w-full">
-				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_later" onclick="enable_pay_later(this)">Pay later</button>
+				<button type="button" class="btn btn-primary btn-sm mx-2 opacity-50 pointer-events-none" id="pay_later" onclick="enable_pay_later(this)">Pay later</button>
 			</div>
 		</div>
 
@@ -75,7 +65,7 @@
 					</label>
 
 					<div class="flex-row">
-						<input type="text" id="name_input" class="input input-bordered w-full" required>
+						<input type="text" id="name_input" class="input input-bordered w-full">
 					</div>
 				</div>
 
@@ -85,7 +75,7 @@
 					</label>
 
 					<div class="flex-row">
-						<input type="text" id="card_input" class="input input-bordered w-full" maxlength="16" required>
+						<input type="text" id="card_input" class="input input-bordered w-full" maxlength="16">
 					</div>
 				</div>
 
@@ -96,7 +86,7 @@
 						</label>
 
 						<div class="flex-row">
-							<input type="text" id="expire_input" class="input input-bordered w-full" maxlength="5" required>
+							<input type="text" id="expire_input" class="input input-bordered w-full" maxlength="5">
 						</div>
 					</div>
 
@@ -106,7 +96,7 @@
 						</label>
 
 						<div class="flex-row">
-							<input type="text" id="cvc_input" class="input input-bordered w-full" maxlength="4" required>
+							<input type="text" id="cvc_input" class="input input-bordered w-full" maxlength="4">
 						</div>
 					</div>
 				</div>
@@ -145,6 +135,18 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<form action="/transaction" method="post" class="text-center">
+		@csrf
+
+		<div id="the-changeling">
+			<input type="hidden" name="paid_today_with_card" id="paid_today_with_card" value="0">
+			<input type="hidden" name="paid_today_with_cash" id="paid_today_with_cash" value="0">
+			<input type="hidden" name="transaction_price" id="transaction_price" value="0">
+			<input type="hidden" name="fee_price" id="fee_price" value="0">
+			<input type="hidden" name="tax_price" id="tax_price" value="0">
 		</div>
 
 		<div class="flex flex-row">
@@ -190,7 +192,7 @@
 						<span class="label-text">Notes</span>
 					</label> 
 				
-				  	<textarea name="notes" class="textarea h-32 textarea-bordered" placeholder="Notes"></textarea>
+				  	<textarea name="notes" class="textarea h-32 textarea-bordered" placeholder="Notes">NONE</textarea>
 				</div> 
 			</div>
 
@@ -233,7 +235,7 @@
 					</label>
 
 					<div class="flex-row">
-						<select name="package_type" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+						<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
 							<option value="0">No Discount</option>
 							<option value="10">10% Discount</option>
 							<option value="20">20% Discount</option>
