@@ -8,7 +8,8 @@ use App\Models\Packages;
 
 class TransactionController extends Controller
 {
-    public function get_member(Request $request) {
+    public function get_member(Request $request)
+    {
         if ($request->ajax()) {
             $validatedData = $request->validate([
                 'id' => ['required']
@@ -31,5 +32,16 @@ class TransactionController extends Controller
 
             return response()->json(['response' => $packageData]);
         }
+    }
+
+    public function start_transaction(Request $request)
+    {
+        $validatedData = $request->validate([
+            'paid_today_with_card' => ['required'],
+            'paid_today_with_cash' => ['required'],
+            'transaction_price' => ['required'],
+            'fee_price' => ['required'],
+            'tax_price' => ['required'],
+        ]);
     }
 }

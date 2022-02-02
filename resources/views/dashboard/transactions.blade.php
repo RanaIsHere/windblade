@@ -190,7 +190,7 @@
 						<span class="label-text">Notes</span>
 					</label> 
 				
-				  	<textarea class="textarea h-32 textarea-bordered" placeholder="Notes"></textarea>
+				  	<textarea name="notes" class="textarea h-32 textarea-bordered" placeholder="Notes"></textarea>
 				</div> 
 			</div>
 
