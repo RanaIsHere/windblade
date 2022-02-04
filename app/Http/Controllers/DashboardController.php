@@ -38,10 +38,17 @@ class DashboardController extends Controller
 
     public function view_transactions()
     {
-        $transactionData = Transactions::where('outlet_id' , Auth::user()->outlet_id)->get();
+        $transactionData = Transactions::where('outlet_id', Auth::user()->outlet_id)->get();
         $memberData = Members::all();
         $packageData = Packages::where('outlet_id', Auth::user()->outlet_id)->get();
         return view('dashboard.transactions', ['page_name' => 'Transactions', 'transactionData' => $transactionData, 'memberData' => $memberData, 'packageData' => $packageData]);
+    }
+
+    public function view_invoices()
+    {
+        $transactionData = Transactions::where('outlet_id', Auth::user()->outlet_id)->get();
+        $memberData = Members::all();
+        return view('dashboard.invoices', ['page_name' => 'Invoices', 'transactionData' => $transactionData, 'memberData' => $memberData]);
     }
 
     public function view_users()

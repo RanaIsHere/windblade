@@ -55,7 +55,7 @@
             </div>
 
             <div class="my-10">
-                <h2 class="text-sm font-bold">Workers</h2>
+                <h2 class="text-sm font-bold">REGISTERED USERS</h2>
                 <h2 class="text-xl font-bold">{{ $util->user->count() }}</h2>
             </div>
 

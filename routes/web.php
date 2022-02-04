@@ -6,6 +6,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
     Route::get('/packages', [DashboardController::class, 'view_packages'])->name('page_packages');
     Route::get('/transactions', [DashboardController::class, 'view_transactions'])->name('page_transactions');
+    Route::get('/invoices', [DashboardController::class, 'view_invoices'])->name('page_invoices');
 
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
