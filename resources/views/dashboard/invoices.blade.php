@@ -4,7 +4,7 @@
     @include('partials.modals')
     @include('partials.header')
 
-    <div id="package-view" class="">
+    <div id="invoice-view" class="">
         <div class="overflow-x-auto">
             <table class="table w-full">
                 <thead>
@@ -19,15 +19,17 @@
                 </thead>
     
                 <tbody>
-                    <tr>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <th><button type="button" class="btn btn-primary"">View</button>
-                        </th>
-                    </tr>
+                    @foreach ($transactionData as $transact)
+                        <tr>
+                            <th>{{ $transact->id }}</th>
+                            <td>{{ $transact->invoice_code }}</td>
+                            <td>{{ $transact->transaction_details->packages->package_name }}</td> 
+                            <td>{{ $transact->transaction_details->packages->package_type }}</td> 
+                            <td>{{ $transact->transaction_details->packages->package_price }}</td>
+                            <th><button type="button" class="btn btn-primary"">View</button>
+                            </th>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div

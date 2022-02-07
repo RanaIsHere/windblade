@@ -153,7 +153,7 @@
 			<div class="flex-1 mx-4 w-full">
 				<div class="form-control">
 					<label class="label">
-						<span class="label-text">Outlet ID</span>
+						<span class="label-text">Outlet Name</span>
 					</label>
 
 					<div class="input-group">
@@ -166,7 +166,7 @@
 
 				<div class="form-control my-4">
 					<label class="label">
-						<span class="label-text">Member ID</span>
+						<span class="label-text">Member Name</span>
 					</label>
 
 					<div class="input-group">

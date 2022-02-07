@@ -27,7 +27,7 @@ class Transactions extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function transactionDetails()
+    public function transaction_details()
     {
         return $this->hasOne(TransactionDetails::class, 'transaction_id');
     }
