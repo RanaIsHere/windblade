@@ -3583,10 +3583,6 @@ html {
   --tw-bg-opacity: 1;
   background-color: hsla(var(--p) / var(--tw-bg-opacity));
 }
-.bg-secondary {
-  --tw-bg-opacity: 1;
-  background-color: hsla(var(--s) / var(--tw-bg-opacity));
-}
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
@@ -3687,20 +3683,16 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
-
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
-
 .hover\:outline-red-700:hover {
   outline-color: #b91c1c;
 }
-
 @media (min-width: 768px) {
 
   .md\:steps-horizontal {
@@ -3751,7 +3743,6 @@ html {
     line-height: 1.5rem;
   }
 }
-
 @media (min-width: 1024px) {
 
   .lg\:card-side {
