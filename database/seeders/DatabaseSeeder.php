@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
         Outlets::factory(100)->create();
         Packages::factory(100)->create();
         User::factory(100)->create();
-        Transactions::factory(100)->create();
+        // Transactions::factory(100)->create();
     }
 }
