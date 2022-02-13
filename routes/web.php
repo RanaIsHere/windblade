@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/get-package', [InputController::class, 'get_package'])->name('get_package');
     Route::post('/get-outlet', [InputController::class, 'get_outlet'])->name('get_outlet');
     Route::post('/get-customer', [InputController::class, 'get_customer'])->name('get_customer');
+    Route::post('/fetch-invoice', [InvoiceController::class, 'fetch_invoice'])->name('fetch_invoice');
 
     // Transaction Functions START
     Route::post('/catch-member', [TransactionController::class, 'get_member'])->name('get_member');

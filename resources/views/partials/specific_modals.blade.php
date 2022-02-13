@@ -79,3 +79,44 @@
         </div>
     </div>
 @endif
+
+@if ($page_name == 'Invoices')
+<div id="view_invoice" class="modal">
+    <div class="modal-box min-w-full text-center">
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Invoice Code</th>
+                        <th>Customer Name</th>
+                        <th>Customer Contact</th>
+                        <th>Package Name</th>
+                        <th>Package Type</th>
+                        <th>Package Price</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    @foreach ($transactionData as $transact)
+                        <tr>
+                            <th id="transaction_id"></th>
+                            <td id="invoice_code"></td>
+                            <td id="member_name"></td>
+                            <td id="member_phone"></td>
+                            <td id="package_name"></td> 
+                            <td id="package_type"></td> 
+                            <td>Rp. <span id="package_price"></span></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-action">
+            <button type="button" class="btn btn-primary"
+                onclick="document.getElementById('view_invoice').classList.remove('modal-open')">Cancel</button>
+        </div>
+    </div>
+</div>
+@endif

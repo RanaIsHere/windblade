@@ -1,7 +1,7 @@
 @extends('preload.default')
 
 @section('container')
-    @include('partials.modals')
+    @include('partials.specific_modals')
     @include('partials.header')
 
     <div id="invoice-view" class="">
@@ -31,7 +31,7 @@
                             <td>{{ $transact->transactionDetails->packages->package_type }}</td> 
                             <td>Rp. {{ $transact->transactionDetails->packages->package_price }}</td>
                             <th>
-                                <button type="button" class="btn btn-primary"">View</button>
+                                <button type="button" class="btn btn-primary" onclick="view_invoice(this)">View</button>
                             </th>
                         </tr>
                     @endforeach
