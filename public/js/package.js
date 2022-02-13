@@ -40,11 +40,6 @@ function request_info(el, casual_input, real_input, modal) {
     document.getElementById(modal).classList.add('modal-open')
     document.getElementById('package_id').value = id
 
-    // var request = new XMLHttpRequest();
-
-    // request.open('POST', '/get-package', true);
-    // request.setRequestHeader("X-CSRF_TOKEN", document.head.querySelector("meta[name='csrf-token']").content);
-
     $.ajax({
         type: 'POST',
         url: '/get-package',

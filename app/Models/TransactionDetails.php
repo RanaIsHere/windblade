@@ -12,13 +12,14 @@ class TransactionDetails extends Model
     protected $table = 'wb_transaction_details';
     protected $guarded = ['id'];
 
-    public function transactions()
-    {
-        return $this->belongsTo(Transactions::class, 'transaction_id');
-    }
 
     public function packages()
     {
         return $this->belongsTo(Packages::class, 'package_id');
+    }
+
+    public function transactions()
+    {
+        return $this->belongsTo(Transactions::class, 'transaction_id');
     }
 }

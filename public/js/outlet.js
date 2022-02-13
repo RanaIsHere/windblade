@@ -25,10 +25,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 })
 
 function request_info(el, casual_input, real_input, modal) {
-    let table_element = el.parentElement.parentElement
-    let id = table_element.querySelector('th').innerHTML
-
-    console.log(table_element)
+    let id = document.getElementById('table_outlet_id').innerText
 
     document.getElementById(modal).classList.add('modal-open')
     document.getElementById('outlet_id').value = id
