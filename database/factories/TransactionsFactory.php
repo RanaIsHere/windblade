@@ -19,11 +19,15 @@ class TransactionsFactory extends Factory
         // suffering
         // todo: this thing
 
+        $outlet_id = $this->faker->randomElement(Outlets::select('id')->get());
+        $user_id = $this->faker->randomElement(User::select('id')->get());
+        $member_id = $this->faker->randomElement(Members::select('id')->get());
+
         return [
-            'outlet_id' => $this->faker->randomElement(User::select('outlet_id')->get()),
-            'user_id' => $this->faker->randomElement(User::select('outlet_id')->get()),
-            'member_id' => $this->faker->randomElement(Members::select('id')->get()),
-            'invoice_code' => now()->day . now()->month . $this->faker->randomElement(Members::select('id')->get()) . $this->faker->randomElement(User::select('id')->get()) . $this->faker->randomElement(User::select('outlet_id')->get()) . $this->faker->unique()->randomNumber(3, true),
+            'outlet_id' => $outlet_id,
+            'user_id' => $user_id,
+            'member_id' => $member_id,
+            'invoice_code' => strval(now()->day . now()->month . Members::find($member_id)->first()->id . User::find($user_id)->first()->id . Outlets::find($outlet_id)->first()->id . $this->faker->unique()->randomNumber(3, true)),
             'transaction_date' => now(),
             'transaction_deadline' => now(),
             'transaction_paydate' => now(),

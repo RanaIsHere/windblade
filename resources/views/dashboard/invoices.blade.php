@@ -11,6 +11,8 @@
                     <tr>
                         <th>#</th>
                         <th>Invoice Code</th>
+                        <th>Customer Name</th>
+                        <th>Customer Contact</th>
                         <th>Package Name</th>
                         <th>Package Type</th>
                         <th>Package Price</th>
@@ -23,10 +25,13 @@
                         <tr>
                             <th>{{ $transact->id }}</th>
                             <td>{{ $transact->invoice_code }}</td>
-                            <td>{{ $transact->transaction_details->packages->package_name }}</td> 
-                            <td>{{ $transact->transaction_details->packages->package_type }}</td> 
-                            <td>{{ $transact->transaction_details->packages->package_price }}</td>
-                            <th><button type="button" class="btn btn-primary"">View</button>
+                            <td>{{ $transact->members->member_name }}</td>
+                            <td>{{ $transact->members->member_phone }}</td>
+                            <td>{{ $transact->transactionDetails->packages->package_name }}</td> 
+                            <td>{{ $transact->transactionDetails->packages->package_type }}</td> 
+                            <td>Rp. {{ $transact->transactionDetails->packages->package_price }}</td>
+                            <th>
+                                <button type="button" class="btn btn-primary"">View</button>
                             </th>
                         </tr>
                     @endforeach

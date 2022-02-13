@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Observers\MemberObserver;
 use App\Observers\OutletsObserver;
 use App\Observers\PackageObserver;
+use App\Observers\TransactionDetailsObserver;
 use App\Observers\TransactionObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -42,7 +43,7 @@ class EventServiceProvider extends ServiceProvider
         Outlets::observe(OutletsObserver::class);
         Packages::observe(PackageObserver::class);
         Transactions::observe(TransactionObserver::class);
-        TransactionDetails::observe(TransactionDetails::class);
+        TransactionDetails::observe(TransactionDetailsObserver::class);
         User::observe(UserObserver::class);
     }
 }

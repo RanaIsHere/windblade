@@ -5,7 +5,7 @@ namespace App\Observers;
 use App\Models\Activity;
 use App\Models\TransactionDetails;
 
-class TransactionDetailObserver
+class TransactionDetailsObserver
 {
     /**
      * Handle the TransactionDetails "created" event.
