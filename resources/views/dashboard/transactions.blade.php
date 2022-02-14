@@ -3,7 +3,26 @@
 @section('container')
 	@include('partials.specific_modals')
 	@include('partials.header')
-	
+
+	@if(Session::has('success'))
+	<div class="alert alert-success" id="alert-div">
+		<div class="flex-1">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+					d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+			</svg>
+			<label>{{ Session::get('success') }}</label>
+		</div>
+
+		<button class="btn bg-transparent hover:bg-transparent" onclick="document.getElementById('alert-div').remove()">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+				class="inline-block w-6 h-6 mr-2 stroke-current">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+			</svg>
+		</button>
+	</div>
+	@endif
+
 	<div class="w-full shadow stats text-center mb-4">
 		<div class="stat">
 			<div class="stat-figure text-primary">
@@ -42,98 +61,47 @@
 		</div>
 	</div>
 
+	<div class="text-center">
+		<div class="flex flex-row">
+			<div class="flex-1">
+				<button type="button" class="btn btn-primary w-2/12 btn-sm" 
+						onclick="document.getElementById('find_package').classList.add('modal-open')">Add Packages</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="overflow-x-auto">
+		<table class="table w-full table-compact">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Package Name</th>
+					<th>Package Type</th>
+					<th>Package Price</th>
+					<th>Quantity</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody id="package-buffer">
+				{{-- <tr>
+					<th></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr> --}}
+			</tbody>
+		</table>
+	</div>
+
 	
 	<div class="text-center">	
 		<div class="flex flex-row">
 			<div class="flex-1 my-2 w-full">
-				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now with cash</button>
-				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_card" onclick="enable_card_pay(this)">Pay now with card</button>
-			</div>
-		</div>
-		
-		<div class="flex flex-row">
-			<div class="flex-1 my-2 w-full">
+				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now</button>
 				<button type="button" class="btn btn-primary btn-sm mx-2 opacity-50 pointer-events-none" id="pay_later" onclick="enable_pay_later(this)">Pay later</button>
-			</div>
-		</div>
-
-		<div class="flex flex-row hidden" id="instant-pay-digital">
-			<div class="flex-1 mx-4 w-full">
-				<div class="form-control my-2">
-					<label class="label">
-						<span class="label-text">Name on Card</span>
-					</label>
-
-					<div class="flex-row">
-						<input type="text" id="name_input" class="input input-bordered w-full">
-					</div>
-				</div>
-
-				<div class="form-control my-4">
-					<label class="label">
-						<span class="label-text">Card Number</span>
-					</label>
-
-					<div class="flex-row">
-						<input type="text" id="card_input" class="input input-bordered w-full" maxlength="16">
-					</div>
-				</div>
-
-				<div class="flex">
-					<div class="form-control w-full">
-						<label class="label">
-							<span class="label-text">Expiration Date (MM/YY)</span>
-						</label>
-
-						<div class="flex-row">
-							<input type="text" id="expire_input" class="input input-bordered w-full" maxlength="5">
-						</div>
-					</div>
-
-					<div class="form-control ml-2">
-						<label class="label">
-							<span class="label-text">CVC<span>
-						</label>
-
-						<div class="flex-row">
-							<input type="text" id="cvc_input" class="input input-bordered w-full" maxlength="4">
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="flex-1 mx-4 w-full">
-				<div class="flex h-full w-full">
-					<div class="card mx-2 card-bordered card-compact lg:card-normal bg-blue-600">
-					  	<figure>
-					    	<img src="https://picsum.photos/id/1005/400/250">
-					  	</figure> 
-					  	<div class="card-body place-items-center">
-					    	<h2 class="card-title">VISA</h2>
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
-					 	</div>
-					</div>
-
-					<div class="card mx-2 card-bordered card-compact lg:card-normal bg-orange-600">
-					  	<figure>
-					    	<img src="https://picsum.photos/id/1005/400/250">
-					  	</figure> 
-					  	<div class="card-body place-items-center">
-					    	<h2 class="card-title">Mastercard</h2> 
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
-					 	</div>
-					</div>
-
-					<div class="card mx-2 card-bordered card-compact lg:card-normal bg-slate-600">
-					  	<figure>
-					    	<img src="https://picsum.photos/id/1005/400/250">
-					  	</figure> 
-					  	<div class="card-body place-items-center">
-					    	<h2 class="card-title">Debit</h2> 
-					    	<input type="radio" name="card-opt" checked="checked" class="radio radio-lg radio-accent bg-amber-400 border-2" value=""> Choose 
-					 	</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -142,8 +110,6 @@
 		@csrf
 
 		<div id="the-changeling">
-			<input type="hidden" name="paid_today_with_card" id="paid_today_with_card" value="0">
-			<input type="hidden" name="paid_today_with_cash" id="paid_today_with_cash" value="0">
 			<input type="hidden" name="transaction_price" id="transaction_price" value="0">
 			<input type="hidden" name="fee_price" id="fee_price" value="0">
 			<input type="hidden" name="tax_price" id="tax_price" value="0">
@@ -152,19 +118,6 @@
 		<div class="flex flex-row">
 			<div class="flex-1 mx-4 w-full">
 				<div class="form-control">
-					<label class="label">
-						<span class="label-text">Outlet Name</span>
-					</label>
-
-					<div class="input-group">
-						<input type="hidden" name="outlet_id" id="outlet_input_real"
-							value="{{ Auth::user()->outlet_id }}">
-						<input type="text" id="outlet_input" class="input input-bordered w-full"
-							value="{{ Auth::user()->outlets->outlet_name }}" readonly>
-					</div>
-				</div>
-
-				<div class="form-control my-4">
 					<label class="label">
 						<span class="label-text">Member Name</span>
 					</label>
@@ -211,7 +164,7 @@
 					</div>
 				</div>
 
-				<div class="form-control my-4">
+				{{-- <div class="form-control my-4">
 					<label class="label">
 						<span class="label-text">Package Type</span>
 					</label>
@@ -227,7 +180,7 @@
 						<button type="button" class="btn btn-primary w-2/12" 
 								onclick="document.getElementById('find_package').classList.add('modal-open')">Find</button>
 					</div>
-				</div>
+				</div> --}}
 
 				<div class="form-control">
 					<label class="label">

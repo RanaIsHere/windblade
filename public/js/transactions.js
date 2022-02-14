@@ -110,61 +110,18 @@ function get_package(entity, index) {
 	})
 }
 
-function enable_card_pay(entity) {
-	if (document.getElementById('paid_today_with_card').value == 0) {
-		document.getElementById('paid_today_with_card').value = 1
-		document.getElementById('paid_today_with_cash').value = 0
-	}
-
-	document.getElementById('pay_with_cash').classList.remove('opacity-50')
-	document.getElementById('pay_with_cash').classList.remove('pointer-events-none')
-
-	document.getElementById('pay_later').classList.remove('opacity-50')
-	document.getElementById('pay_later').classList.remove('pointer-events-none')
-
-	entity.classList.add('opacity-50')
-	entity.classList.add('pointer-events-none')
-
-	document.getElementById('instant-pay-digital').classList.toggle('hidden')
-
-	console.log(document.getElementById('paid_today_with_card').value)
-}
-
 function enable_pay_later(entity) {
-	if (document.getElementById('paid_today_with_card').value == 1 || document.getElementById('paid_today_with_cash').value == 1) {
-		document.getElementById('paid_today_with_card').value = 0
-		document.getElementById('paid_today_with_cash').value = 0
-	}
-
 	document.getElementById('pay_with_cash').classList.remove('opacity-50')
 	document.getElementById('pay_with_cash').classList.remove('pointer-events-none')
-	document.getElementById('pay_with_card').classList.remove('opacity-50')
-	document.getElementById('pay_with_card').classList.remove('pointer-events-none')
 
 	entity.classList.add('opacity-50')
 	entity.classList.add('pointer-events-none')
-
-	document.getElementById('instant-pay-digital').classList.add('hidden')
-
-	console.log(document.getElementById('paid_today_with_card').value)
 }
 
 function enable_cash_pay(entity) {
-	if (document.getElementById('paid_today_with_cash').value == 0) {
-		document.getElementById('paid_today_with_cash').value = 1
-		document.getElementById('paid_today_with_card').value = 0
-	}
-
-	document.getElementById('instant-pay-digital').classList.add('hidden')
-
-	document.getElementById('pay_with_card').classList.remove('opacity-50')
-	document.getElementById('pay_with_card').classList.remove('pointer-events-none')
-
 	document.getElementById('pay_later').classList.remove('opacity-50')
 	document.getElementById('pay_later').classList.remove('pointer-events-none')
 
 	entity.classList.add('opacity-50')
 	entity.classList.add('pointer-events-none')
-
-	console.log(document.getElementById('paid_today_with_cash').value)
 }

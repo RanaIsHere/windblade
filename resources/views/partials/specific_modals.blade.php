@@ -1,6 +1,39 @@
 @if ($page_name == 'Transactions')
     <div id="find_member" class="modal">
         <div class="modal-box min-w-full text-center">
+            <div class="flex flex-row">
+                <div class="flex-1 my-2">
+                    <div class="flex flex-row">
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Sort by</label>
+                                <select id="sort_by" class="select mx-2">
+                                    <option value="CUSTOMER_NAME">Customer Name</option>
+                                    <option value="CUSTOMER_CONTACT">Customer Contact</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Group by</label>
+                                <select id="sort_by" class="select mx-2">
+                                    <option value="ASCENDING">Ascending</option>
+                                    <option value="DESCENDING">Descending</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Search</label>
+                                <input type="search" name="package-sort" id="package-sort" class="input input-primary input-bordered">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
@@ -42,7 +75,40 @@
 
 @if ($page_name == 'Transactions')
     <div id="find_package" class="modal">
-        <div class="modal-box min-w-full text-center">
+        <div class="modal-box min-w-full">
+            <div class="flex flex-row">
+                <div class="flex-1 my-2">
+                    <div class="flex flex-row">
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Sort by</label>
+                                <select id="sort_by" class="select mx-2">
+                                    <option value="PACKAGE_NAME">Package Name</option>
+                                    <option value="PACKAGE_TYPE">Package Type</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Group by</label>
+                                <select id="sort_by" class="select mx-2">
+                                    <option value="ASCENDING">Ascending</option>
+                                    <option value="DESCENDING">Descending</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <div class="form-control mx-2">
+                                <label class="label">Search</label>
+                                <input type="search" name="package-sort" id="package-sort" class="input input-primary input-bordered">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
@@ -64,7 +130,7 @@
                                 <td>{{ $package->package_price }}</td>
 
                                 <th>
-                                    <button type="button" class="btn btn-accent" onclick="get_package(this, 0)">Pick</button>
+                                    <button type="button" class="btn btn-accent" onclick="get_package(this, 0)">Add</button>
                                 </th>
                             </tr>
                         @endforeach
@@ -83,7 +149,7 @@
 @if ($page_name == 'Invoices')
 <div id="view_invoice" class="modal">
     <div class="modal-box min-w-full text-center">
-        <div class="overflow-x-auto">
+        {{-- <div class="overflow-x-auto">
             <table class="table w-full">
                 <thead>
                     <tr>
@@ -111,7 +177,9 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div> --}}
+
+        
 
         <div class="modal-action">
             <button type="button" class="btn btn-primary"
