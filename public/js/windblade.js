@@ -70,3 +70,15 @@ function search(search, table) {
         }
     }
 }
+
+/*
+    Used to filter dictionary as the indexOf function from native Javascript only works with Arrays.
+*/
+
+function get_index(dictionary, indexed_filter, filter) {
+    for (i = 0; i < dictionary.length; i++) {
+        if (dictionary[i][indexed_filter] == filter) {
+            return i
+        }
+    }
+}   

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\InvoiceController;
@@ -48,6 +49,8 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/catch-member', [TransactionController::class, 'get_member'])->name('get_member');
     Route::post('/catch-package', [TransactionController::class, 'get_package'])->name('get_package');
     Route::post('/add-package', [TransactionController::class, 'add_package'])->name('add_package');
+
+    Route::post('/calculate-price', [CalculationController::class, 'calculate_price'])->name('calculate_price');
 
     Route::post('/transaction', [TransactionController::class, 'start_transaction'])->name('start_transaction');
 

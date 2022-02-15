@@ -1,74 +1,4 @@
 var CHOSEN = [];
-var PRICE = 0
-var TAX = 0
-
-
-function update_stats() {
-	document.getElementById('fee_view').innerText = document.getElementById('fee_price').value
-	document.getElementById('price_view').innerText = document.getElementById('transaction_price').value
-	document.getElementById('tax_view').innerText = TAX
-}
-
-function update_discount(entity) {
-	if (PRICE != 0) {
-		let calculated_price = PRICE
-		let calculated_discount = PRICE * (document.getElementById('discount_input').value / 100)
-		calculated_price = calculated_price - calculated_discount
-
-		TAX = calculated_price * (2 / 100)
-		document.getElementById('price_view').innerText = parseInt(calculated_price)
-		document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
-		document.getElementById('transaction_price').value = parseInt(calculated_price)
-		document.getElementById('tax_price').value = TAX
-
-		update_stats()
-	}
-}
-
-function update_quantity(entity) {
-	if (PRICE != 0) {
-		let calculated_price = PRICE * entity.value
-		let calculated_discount = calculated_price * (document.getElementById('discount_input').value / 100)
-		calculated_price = calculated_price - calculated_discount
-
-		TAX = calculated_price * (2 / 100)
-		document.getElementById('price_view').innerText = parseInt(calculated_price)
-		document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
-		document.getElementById('transaction_price').value = parseInt(calculated_price)
-		document.getElementById('tax_price').value = TAX
-
-		update_stats()
-	}
-}
-
-// TODO: Secure calculation by sending it through the back-end, and back to the frontend.
-function catch_price_information() {
-	$.ajax({
-		type: 'POST',
-		url: '/get-price-information',
-		data: { price: PRICE, discount: document.getElementById('discount_input').value, tax: TAX },
-		success: function (response) {
-			let calculated_price = PRICE
-		}
-	});
-}
-
-function toggle_note(entity) {
-	entity.checked != entity.checked
-	document.getElementById('note_textarea').classList.toggle('hidden')
-
-	var fee_price = document.getElementById('fee_price').value
-
-	if (entity.checked) {
-		fee_price += 5000
-	} else {
-		fee_price -= 5000
-	}
-
-	document.getElementById('fee_price').value = parseInt(fee_price)
-
-	update_stats()
-}
 
 function get_member(entity, index) {
 	let table_element = entity.parentElement.parentElement
@@ -164,6 +94,7 @@ function add_package(entity) {
 				quantity_input.type = 'number'
 				quantity_input.classList.add('input')
 				quantity_input.classList.add('input-bordered')
+				quantity_input.setAttribute('onchange', 'update_quantity(this)')
 				quantity_input.value = 1
 				quantity_input.min = 1
 
@@ -173,9 +104,9 @@ function add_package(entity) {
 				drop_input.innerText = 'DROP'
 				drop_input.setAttribute("onclick", 'remove_package(this)')
 
-				CHOSEN.push(response.response.id)
+				CHOSEN.push({ id: Number(response.response.id), quantity: Number(quantity_input.value) })
 
-				update_stats()
+				update_statistics()
 
 				document.getElementById('find_package').classList.remove('modal-open')
 			}
@@ -185,8 +116,12 @@ function add_package(entity) {
 
 function remove_package(entity) {
 	let table_element = entity.parentElement.parentElement
+	let id = Number(table_element.querySelectorAll('td')[0].innerText)
+
+	CHOSEN.splice(get_index(CHOSEN, 'id', id), 1)
 
 	table_element.remove()
+
 }
 
 function change_pay(entity) {

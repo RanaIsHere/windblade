@@ -222,7 +222,7 @@
 								</label>
 			
 								<div class="flex-row">
-									<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+									<select name="discount" id="discount_input" class="select select-bordered w-full">
 										<option value="0">No Discount</option>
 										<option value="10">10% Discount</option>
 										<option value="20">20% Discount</option>
