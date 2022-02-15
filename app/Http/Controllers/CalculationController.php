@@ -24,7 +24,7 @@ class CalculationController extends Controller
                 foreach ($validatedData['id'] as $data) {
                     $packageData = Packages::Find($data['id']);
 
-                    $total_price += $packageData->package_price;
+                    $total_price += $packageData->package_price * $data['quantity'];
                     $calculated_discount = $total_price * ($discount / 100);
                 }
 

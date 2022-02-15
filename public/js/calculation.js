@@ -19,27 +19,36 @@ function toggle_note(entity) {
 }
 
 function update_statistics() {
-    let chosen_id = CHOSEN
-    let discount = document.getElementById('discount_input').value
+    if (CHOSEN.length != 0) {
+        let chosen_id = CHOSEN
+        let discount = document.getElementById('discount_input').value
 
-    $.ajax({
-        type: 'POST',
-        url: '/calculate-price',
-        data: { id: chosen_id, discount: discount },
-        success: function (response) {
-            PRICE = response.price
-            TAX = response.tax
+        $.ajax({
+            type: 'POST',
+            url: '/calculate-price',
+            data: { id: chosen_id, discount: discount },
+            success: function (response) {
+                PRICE = response.price
+                TAX = response.tax
 
-            document.getElementById('transaction_price').value = PRICE
-            document.getElementById('tax_price').value = TAX
+                document.getElementById('transaction_price').value = PRICE
+                document.getElementById('tax_price').value = TAX
 
-            document.getElementById('price_view').innerText = PRICE
-            document.getElementById('fee_view').innerText = FEE
-            document.getElementById('tax_view').innerText = TAX
+                document.getElementById('price_view').innerText = PRICE
+                document.getElementById('fee_view').innerText = FEE
+                document.getElementById('tax_view').innerText = TAX
 
-            document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
-        }
-    })
+                document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
+            }
+        })
+    } else {
+        PRICE = 0
+        TAX = 0
+
+        document.getElementById('price_view').innerText = PRICE
+        document.getElementById('tax_view').innerText = TAX
+        document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
+    }
 }
 
 function update_quantity(entity) {
@@ -48,4 +57,6 @@ function update_quantity(entity) {
     let quantity = Number(table_element.querySelectorAll('td')[4].querySelector('input').value)
 
     CHOSEN[get_index(CHOSEN, 'id', id)]['quantity'] = quantity
+
+    update_statistics()
 }

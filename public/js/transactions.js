@@ -122,6 +122,7 @@ function remove_package(entity) {
 
 	table_element.remove()
 
+	update_statistics()
 }
 
 function change_pay(entity) {
