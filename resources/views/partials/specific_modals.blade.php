@@ -90,7 +90,7 @@
                                 <td>{{ $package->package_price }}</td>
 
                                 <th>
-                                    <button type="button" class="btn btn-accent" onclick="get_package(this, 0)">Add</button>
+                                    <button type="button" class="btn btn-accent" onclick="add_package(this)">Add</button>
                                 </th>
                             </tr>
                         @endforeach

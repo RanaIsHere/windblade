@@ -40,3 +40,33 @@ function deleteItem(id_element, model_type, modal) {
     document.getElementById('delete_id').value = id
     document.getElementById('model_type').value = model_type
 }
+
+/*
+    This function filters the table by the search value through onInput within the search input attribute, and
+    inputting the name of the current table through the parameter. This function is fully modular, as long as there are
+    tbody within the table.
+*/
+
+function search(search, table) {
+    let record, success;
+    let search_value = search.value.toUpperCase()
+    let table_element = document.getElementById(table)
+    let rows = table_element.querySelector('tbody').getElementsByTagName('tr')
+
+    for (i = 0; i < rows.length; i++) {
+        record = rows[i].getElementsByTagName('td')
+
+        for (j = 0; j < record.length; j++) {
+            if (record[j].innerText.toUpperCase().indexOf(search_value) > -1) {
+                success = true
+            }
+        }
+
+        if (success) {
+            rows[i].classList.remove('hidden')
+            success = false
+        } else {
+            rows[i].classList.add('hidden')
+        }
+    }
+}
