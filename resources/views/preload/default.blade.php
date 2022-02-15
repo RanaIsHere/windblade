@@ -41,6 +41,7 @@
 
         @if ($page_name == 'Transactions')
             <script src="{{ asset('js/transactions.js') }}"></script>
+            <script src="{{ asset('js/calculation.js') }}"></script>
         @endif
 
         @if ($page_name == 'Invoices')

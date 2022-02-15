@@ -140,7 +140,7 @@
 
 						<div class="form-control">
 							<label class="label">
-								<span class="label-text">Customer Phone</span>
+								<span class="label-text">Customer Contact</span>
 							</label>
 		
 							<div class="input-group">
@@ -186,47 +186,49 @@
 					<div class="collapse-title text-xl font-medium">
 					  Seller Information
 					</div>
-					<div class="collapse-content"> 
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text">Deadline Time</span>
-							</label>
-		
-							<div class="flex-row">
-								<input type="date" name="deadline_time" id="deadline_input" class="input input-bordered w-full" required>
-							</div>
-		
-							<div class="flex-row mt-2">
-								
-							</div>
-						</div>
-		
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text">Discount</span>
-							</label>
-		
-							<div class="flex-row">
-								<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
-									<option value="0">No Discount</option>
-									<option value="10">10% Discount</option>
-									<option value="20">20% Discount</option>
-									<option value="30">30% Discount</option>
-								</select>
-							</div>
-						</div>
-
+					<div class="collapse-content">
 						<div class="form-control">
 							<label class="label">
 								<span class="label-text">Transaction Type</span>
 							</label>
 		
 							<div class="flex-row">
-								<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+								<select name="pay_type" id="pay_type" class="select select-bordered w-full" onchange="change_pay(this)" required>
 									<option selected disabled>Choose the type of transaction</option>
 									<option value="NOW">Pay Now</option>
 									<option value="LATER">Pay Later</option>
 								</select>
+							</div>
+						</div>
+						
+						<div id="pay-input" class="hidden">
+							<div class="form-control">
+								<label class="label">
+									<span class="label-text">Deadline Time</span>
+								</label>
+			
+								<div class="flex-row">
+									<input type="date" name="deadline_time" id="deadline_input" class="input input-bordered w-full" required>
+								</div>
+			
+								<div class="flex-row mt-2">
+									
+								</div>
+							</div>
+			
+							<div class="form-control">
+								<label class="label">
+									<span class="label-text">Discount</span>
+								</label>
+			
+								<div class="flex-row">
+									<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+										<option value="0">No Discount</option>
+										<option value="10">10% Discount</option>
+										<option value="20">20% Discount</option>
+										<option value="30">30% Discount</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
