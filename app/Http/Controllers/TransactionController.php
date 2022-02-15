@@ -39,6 +39,19 @@ class TransactionController extends Controller
         }
     }
 
+    public function add_package(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            $packageData = Packages::find($validatedData['id']);
+
+            return response()->json(['response' => $packageData]);
+        }
+    }
+
     public function start_transaction(Request $request)
     {
         $validatedData = $request->validate([

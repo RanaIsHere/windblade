@@ -47,6 +47,7 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     // Transaction Functions START
     Route::post('/catch-member', [TransactionController::class, 'get_member'])->name('get_member');
     Route::post('/catch-package', [TransactionController::class, 'get_package'])->name('get_package');
+    Route::post('/add-package', [TransactionController::class, 'add_package'])->name('add_package');
 
     Route::post('/transaction', [TransactionController::class, 'start_transaction'])->name('start_transaction');
 

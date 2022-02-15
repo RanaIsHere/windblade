@@ -111,22 +111,58 @@ function get_package(entity, index) {
 	})
 }
 
-function enable_pay_later(entity) {
-	document.getElementById('pay_with_cash').classList.remove('opacity-50')
-	document.getElementById('pay_with_cash').classList.remove('pointer-events-none')
-
-	entity.classList.add('opacity-50')
-	entity.classList.add('pointer-events-none')
-}
-
-function enable_cash_pay(entity) {
-	document.getElementById('pay_later').classList.remove('opacity-50')
-	document.getElementById('pay_later').classList.remove('pointer-events-none')
-
-	entity.classList.add('opacity-50')
-	entity.classList.add('pointer-events-none')
-}
 
 function add_package(entity) {
 	let table_element = entity.parentElement.parentElement
+	let id = table_element.querySelectorAll('th')[0].innerText
+
+	$.ajax({
+		type: 'POST',
+		url: '/add-package',
+		data: { id: id },
+		success: function (response) {
+			console.log(response)
+
+			let buffer = document.getElementById('package-buffer')
+			let tr = document.createElement('tr')
+
+			let id_element = document.createElement('td')
+			let package_name = document.createElement('td')
+			let package_type = document.createElement('td')
+			let package_price = document.createElement('td')
+			let package_quantity = document.createElement('td')
+			let actions = document.createElement('td')
+
+			let quantity_input = document.createElement('input')
+			let drop_input = document.createElement('button')
+			buffer.appendChild(tr)
+
+			tr.appendChild(id_element) // id	
+			tr.appendChild(package_name) // package_name
+			tr.appendChild(package_type) // package_type
+			tr.appendChild(package_price) // package_price
+			tr.appendChild(package_quantity) // package_quantity
+			tr.appendChild(actions) // actions
+
+			id_element.innerText = response.response.id
+			package_name.innerText = response.response.package_name
+			package_type.innerText = response.response.package_type
+			package_price.innerText = response.response.package_price
+			package_quantity.appendChild(quantity_input)
+			actions.appendChild(drop_input)
+
+			quantity_input.type = 'number'
+			quantity_input.classList.add('input')
+			quantity_input.classList.add('input-bordered')
+			quantity_input.value = 1
+			quantity_input.min = 1
+
+			drop_input.type = 'button'
+			drop_input.classList.add('btn')
+			drop_input.classList.add('btn-accent')
+			drop_input.innerText = 'DROP'
+
+			document.getElementById('find_package').classList.remove('modal-open')
+		}
+	})
 }

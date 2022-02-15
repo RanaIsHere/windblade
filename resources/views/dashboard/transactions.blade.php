@@ -61,7 +61,7 @@
 		</div>
 	</div>
 
-	<div class="text-center">
+	<div class="text-center my-4">
 		<div class="flex flex-row">
 			<div class="flex-1">
 				<button type="button" class="btn btn-primary w-2/12 btn-sm" 
@@ -71,7 +71,7 @@
 	</div>
 
 	<div class="overflow-x-auto">
-		<table class="table w-full table-compact">
+		<table class="table w-full table-compact text-center">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -83,7 +83,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody id="package-buffer">
 				{{-- <tr>
 					<th></th>
 					<td></td>
@@ -96,16 +96,6 @@
 		</table>
 	</div>
 
-	
-	<div class="text-center">	
-		<div class="flex flex-row">
-			<div class="flex-1 my-2 w-full">
-				<button type="button" class="btn btn-primary btn-sm mx-2" id="pay_with_cash" onclick="enable_cash_pay(this)">Pay now</button>
-				<button type="button" class="btn btn-primary btn-sm mx-2 opacity-50 pointer-events-none" id="pay_later" onclick="enable_pay_later(this)">Pay later</button>
-			</div>
-		</div>
-	</div>
-
 	<form action="/transaction" method="post" class="text-center">
 		@csrf
 
@@ -115,19 +105,27 @@
 			<input type="hidden" name="tax_price" id="tax_price" value="0">
 		</div>
 
-		<div class="flex flex-row">
+		<div class="flex flex-row my-4">
 			<div class="flex-1 mx-4 w-full">
-				<div class="form-control">
-					<label class="label">
-						<span class="label-text">Member Name</span>
-					</label>
-
-					<div class="input-group">
-						<input type="hidden" name="member_id" id="member_input_real"
-							value="">
-						<input type="text" id="member_input" class="input input-bordered w-full"
-							value="" readonly>
-						<button type="button" class="btn btn-primary" onclick="document.getElementById('find_member').classList.add('modal-open')">Find</button>
+				<div tabindex="0" class="collapse collapse-arrow">
+					<input type="checkbox"> 
+					<div class="collapse-title text-xl font-medium">
+					  Customer Information
+					</div>
+					<div class="collapse-content"> 
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Customer Name</span>
+							</label>
+		
+							<div class="input-group">
+								<input type="hidden" name="member_id" id="member_input_real"
+									value="">
+								<input type="text" id="member_input" class="input input-bordered w-full"
+									value="" readonly>
+								<button type="button" class="btn btn-primary" onclick="document.getElementById('find_member').classList.add('modal-open')">Find</button>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -150,37 +148,59 @@
 			</div>
 
 			<div class="flex-1 mx-4 w-full">
-				<div class="form-control">
-					<label class="label">
-						<span class="label-text">Deadline Time</span>
-					</label>
-
-					<div class="flex-row">
-						<input type="date" name="deadline_time" id="deadline_input" class="input input-bordered w-full" required>
+				<div tabindex="0" class="collapse collapse-arrow">
+					<input type="checkbox"> 
+					<div class="collapse-title text-xl font-medium">
+					  Seller Information
 					</div>
+					<div class="collapse-content"> 
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Deadline Time</span>
+							</label>
+		
+							<div class="flex-row">
+								<input type="date" name="deadline_time" id="deadline_input" class="input input-bordered w-full" required>
+							</div>
+		
+							<div class="flex-row mt-2">
+								
+							</div>
+						</div>
+		
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Discount</span>
+							</label>
+		
+							<div class="flex-row">
+								<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+									<option value="0">No Discount</option>
+									<option value="10">10% Discount</option>
+									<option value="20">20% Discount</option>
+									<option value="30">30% Discount</option>
+								</select>
+							</div>
+						</div>
 
-					<div class="flex-row mt-2">
-						
-					</div>
-				</div>
-
-				<div class="form-control">
-					<label class="label">
-						<span class="label-text">Discount</span>
-					</label>
-
-					<div class="flex-row">
-						<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
-							<option value="0">No Discount</option>
-							<option value="10">10% Discount</option>
-							<option value="20">20% Discount</option>
-							<option value="30">30% Discount</option>
-						</select>
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Transaction Type</span>
+							</label>
+		
+							<div class="flex-row">
+								<select name="discount" id="discount_input" class="select select-bordered w-full" onchange="update_discount()">
+									<option selected disabled>Choose the type of transaction</option>
+									<option value="NOW">Pay Now</option>
+									<option value="LATER">Pay Later</option>
+								</select>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary my-10">Create Package</button>
+		<button type="submit" class="btn btn-primary my-10">Transact</button>
 	</form>
 @endsection
