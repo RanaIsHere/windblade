@@ -126,6 +126,39 @@
 								<button type="button" class="btn btn-primary" onclick="document.getElementById('find_member').classList.add('modal-open')">Find</button>
 							</div>
 						</div>
+
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Customer Address</span>
+							</label>
+		
+							<div class="input-group">
+								<input type="text" id="address_input" class="input input-bordered w-full"
+									value="" readonly>
+							</div>
+						</div>
+
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Customer Phone</span>
+							</label>
+		
+							<div class="input-group">
+								<input type="text" id="phone_input" class="input input-bordered w-full"
+									value="" readonly>
+							</div>
+						</div>
+
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Customer Gender</span>
+							</label>
+		
+							<div class="input-group">
+								<input type="text" id="gender_input" class="input input-bordered w-full"
+									value="" readonly>
+							</div>
+						</div>
 					</div>
 				</div>
 
