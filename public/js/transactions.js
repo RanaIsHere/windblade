@@ -1,6 +1,7 @@
 var PRICE = 0
 var TAX = 0
 
+
 function update_stats() {
 	document.getElementById('fee_view').innerText = document.getElementById('fee_price').value
 	document.getElementById('price_view').innerText = document.getElementById('transaction_price').value
@@ -125,3 +126,74 @@ function enable_cash_pay(entity) {
 	entity.classList.add('opacity-50')
 	entity.classList.add('pointer-events-none')
 }
+
+function search(search, table) {
+	let record, success;
+	let search_value = search.value.toUpperCase()
+	let table_element = document.getElementById(table)
+	let rows = table_element.querySelector('tbody').getElementsByTagName('tr')
+
+	for (i = 0; i < rows.length; i++) {
+		record = rows[i].getElementsByTagName('td')
+
+		for (j = 0; j < record.length; j++) {
+			if (record[j].innerText.toUpperCase().indexOf(search_value) > -1) {
+				success = true
+			}
+		}
+
+		if (success) {
+			rows[i].classList.remove('hidden')
+			success = false
+		} else {
+			rows[i].classList.add('hidden')
+		}
+	}
+}
+
+// function sort(table) {
+// 	let switching = true
+// 	let filter = document.getElementById('group_by').value
+// 	let table_element = document.getElementById(table)
+// 	let rows = table_element.querySelector('tbody').getElementsByTagName('tr')
+
+// 	console.log(filter)
+
+// 	while (switching) {
+// 		// Start by saying: no switching is done:
+// 		switching = false;
+// 		/* Loop through all table rows (except the
+// 		first, which contains table headers): */
+// 		for (i = 1; i < rows.length; i++) {
+// 			// Start by saying there should be no switching:
+// 			shouldSwitch = false;
+// 			x = rows[i].getElementsByTagName('td')[0];
+// 			y = rows[i + 1].getElementsByTagName('td')[0];
+// 			if (filter == "ASCENDING") {
+// 				if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+// 					shouldSwitch = true;
+// 					break;
+// 				}
+// 			} else if (filter == "DESCENDING") {
+// 				if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
+// 					shouldSwitch = true;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 		if (shouldSwitch) {
+// 			/* If a switch has been marked, make the switch
+// 			and mark that a switch has been done: */
+// 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+// 			switching = true;
+// 			switchcount++;
+// 		} else {
+// 			/* If no switching has been done AND the direction is "asc",
+// 			set the direction to "desc" and run the while loop again. */
+// 			if (switchcount == 0 && dir == "ASCENDING") {
+// 				filter = "DESCENDING";
+// 				switching = true;
+// 			}
+// 		}
+// 	}
+// }

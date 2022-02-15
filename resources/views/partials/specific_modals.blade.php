@@ -78,11 +78,11 @@
         <div class="modal-box min-w-full">
             <div class="flex flex-row">
                 <div class="flex-1 my-2">
-                    <div class="flex flex-row">
-                        <div class="flex-1">
+                    <div class="flex flex-row my-2">
+                        {{-- <div class="flex-1">
                             <div class="form-control mx-2">
                                 <label class="label">Sort by</label>
-                                <select id="sort_by" class="select mx-2">
+                                <select id="sort_by_package" class="select mx-2">
                                     <option value="PACKAGE_NAME">Package Name</option>
                                     <option value="PACKAGE_TYPE">Package Type</option>
                                 </select>
@@ -92,17 +92,17 @@
                         <div class="flex-1">
                             <div class="form-control mx-2">
                                 <label class="label">Group by</label>
-                                <select id="sort_by" class="select mx-2">
+                                <select id="group_by" class="select mx-2" onchange="sort('package-transaction-table')">
                                     <option value="ASCENDING">Ascending</option>
                                     <option value="DESCENDING">Descending</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         
                         <div class="flex-1">
                             <div class="form-control mx-2">
                                 <label class="label">Search</label>
-                                <input type="search" name="package-sort" id="package-sort" class="input input-primary input-bordered">
+                                <input type="search" name="package-sort" id="package-sort" oninput="search(this, 'package-transaction-table')" class="input input-primary input-bordered">
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
             </div>
 
             <div class="overflow-x-auto">
-                <table class="table w-full">
+                <table class="table w-full" id="package-transaction-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -121,7 +121,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="package-buffer-list">
                         @foreach ($packageData as $package)
                             <tr>
                                 <th>{{ $package->id }}</th>

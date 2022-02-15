@@ -83,7 +83,7 @@
 				</tr>
 			</thead>
 
-			<tbody id="package-buffer">
+			<tbody>
 				{{-- <tr>
 					<th></th>
 					<td></td>
@@ -163,24 +163,6 @@
 						
 					</div>
 				</div>
-
-				{{-- <div class="form-control my-4">
-					<label class="label">
-						<span class="label-text">Package Type</span>
-					</label>
-
-					<div class="input-group">
-						<input type="hidden" name="package_id" id="package_input_real"
-							value="">
-						<input type="text" id="package_input" class="input input-bordered w-full"
-							value="" placeholder="Choose a package" readonly>
-
-						<input type="number" name="package_quantity" id="quantity_input" class="input input-bordered w-2/12 pointer-events-none" value="1" min="1" oninput="update_quantity(this)" required>
-
-						<button type="button" class="btn btn-primary w-2/12" 
-								onclick="document.getElementById('find_package').classList.add('modal-open')">Find</button>
-					</div>
-				</div> --}}
 
 				<div class="form-control">
 					<label class="label">
