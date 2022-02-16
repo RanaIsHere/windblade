@@ -59,7 +59,11 @@ function add_package(entity) {
 			data: { id: id },
 			success: function (response) {
 				let buffer = document.getElementById('package-buffer')
+				let form_element = document.getElementById('package-information')
 				let tr = document.createElement('tr')
+
+				let input_id = document.createElement('input')
+				let input_quantity = document.createElement('input')
 
 				let id_element = document.createElement('td')
 				let package_name = document.createElement('td')
@@ -106,6 +110,19 @@ function add_package(entity) {
 
 				CHOSEN.push({ id: Number(response.response.id), quantity: Number(quantity_input.value) })
 
+				form_element.appendChild(input_id)
+				form_element.appendChild(input_quantity)
+
+				input_id.type = "hidden"
+				input_id.name = 'chosen_packages[' + get_index(CHOSEN, 'id', response.response.id) + '][id]'
+				input_id.value = response.response.id
+				input_id.id = 'id-input-' + response.response.id
+
+				input_quantity.type = "hidden"
+				input_quantity.name = 'chosen_packages[' + get_index(CHOSEN, 'id', response.response.id) + '][quantity]'
+				input_quantity.value = quantity_input.value
+				input_quantity.id = 'qty-input-' + response.response.id
+
 				update_statistics()
 
 				document.getElementById('find_package').classList.remove('modal-open')
@@ -119,6 +136,8 @@ function remove_package(entity) {
 	let id = Number(table_element.querySelectorAll('td')[0].innerText)
 
 	CHOSEN.splice(get_index(CHOSEN, 'id', id), 1)
+	document.getElementById('id-input-' + id).remove()
+	document.getElementById('qty-input-' + id).remove()
 
 	table_element.remove()
 

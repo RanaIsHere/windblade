@@ -11,6 +11,8 @@ use App\Models\Transactions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function GuzzleHttp\Promise\queue;
+
 class TransactionController extends Controller
 {
     public function get_member(Request $request)
@@ -55,16 +57,14 @@ class TransactionController extends Controller
     public function start_transaction(Request $request)
     {
         $validatedData = $request->validate([
-            'paid_today_with_card' => ['required'],
-            'paid_today_with_cash' => ['required'],
+            'pay_type' => ['required'],
             'transaction_price' => ['required'],
             'fee_price' => ['required'],
             'tax_price' => ['required'],
             'member_id' => ['required'],
             'notes' => ['required', 'nullable'],
             'deadline_time' => ['required'],
-            'package_id' => ['required'],
-            'package_quantity' => ['required'],
+            'chosen_packages' => ['required'],
             'discount' => ['required']
         ]);
 
@@ -73,19 +73,25 @@ class TransactionController extends Controller
                     Validation Section
                 */
 
-            $package = Packages::find($validatedData['package_id']);
-
             $isDiscountQualified = false;
             $isPriceQualified = false;
             $isTaxQualified = false;
             $isFeeQualified = false;
             $isTimeQualified = false;
 
-            $calculated_price = $package->package_price * $validatedData['package_quantity'];
-            $calculated_discount = $calculated_price * ($validatedData['discount'] / 100);
+            foreach ($validatedData['chosen_packages'] as $data) {
+                $package = Packages::find(intval($data['id']));
 
-            $calculated_price = $calculated_price - $calculated_discount;
-            $calculated_tax = $calculated_price * (2 / 100);
+                $calculated_price = $package->package_price * intval($data['quantity']);
+                $calculated_discount = $calculated_price * ($validatedData['discount'] / 100);
+
+                $calculated_price = $calculated_price - $calculated_discount;
+                $calculated_tax = $calculated_price * (2 / 100);
+
+                $calculated_price = intval($calculated_price);
+                $calculated_tax = intval($calculated_tax);
+                $calculated_discount = intval($calculated_discount);
+            }
 
             if ($validatedData['discount'] <= 30) {
                 $isDiscountQualified = true;
@@ -113,6 +119,8 @@ class TransactionController extends Controller
                 $isTimeQualified = true;
             }
 
+            // dd([$isDiscountQualified, $isPriceQualified, $isTaxQualified, $isFeeQualified, $isTimeQualified]);
+
             if ($isDiscountQualified && $isPriceQualified && $isTaxQualified && $isFeeQualified && $isTimeQualified) {
                 $transaction = new Transactions;
 
@@ -122,7 +130,7 @@ class TransactionController extends Controller
                 $transaction->transaction_date = now()->toDateTimeString();
                 $transaction->transaction_deadline = $validatedData['deadline_time'];
 
-                if ($validatedData['paid_today_with_card'] == 1 || $validatedData['paid_today_with_cash'] == 1) {
+                if ($validatedData['pay_type'] == 'NOW') {
                     $transaction->transaction_paydate = now()->toDateString();
                     $transaction->paid_status = 'PAID';
                 } else {
@@ -150,20 +158,19 @@ class TransactionController extends Controller
                     $transaction->invoice_code = $day . $month . $mid . $uid . $oud . $id;
 
                     if ($transaction->update()) {
-                        $transaction_details = new TransactionDetails;
+                        foreach ($validatedData['chosen_packages'] as $data) {
+                            $transaction_details = new TransactionDetails;
 
-                        $transaction_details->transaction_id = $transaction->id;
-                        $transaction_details->package_id = $validatedData['package_id'];
-                        $transaction_details->quantity = $validatedData['package_quantity'];
-                        $transaction_details->notes = $validatedData['notes'];
+                            $transaction_details->transaction_id = $transaction->id;
+                            $transaction_details->package_id = intval($data['id']);
+                            $transaction_details->quantity = intval($data['quantity']);
+                            $transaction_details->notes = $validatedData['notes'];
 
-                        if ($transaction_details->save()) {
-                            return redirect()->back()->with('success', 'Transaction successful! Invoice has been saved.');
-                        } else {
-                            $transaction->delete();
 
-                            return redirect()->back()->with('failure', 'Transaction has failed to save.');
+                            $transaction_details->save();
                         }
+
+                        return redirect()->back()->with('success', 'Transaction successful! Invoice has been saved.');
                     } else {
                         $transaction->delete();
                     }

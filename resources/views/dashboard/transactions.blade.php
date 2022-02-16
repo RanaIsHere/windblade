@@ -105,6 +105,10 @@
 			<input type="hidden" name="tax_price" id="tax_price" value="0">
 		</div>
 
+		<div id="package-information">
+			
+		</div>
+
 		<div class="flex flex-row my-4">
 			<div class="flex-1 mx-4 w-full">
 				<div tabindex="0" class="collapse collapse-arrow">

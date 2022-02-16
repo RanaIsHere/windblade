@@ -36,6 +36,7 @@ function update_statistics() {
             success: function (response) {
                 PRICE = response.price
                 TAX = response.tax
+                PRICE = parseInt(Number(PRICE))
                 TAX = parseInt(Number(TAX))
 
                 document.getElementById('transaction_price').value = PRICE
@@ -44,8 +45,6 @@ function update_statistics() {
                 document.getElementById('price_view').innerText = PRICE
                 document.getElementById('fee_view').innerText = FEE
                 document.getElementById('tax_view').innerText = TAX
-
-                console.log(TAX)
 
                 document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
             }
