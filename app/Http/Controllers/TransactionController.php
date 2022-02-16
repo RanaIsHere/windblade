@@ -79,19 +79,23 @@ class TransactionController extends Controller
             $isFeeQualified = false;
             $isTimeQualified = false;
 
+            $calculated_price = 0;
+            $calculated_discount = 0;
+            $discount = intval($validatedData['discount']);
+
+            // dd($validatedData['chosen_packages']);
+
             foreach ($validatedData['chosen_packages'] as $data) {
                 $package = Packages::find(intval($data['id']));
 
-                $calculated_price = $package->package_price * intval($data['quantity']);
-                $calculated_discount = $calculated_price * ($validatedData['discount'] / 100);
-
-                $calculated_price = $calculated_price - $calculated_discount;
-                $calculated_tax = $calculated_price * (2 / 100);
+                $calculated_price += intval($package->package_price) * $data['quantity'];
+                $calculated_discount = intval($calculated_price)  * ($discount / 100);
 
                 $calculated_price = intval($calculated_price);
-                $calculated_tax = intval($calculated_tax);
-                $calculated_discount = intval($calculated_discount);
             }
+
+            $calculated_price = intval($calculated_price - $calculated_discount);
+            $calculated_tax = intval($calculated_price) * (2 / 100);
 
             if ($validatedData['discount'] <= 30) {
                 $isDiscountQualified = true;
@@ -101,7 +105,7 @@ class TransactionController extends Controller
                 $isPriceQualified = true;
             }
 
-            if ($validatedData['tax_price'] == $calculated_tax) {
+            if ($validatedData['tax_price'] == intval($calculated_tax)) {
                 $isTaxQualified = true;
             }
 

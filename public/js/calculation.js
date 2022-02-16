@@ -65,6 +65,7 @@ function update_quantity(entity) {
     let quantity = Number(table_element.querySelectorAll('td')[4].querySelector('input').value)
 
     CHOSEN[get_index(CHOSEN, 'id', id)]['quantity'] = quantity
+    document.getElementById('qty-input-' + id).value = quantity
 
     update_statistics()
 }

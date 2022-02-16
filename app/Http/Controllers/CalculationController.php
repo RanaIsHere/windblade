@@ -29,11 +29,11 @@ class CalculationController extends Controller
                         return 'INVALID RESPONSE';
                     }
 
-                    $total_price += $packageData->package_price * $data['quantity'];
-                    $calculated_discount = $total_price * ($discount / 100);
+                    $total_price += intval($packageData->package_price) * $data['quantity'];
+                    $calculated_discount = intval($total_price) * ($discount / 100);
                 }
 
-                $total_price = $total_price - $calculated_discount;
+                $total_price = intval($total_price - $calculated_discount);
                 $tax_price = $total_price * (2 / 100);
 
                 return response()->json(['price' => $total_price, 'tax' => $tax_price]);
