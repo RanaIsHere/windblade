@@ -2,6 +2,12 @@ var PRICE = 0
 var FEE = 0
 var TAX = 0
 
+document.getElementById('discount_input').addEventListener('change', function (e) {
+    e.preventDefault()
+
+    update_statistics()
+})
+
 function toggle_note(entity) {
     entity.checked != entity.checked
     document.getElementById('note_textarea').classList.toggle('hidden')
@@ -30,6 +36,7 @@ function update_statistics() {
             success: function (response) {
                 PRICE = response.price
                 TAX = response.tax
+                TAX = parseInt(Number(TAX))
 
                 document.getElementById('transaction_price').value = PRICE
                 document.getElementById('tax_price').value = TAX
@@ -37,6 +44,8 @@ function update_statistics() {
                 document.getElementById('price_view').innerText = PRICE
                 document.getElementById('fee_view').innerText = FEE
                 document.getElementById('tax_view').innerText = TAX
+
+                console.log(TAX)
 
                 document.getElementById('discount_view').innerText = document.getElementById('discount_input').value
             }

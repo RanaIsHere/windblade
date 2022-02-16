@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Packages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CalculationController extends Controller
 {
@@ -23,6 +24,10 @@ class CalculationController extends Controller
 
                 foreach ($validatedData['id'] as $data) {
                     $packageData = Packages::Find($data['id']);
+
+                    if ($packageData->outlet_id != Auth::user()->outlet_id) {
+                        return 'INVALID RESPONSE';
+                    }
 
                     $total_price += $packageData->package_price * $data['quantity'];
                     $calculated_discount = $total_price * ($discount / 100);
