@@ -170,7 +170,6 @@ class TransactionController extends Controller
                             $transaction_details->quantity = intval($data['quantity']);
                             $transaction_details->notes = $validatedData['notes'];
 
-
                             $transaction_details->save();
                         }
 

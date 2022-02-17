@@ -20,6 +20,7 @@ function toggle_note(entity) {
         fee_price -= 5000
     }
 
+    FEE = parseInt(Number(fee_price))
     document.getElementById('fee_price').value = parseInt(fee_price)
     document.getElementById('fee_view').innerText = document.getElementById('fee_price').value
 }

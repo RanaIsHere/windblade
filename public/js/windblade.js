@@ -76,9 +76,24 @@ function search(search, table) {
 */
 
 function get_index(dictionary, indexed_filter, filter) {
+    if (dictionary.length <= 0) {
+        return false
+    }
+
     for (i = 0; i < dictionary.length; i++) {
         if (dictionary[i][indexed_filter] == filter) {
             return i
         }
     }
-}   
+}
+
+function sift_table(table, filter) {
+    let tr = document.getElementById(table).querySelectorAll('tr')
+
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].querySelectorAll('th')[0].innerHTML == filter) {
+            tr[i].querySelectorAll('th')[1].querySelector('button').classList.remove('pointer-events-none')
+            tr[i].querySelectorAll('th')[1].querySelector('button').classList.remove('opacity-50')
+        }
+    }
+}

@@ -1,58 +1,27 @@
 var CHOSEN = [];
 
-function get_member(entity, index) {
-	let table_element = entity.parentElement.parentElement
-	let id = table_element.querySelectorAll('th')[index].innerText
-
-	$.ajax({
-		type: 'POST',
-		url: '/catch-member',
-		data: { id: id },
-		success: function (response) {
-			document.getElementById('member_input_real').value = response.response.id
-			document.getElementById('member_input').value = response.response.member_name
-
-			document.getElementById('address_input').value = response.response.member_address
-			document.getElementById('phone_input').value = response.response.member_phone
-			document.getElementById('gender_input').value = response.response.member_gender
-
-			document.getElementById('find_member').classList.remove('modal-open')
+function package_available(id) {
+	if (CHOSEN.length > 0) {
+		for (i = 0; i < CHOSEN.length; i++) {
+			if (CHOSEN[i]['id'] == Number(id)) {
+				return true
+			}
 		}
-	});
+
+		return false
+	} else {
+		return false
+	}
 }
-
-function get_package(entity, index) {
-	let table_element = entity.parentElement.parentElement
-	let id = table_element.querySelectorAll('th')[index].innerText
-
-	$.ajax({
-		type: 'POST',
-		url: '/catch-package',
-		data: { id: id },
-		success: function (response) {
-			document.getElementById('package_input_real').value = response.response.id
-			document.getElementById('package_input').value = response.response.package_name
-
-			document.getElementById('transaction_price').value = response.response.package_price
-
-			PRICE = response.response.package_price
-			TAX = response.response.package_price * (5 / 100)
-
-			document.getElementById('quantity_input').classList.remove('pointer-events-none')
-
-			document.getElementById('find_package').classList.remove('modal-open')
-
-			update_stats()
-		}
-	})
-}
-
 
 function add_package(entity) {
 	let table_element = entity.parentElement.parentElement
 	let id = table_element.querySelectorAll('th')[0].innerText
 
-	if (!CHOSEN.includes(Number(id))) {
+	entity.classList.add('pointer-events-none')
+	entity.classList.add('opacity-50')
+
+	if (!package_available(id)) {
 		$.ajax({
 			type: 'POST',
 			url: '/add-package',
@@ -123,6 +92,8 @@ function add_package(entity) {
 				input_quantity.value = quantity_input.value
 				input_quantity.id = 'qty-input-' + response.response.id
 
+
+
 				update_statistics()
 
 				document.getElementById('find_package').classList.remove('modal-open')
@@ -138,6 +109,8 @@ function remove_package(entity) {
 	CHOSEN.splice(get_index(CHOSEN, 'id', id), 1)
 	document.getElementById('id-input-' + id).remove()
 	document.getElementById('qty-input-' + id).remove()
+
+	sift_table('package-buffer-list', id)
 
 	table_element.remove()
 
