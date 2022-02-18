@@ -2,5 +2,5 @@
 
 # Windblade
 
-This project is created for a school project that will never be used in a real-life circumstances, other than learning purposes. Windblade uses Laravel 8, TailwindCSS, and DaisyUI to style the website appearance and uses no JQuery.
+This project is created for a school project that will never be used in a real-life circumstances, other than learning purposes. Windblade uses Laravel 8, TailwindCSS, and DaisyUI to style the website appearance and uses minimal JQuery.
 
