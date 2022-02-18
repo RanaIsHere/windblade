@@ -92,8 +92,6 @@ function add_package(entity) {
 				input_quantity.value = quantity_input.value
 				input_quantity.id = 'qty-input-' + response.response.id
 
-
-
 				update_statistics()
 
 				document.getElementById('find_package').classList.remove('modal-open')
