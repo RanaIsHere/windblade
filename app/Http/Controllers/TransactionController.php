@@ -121,6 +121,8 @@ class TransactionController extends Controller
 
             if ($validatedData['deadline_time'] > now()->toDateString()) {
                 $isTimeQualified = true;
+            } else {
+                return redirect()->back()->with('failure', 'The expected deadline time cannot be on the same day!');
             }
 
             // dd([$isDiscountQualified, $isPriceQualified, $isTaxQualified, $isFeeQualified, $isTimeQualified]);

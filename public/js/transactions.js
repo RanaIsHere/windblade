@@ -1,5 +1,26 @@
 var CHOSEN = [];
 
+function get_member(entity, index) {
+	let table_element = entity.parentElement.parentElement
+	let id = table_element.querySelectorAll('th')[index].innerText
+
+	$.ajax({
+		type: 'POST',
+		url: '/catch-member',
+		data: { id: id },
+		success: function (response) {
+			document.getElementById('member_input_real').value = response.response.id
+			document.getElementById('member_input').value = response.response.member_name
+
+			document.getElementById('address_input').value = response.response.member_address
+			document.getElementById('phone_input').value = response.response.member_phone
+			document.getElementById('gender_input').value = response.response.member_gender
+
+			document.getElementById('find_member').classList.remove('modal-open')
+		}
+	})
+}
+
 function package_available(id) {
 	if (CHOSEN.length > 0) {
 		for (i = 0; i < CHOSEN.length; i++) {

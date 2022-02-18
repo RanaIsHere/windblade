@@ -26,6 +26,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthController::class, 'view_login'])->name('page_login');
     Route::get('/register', [AuthController::class, 'view_register'])->name('view_register');
+
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register-owner', [UserManagementController::class, 'register_owner'])->name('register');
 });

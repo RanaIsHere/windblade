@@ -3,11 +3,13 @@
         <div class="modal-box min-w-full text-center">
             <div class="flex flex-row">
                 <div class="flex-1 my-2">
-                    <div class="flex flex-row my-2">        
+                    <div class="flex flex-row my-2">
                         <div class="flex-1">
                             <div class="form-control mx-2">
                                 <label class="label">Search</label>
-                                <input type="search" name="package-sort" id="package-sort" oninput="search(this, 'customer-transaction-table')" class="input input-primary input-bordered">
+                                <input type="search" name="package-sort" id="package-sort"
+                                    oninput="search(this, 'customer-transaction-table')"
+                                    class="input input-primary input-bordered">
                             </div>
                         </div>
                     </div>
@@ -37,7 +39,8 @@
                                 <td>{{ $member->member_gender }}</td>
 
                                 <th>
-                                    <button type="button" class="btn btn-accent" onclick="get_member(this, 0)">Pick</button>
+                                    <button type="button" class="btn btn-accent"
+                                        onclick="get_member(this, 0)">Pick</button>
                                 </th>
                             </tr>
                         @endforeach
@@ -58,11 +61,13 @@
         <div class="modal-box min-w-full">
             <div class="flex flex-row">
                 <div class="flex-1 my-2">
-                    <div class="flex flex-row my-2">        
+                    <div class="flex flex-row my-2">
                         <div class="flex-1">
                             <div class="form-control mx-2">
                                 <label class="label">Search</label>
-                                <input type="search" name="package-sort" id="package-sort" oninput="search(this, 'package-transaction-table')" class="input input-primary input-bordered">
+                                <input type="search" name="package-sort" id="package-sort"
+                                    oninput="search(this, 'package-transaction-table')"
+                                    class="input input-primary input-bordered">
                             </div>
                         </div>
                     </div>
@@ -90,7 +95,8 @@
                                 <td>{{ $package->package_price }}</td>
 
                                 <th>
-                                    <button type="button" class="btn btn-accent" onclick="add_package(this)">Add</button>
+                                    <button type="button" class="btn btn-accent"
+                                        onclick="add_package(this)">Add</button>
                                 </th>
                             </tr>
                         @endforeach
@@ -107,9 +113,9 @@
 @endif
 
 @if ($page_name == 'Invoices')
-<div id="view_invoice" class="modal">
-    <div class="modal-box min-w-full text-center">
-        {{-- <div class="overflow-x-auto">
+    <div id="view_invoice" class="modal">
+        <div class="modal-box min-w-full text-center">
+            {{-- <div class="overflow-x-auto">
             <table class="table w-full">
                 <thead>
                     <tr>
@@ -139,12 +145,12 @@
             </table>
         </div> --}}
 
-        
 
-        <div class="modal-action">
-            <button type="button" class="btn btn-primary"
-                onclick="document.getElementById('view_invoice').classList.remove('modal-open')">Cancel</button>
+
+            <div class="modal-action">
+                <button type="button" class="btn btn-primary"
+                    onclick="document.getElementById('view_invoice').classList.remove('modal-open')">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
 @endif
