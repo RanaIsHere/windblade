@@ -40,3 +40,60 @@ function deleteItem(id_element, model_type, modal) {
     document.getElementById('delete_id').value = id
     document.getElementById('model_type').value = model_type
 }
+
+/*
+    This function filters the table by the search value through onInput within the search input attribute, and
+    inputting the name of the current table through the parameter. This function is fully modular, as long as there are
+    tbody within the table.
+*/
+
+function search(search, table) {
+    let record, success;
+    let search_value = search.value.toUpperCase()
+    let table_element = document.getElementById(table)
+    let rows = table_element.querySelector('tbody').getElementsByTagName('tr')
+
+    for (i = 0; i < rows.length; i++) {
+        record = rows[i].getElementsByTagName('td')
+
+        for (j = 0; j < record.length; j++) {
+            if (record[j].innerText.toUpperCase().indexOf(search_value) > -1) {
+                success = true
+            }
+        }
+
+        if (success) {
+            rows[i].classList.remove('hidden')
+            success = false
+        } else {
+            rows[i].classList.add('hidden')
+        }
+    }
+}
+
+/*
+    Used to filter dictionary as the indexOf function from native Javascript only works with Arrays.
+*/
+
+function get_index(dictionary, indexed_filter, filter) {
+    if (dictionary.length <= 0) {
+        return false
+    }
+
+    for (i = 0; i < dictionary.length; i++) {
+        if (dictionary[i][indexed_filter] == filter) {
+            return i
+        }
+    }
+}
+
+function sift_table(table, filter) {
+    let tr = document.getElementById(table).querySelectorAll('tr')
+
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].querySelectorAll('th')[0].innerHTML == filter) {
+            tr[i].querySelectorAll('th')[1].querySelector('button').classList.remove('pointer-events-none')
+            tr[i].querySelectorAll('th')[1].querySelector('button').classList.remove('opacity-50')
+        }
+    }
+}

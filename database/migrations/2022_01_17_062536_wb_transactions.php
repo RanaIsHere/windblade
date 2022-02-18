@@ -20,8 +20,8 @@ class WbTransactions extends Migration
             $table->foreignId('member_id');
             $table->string('invoice_code', 100);
             $table->dateTime('transaction_date');
-            $table->dateTime('transaction_deadline');
-            $table->dateTime('transaction_paydate');
+            $table->date('transaction_deadline');
+            $table->date('transaction_paydate');
             $table->double('transaction_paid');
             $table->double('transaction_paid_extra');
             $table->double('transaction_discount');

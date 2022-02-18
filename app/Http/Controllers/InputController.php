@@ -7,6 +7,7 @@ use App\Models\Outlets;
 use App\Models\Packages;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InputController extends Controller
@@ -248,8 +249,18 @@ class InputController extends Controller
                     $package_outlet->delete();
                 }
 
+                if ($user->roles == 'OWNER') {
+                    User::where('outlet_id', Auth::user()->outlet_id)->delete();
+                    $user_outlet->delete();
+                    $package_outlet->delete();
+
+                    return redirect('/')->with('success', 'Deleted successfully!');
+                }
+
                 return redirect()->back()->with('success', 'Deleted successfully!');
             } else {
+
+
                 return redirect()->back()->with('failure', 'Invalid deletion.');
             }
         }

@@ -17,6 +17,7 @@
                         <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
                         <li><a href="/users" class="dropdown-btn"> User Management </a></li>
                         <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
+                        <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
                     @endif
 
@@ -25,7 +26,8 @@
                     @endif
 
                     @if (Auth::user()->roles == 'CASHIER')
-                        <li><a class="dropdown-btn"> Transactions </a></li>
+                        <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
+                        <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a class="dropdown-btn"> Reports </a></li>
                     @endif
 
@@ -40,7 +42,7 @@
         <div class="dropdown dropdown-end">
             <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">{{ Auth::user()->name }}</div>
 
-            <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-secondary rounded-box w-52">
+            <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
                 <a class="dropdown-btn my-1">Profile</a>
                 <a href="/logout" class="dropdown-btn my-1">Logout</a>
             </ul>
