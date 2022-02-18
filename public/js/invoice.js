@@ -1,3 +1,5 @@
+$('#invoice-table').DataTable();
+
 function view_invoice(entity) {
     let table_element = entity.parentElement.parentElement
     let id = table_element.querySelector('th').innerText

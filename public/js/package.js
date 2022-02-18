@@ -1,3 +1,5 @@
+$('#package-table').DataTable();
+
 document.addEventListener('DOMContentLoaded', function (e) {
 
     document.getElementById('package-view-btn').addEventListener('click', function (e) {

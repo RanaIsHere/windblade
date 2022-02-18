@@ -32,8 +32,8 @@
     </div>
 
     <div id="customer-view" class="">
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div class="overflow-x-auto p-2">
+            <table class="table w-full" id="customer-table">
                 <thead>
                     <tr>
                         <th>#</th>

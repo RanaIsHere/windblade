@@ -1,3 +1,5 @@
+$('#customer-table').DataTable();
+
 document.addEventListener('DOMContentLoaded', function (e) {
 
     document.getElementById('customer-view-btn').addEventListener('click', function (e) {

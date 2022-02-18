@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <div class="text-center my-4">
+    <div class="text-center mt-4">
         <div class="flex flex-row">
             <div class="flex-1">
                 <button type="button" class="btn btn-primary w-2/12 btn-sm"
@@ -97,7 +97,22 @@
     </div>
 
     <div class="overflow-x-auto">
-        <table class="table w-full table-compact text-center">
+        <div class="flex flex-row">
+            <div class="flex-1">
+                <div class="flex flex-row mb-2">
+                    <div class="flex-1">
+                        <div class="form-control mx-2">
+                            <label class="label">Search</label>
+                            <input type="search" name="package-sort" id="package-sort"
+                                oninput="search(this, 'buffering-table')"
+                                class="input input-primary input-sm input-bordered">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table w-full table-compact text-center" id="buffering-table">
             <thead>
                 <tr>
                     <th>#</th>

@@ -3113,6 +3113,13 @@ html {
   padding: 0;
   width: 2rem;
 }
+.input-sm {
+  height: 2rem;
+  font-size: .875rem;
+  line-height: 2rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
 .select-lg {
   height: 4rem;
   font-size: 1.125rem;

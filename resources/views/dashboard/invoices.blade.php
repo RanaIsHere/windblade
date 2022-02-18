@@ -5,8 +5,8 @@
     @include('partials.header')
 
     <div id="invoice-view" class="">
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div class="overflow-x-auto p-2">
+            <table class="table w-full" id="invoice-table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -18,15 +18,15 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-    
+
                 <tbody>
                     @foreach ($transactionData as $transact)
                         <tr>
                             <th>{{ $transact->id }}</th>
                             <td>{{ $transact->invoice_code }}</td>
                             <td>{{ $transact->members->member_name }}</td>
-                            <td>{{ $transact->members->member_phone }}</td> 
-                            <td>{{ $transact->transactionDetails->packages->package_type }}</td> 
+                            <td>{{ $transact->members->member_phone }}</td>
+                            <td>{{ $transact->transactionDetails->packages->package_type }}</td>
                             <td>Rp. {{ $transact->transaction_paid }}</td>
                             <th>
                                 <button type="button" class="btn btn-primary" onclick="view_invoice(this)">View</button>
