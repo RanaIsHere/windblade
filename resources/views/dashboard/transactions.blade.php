@@ -112,7 +112,7 @@
             </div>
         </div>
 
-        <table class="table w-full table-compact text-center" id="buffering-table">
+        <table class="table w-full table-compact text-center min-h-min" id="buffering-table">
             <thead>
                 <tr>
                     <th>#</th>
