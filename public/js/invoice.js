@@ -3,6 +3,7 @@ $('#invoice-table').DataTable();
 function exit_invoice() {
     let tbody = document.createElement('tbody')
 
+    document.getElementById('print-btn').removeAttribute('href')
     document.getElementById('view_invoice').classList.remove('modal-open')
     document.getElementById('invoice-buffer-table').remove()
 
@@ -23,6 +24,7 @@ function view_invoice(entity) {
             let price_total = 0
 
             document.getElementById('view_invoice').classList.add('modal-open')
+            document.getElementById('print-btn').href = 'invoice/' + id
 
             document.getElementById('discount').innerText = response.response[1].transaction_discount
             document.getElementById('invoiceCode').innerText = response.response[1].invoice_code

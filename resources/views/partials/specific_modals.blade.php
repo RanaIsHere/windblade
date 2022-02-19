@@ -115,7 +115,7 @@
 @if ($page_name == 'Invoices')
     <div id="view_invoice" class="modal">
         <div class="modal-box max-w-2xl">
-            <div class="flex flex-col lg:flex-row mb-4 items-center">
+            <div class="flex flex-row mb-4 items-center">
                 <div class="flex-1">
                     <p class="text-2xl font-bold">#<span id="invoiceCode"></span></p>
                 </div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-row">
                 <div class="flex-1 text-left">
                     <p class="font-bold">Customer:</p>
 
@@ -202,6 +202,7 @@
             </table>
 
             <div class="modal-action">
+                <a id="print-btn" class="btn btn-primary">Print</a>
                 <button type="button" class="btn btn-primary" onclick="exit_invoice()">Cancel</button>
             </div>
         </div>
