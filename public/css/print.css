@@ -1,0 +1,13 @@
+@media print {
+    body {
+        display: none;
+    }
+
+    #view_invoice {
+        display: none;
+    }
+
+    #printing-location {
+        display: block !important;
+    }   
+}

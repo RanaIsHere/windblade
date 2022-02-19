@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+    @if ('page_name' == 'Invoices')
+        <link rel="stylesheet" href="{{ asset('css/print.css') }}">
+    @endif
+
     <title> Windblade - {{ $page_name }} </title>
 </head>
 
@@ -48,6 +53,7 @@
 
     @if ($page_name == 'Invoices')
         <script src="{{ asset('js/invoice.js') }}"></script>
+        <script src="{{ asset('js/printer.js') }}"></script>
     @endif
 </body>
 
