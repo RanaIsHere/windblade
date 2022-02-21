@@ -53,7 +53,6 @@
 
     @if ($page_name == 'Invoices')
         <script src="{{ asset('js/invoice.js') }}"></script>
-        <script src="{{ asset('js/printer.js') }}"></script>
     @endif
 </body>
 

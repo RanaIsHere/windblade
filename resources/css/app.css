@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    .table.dataTable thead th{
+        @apply bg-neutral text-white;
+    }
+}
+
 @layer components {
     .dropdown-btn {
         @apply btn btn-primary btn-sm rounded-btn h-full;
