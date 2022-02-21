@@ -5,6 +5,7 @@ use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,10 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     Route::post('/transaction', [TransactionController::class, 'start_transaction'])->name('start_transaction');
 
     // Transaction END
+});
+
+Route::middleware(['auth.basic', 'role:ADMIN,OWNER'])->group(function () {
+    Route::get('/reports', [ReportsController::class, 'index'])->name('reports');
 });
 
 Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {

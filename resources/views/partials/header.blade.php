@@ -22,7 +22,7 @@
                     @endif
 
                     @if (Auth::user()->roles == 'OWNER')
-                        <li><a class="dropdown-btn"> Reports </a></li>
+                        <li><a href="{{ route('reports') }}" class="dropdown-btn"> Reports </a></li>
                     @endif
 
                     @if (Auth::user()->roles == 'CASHIER')
