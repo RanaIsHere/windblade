@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
-    @if ('page_name' == 'Invoices')
+    @if ($page_name == 'Invoices')
         <link rel="stylesheet" href="{{ asset('css/print.css') }}">
     @endif
 

@@ -114,9 +114,9 @@
 
 @if ($page_name == 'Invoices')
     <div id="view_invoice" class="modal">
-        <div class="modal-box max-w-2xl">
+        <div class="modal-box max-w-2xl scale-[25] lg:scale-100">
             <div id="printing-location">
-                <div class=" flex flex-row mb-4 items-center">
+                <div class="flex flex-row mb-4 items-center">
                     <div class="flex-1">
                         <p class="text-2xl font-bold">#<span id="invoiceCode"></span></p>
                     </div>
@@ -162,50 +162,50 @@
                     </div>
                 </div>
 
-                <table class="table w-full table-compact text-center" id="invoice-package-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Package Name</th>
-                            <th>Package Type</th>
-                            <th>Package Price</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="invoice-buffer-table">
-                        {{-- <tr>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr> --}}
-                    </tbody>
-
-                    <tfoot>
-                        <tr>
+                <div class="printable">
+                    <table class="table min-w-full min-h-full table-compact text-center" id="invoice-package-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Package Name</th>
+                                <th>Package Type</th>
+                                <th>Package Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoice-buffer-table">
+                            {{-- <tr>
                             <th></th>
-                            <th></th>
-                            <th>Subtotal</th>
-                            <th><span class="normal-case">Rp.</span> <span id="total_price"></span></th>
-                            <th id="total_quantity">0</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th>Discount</th>
-                            <th><span id="discount"></span>%</th>
-                            <th><span class="normal-case">Rp.</span> <span id="very_total"></span></th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
-                </table>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr> --}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Subtotal</th>
+                                <th><span class="normal-case">Rp.</span> <span id="total_price"></span></th>
+                                <th id="total_quantity">0</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>Discount</th>
+                                <th><span id="discount"></span>%</th>
+                                <th><span class="normal-case">Rp.</span> <span id="very_total"></span></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
 
-            <div class="modal-action">
-                <button id="print-btn" class="btn btn-primary">Print</button>
-                <button type="button" class="btn btn-primary" onclick="exit_invoice()">Cancel</button>
+            <div class="modal-action non-printable">
+                <button id="print-btn" class="btn btn-primary non-printable">Print</button>
+                <button type="button" class="btn btn-primary non-printable" onclick="exit_invoice()">Cancel</button>
             </div>
         </div>
     </div>
