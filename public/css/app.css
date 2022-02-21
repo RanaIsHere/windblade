@@ -1262,6 +1262,780 @@ html {
   --tab-border: 1px;
   --tab-radius: 0.5rem;
 }
+    .table.dataTable thead th {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+    #invoice-table  input {
+  flex-shrink: 1;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  height: 3rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  line-height: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  --tw-border-opacity: 0;
+  border-color: hsla(var(--bc) / var(--tw-border-opacity, 1));
+  border-width: 1px;
+  border-radius: var(--rounded-btn, .5rem);
+}
+
+    #invoice-table  input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsla(var(--bc) / .2);
+}
+
+    #invoice-table  input-group>*, #invoice-table  input-group>.input {
+  border-radius: 0;
+}
+
+    #invoice-table  input {
+  --tw-border-opacity: 1;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1));
+}
+
+    #invoice-table  input:focus {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p));
+}
+
+    #invoice-table  input-disabled, #invoice-table  input[disabled] {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+  --tw-border-opacity: 1;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+  cursor: not-allowed;
+  --tw-text-opacity: 0.2;
+}
+
+    #invoice-table  input-disabled::-moz-placeholder, #invoice-table  input[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+
+    #invoice-table  input-disabled:-ms-input-placeholder, #invoice-table  input[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+
+    #invoice-table  input-disabled::placeholder, #invoice-table  input[disabled]::placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+
+    #invoice-table {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+    #invoice-table>input[type=radio].\!btn {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+    #invoice-table>input[type=radio].\!btn:before {
+  content: attr(data-title) !important;
+}
+
+    #invoice-table>.\!btn-active, #invoice-table>input[type=radio]:checked.\!btn {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table>.\!btn-active:focus-visible, #invoice-table>input[type=radio]:checked.\!btn:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p)) !important;
+}
+
+    #invoice-table>.\!btn:not(:first-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  margin-left: -1px !important;
+}
+
+    #invoice-table>.\!btn:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+    [data-theme=lofi] *:where(#invoice-tablen) {
+  border-color: var(--border-color) !important;
+  --tw-border-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  --tw-shadow: 0 0 0 1px var(--border-color) !important;
+}
+
+    #invoice-tablen {
+  border-color: transparent !important;
+  border-color: hsla(var(--n) / var(--tw-border-opacity, 1)) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  text-align: center !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform !important;
+  transition-duration: .2s !important;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1) !important;
+  border-radius: var(--rounded-btn, .5rem) !important;
+  height: 3rem !important;
+  font-size: .875rem !important;
+  line-height: 1.25rem !important;
+  line-height: 1em !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  min-height: 3rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  text-transform: var(--btn-text-case, uppercase) !important;
+  border-width: var(--border-btn, 1px) !important;
+  -webkit-animation: button-pop var(--animation-btn, .25s) ease-out !important;
+  animation: button-pop var(--animation-btn, .25s) ease-out !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--n) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+}
+
+    #invoice-tablen-disabled, #invoice-tablen[disabled] {
+  pointer-events: none !important;
+  --tw-bg-opacity: 0.2 !important;
+  background-color: hsla(var(--n) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 0 !important;
+  --tw-text-opacity: 0.2 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!loading, #invoice-tablen.\!loading:hover {
+  pointer-events: none !important;
+}
+
+    #invoice-tablen.\!loading:before {
+  border-radius: 9999px !important;
+  border-width: 2px !important;
+  height: 1rem !important;
+  margin-right: .5rem !important;
+  width: 1rem !important;
+  -webkit-animation: spin 2s linear infinite !important;
+  animation: spin 2s linear infinite !important;
+  content: "" !important;
+  border-color: transparent currentColor currentColor transparent !important;
+}
+
+    @media (prefers-reduced-motion:reduce) {
+
+  #invoice-tablen.\!loading:before {
+    -webkit-animation: spin 10s linear infinite !important;
+    animation: spin 10s linear infinite !important;
+  }
+}
+
+    #invoice-tablen-group>input[type=radio].\!btn {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+    #invoice-tablen-group>input[type=radio].\!btn:before {
+  content: attr(data-title) !important;
+}
+
+    #invoice-tablen .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1)) !important;
+  border-color: transparent !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--b2) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen .\!badge {
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--nf) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--s) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--s) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--sc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--a) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--a) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--ac) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen .\!badge.\!outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--nf) / var(--tw-border-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--s) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--s) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--a) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--a) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen:hover .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen:hover .\!badge.\!outline {
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary:hover .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pc) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary:hover .\!badge.\!outline {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary:hover .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--sc) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--sc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--s) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary:hover .\!badge.\!outline {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--sf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--sc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--sc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent:hover .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--ac) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--ac) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--a) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent:hover .\!badge.\!outline {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--af) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--ac) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--ac) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen:active:focus, #invoice-tablen:active:hover {
+  -webkit-animation: none !important;
+  animation: none !important;
+  transform: scale( var(--btn-focus-scale, .95) ) !important;
+}
+
+    #invoice-tablen-active, #invoice-tablen:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--nf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--nf) / var(--tw-border-opacity, 1)) !important;
+}
+
+    #invoice-tablen:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--nf)) !important;
+}
+
+    #invoice-tablen.\!glass.\!btn-active, #invoice-tablen.\!glass:hover {
+  --glass-opacity: 25% !important;
+  --glass-border-opacity: 15% !important;
+}
+
+    #invoice-tablen.\!glass:focus-visible {
+  box-shadow: 0 0 0 2px currentColor !important;
+}
+
+    #invoice-tablen {
+  background-color: transparent !important;
+  border-color: currentColor !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--bc) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--bc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--b1) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-primary:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pf) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--s) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-secondary:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--sf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--sf) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--sc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--a) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-accent:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--af) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--af) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--ac) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-success {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--su) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-success:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--su) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--su) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-info {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--in) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-info:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--in) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--in) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-warning {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--wa) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-warning:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--wa) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--wa) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-error {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--er) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!btn-error:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--er) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--er) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen.\!loading.\!btn-circle:before, #invoice-tablen.\!loading.\!btn-square:before {
+  margin-right: 0 !important;
+}
+
+    #invoice-tablen.\!loading.\!btn-lg:before, #invoice-tablen.\!loading.\!btn-xl:before {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+    #invoice-tablen.\!loading.\!btn-sm:before, #invoice-tablen.\!loading.\!btn-xs:before {
+  height: .75rem !important;
+  width: .75rem !important;
+}
+
+    #invoice-tablen-group>.\!btn-active, #invoice-tablen-group>input[type=radio]:checked.\!btn {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-tablen-group>.\!btn-active:focus-visible, #invoice-tablen-group>input[type=radio]:checked.\!btn:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p)) !important;
+}
+
+    #invoice-tablen-group>.\!btn:not(:first-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  margin-left: -1px !important;
+}
+
+    #invoice-tablen-group>.\!btn:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+    [data-theme=lofi] *:where(#invoice-table) {
+  border-color: var(--border-color) !important;
+  --tw-border-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  --tw-shadow: 0 0 0 1px var(--border-color) !important;
+}
+
+    #invoice-table {
+  border-color: transparent !important;
+  border-color: hsla(var(--n) / var(--tw-border-opacity, 1)) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  text-align: center !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform !important;
+  transition-duration: .2s !important;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1) !important;
+  border-radius: var(--rounded-btn, .5rem) !important;
+  height: 3rem !important;
+  font-size: .875rem !important;
+  line-height: 1.25rem !important;
+  line-height: 1em !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  min-height: 3rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  text-transform: var(--btn-text-case, uppercase) !important;
+  border-width: var(--border-btn, 1px) !important;
+  -webkit-animation: button-pop var(--animation-btn, .25s) ease-out !important;
+  animation: button-pop var(--animation-btn, .25s) ease-out !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--n) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--nc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+}
+
+    #invoice-table-disabled, #invoice-table[disabled] {
+  pointer-events: none !important;
+  --tw-bg-opacity: 0.2 !important;
+  background-color: hsla(var(--n) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 0 !important;
+  --tw-text-opacity: 0.2 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table.\!loading, #invoice-table.\!loading:hover {
+  pointer-events: none !important;
+}
+
+    #invoice-table.\!loading:before {
+  border-radius: 9999px !important;
+  border-width: 2px !important;
+  height: 1rem !important;
+  margin-right: .5rem !important;
+  width: 1rem !important;
+  -webkit-animation: spin 2s linear infinite !important;
+  animation: spin 2s linear infinite !important;
+  content: "" !important;
+  border-color: transparent currentColor currentColor transparent !important;
+}
+
+    @media (prefers-reduced-motion:reduce) {
+
+  #invoice-table.\!loading:before {
+    -webkit-animation: spin 10s linear infinite !important;
+    animation: spin 10s linear infinite !important;
+  }
+}
+
+    #invoice-table-group>input[type=radio].\!btn {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+    #invoice-table-group>input[type=radio].\!btn:before {
+  content: attr(data-title) !important;
+}
+
+    #invoice-table .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1)) !important;
+  border-color: transparent !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--bc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--b2) / var(--tw-text-opacity, 1)) !important;
+}
+
+    .\!btn-outline#invoice-table .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    .\!btn-outline#invoice-table .\!badge-outline {
+  background-color: transparent !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    .\!btn-outline#invoice-table:hover .\!badge {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pc) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    .\!btn-outline#invoice-table:hover .\!badge.\!outline {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pc) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table:active:focus, #invoice-table:active:hover {
+  -webkit-animation: none !important;
+  animation: none !important;
+  transform: scale( var(--btn-focus-scale, .95) ) !important;
+}
+
+    #invoice-table-active, #invoice-table:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--nf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--nf) / var(--tw-border-opacity, 1)) !important;
+}
+
+    #invoice-table:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--nf)) !important;
+}
+
+    #invoice-table {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table.\!btn-active, #invoice-table:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pf) / var(--tw-border-opacity, 1)) !important;
+}
+
+    #invoice-table:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p)) !important;
+}
+
+    #invoice-table.\!glass.\!btn-active, #invoice-table.\!glass:hover {
+  --glass-opacity: 25% !important;
+  --glass-border-opacity: 15% !important;
+}
+
+    #invoice-table.\!glass:focus-visible {
+  box-shadow: 0 0 0 2px currentColor !important;
+}
+
+    .\!btn-outline#invoice-table {
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--p) / var(--tw-text-opacity, 1)) !important;
+}
+
+    .\!btn-outline#invoice-table:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--pf) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--pf) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table.\!loading.\!btn-circle:before, #invoice-table.\!loading.\!btn-square:before {
+  margin-right: 0 !important;
+}
+
+    #invoice-table.\!loading.\!btn-lg:before, #invoice-table.\!loading.\!btn-xl:before {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+    #invoice-table.\!loading.\!btn-sm:before, #invoice-table.\!loading.\!btn-xs:before {
+  height: .75rem !important;
+  width: .75rem !important;
+}
+
+    #invoice-table-group>.\!btn-active, #invoice-table-group>input[type=radio]:checked.\!btn {
+  --tw-bg-opacity: 1 !important;
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1)) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsla(var(--pc) / var(--tw-text-opacity, 1)) !important;
+}
+
+    #invoice-table-group>.\!btn-active:focus-visible, #invoice-table-group>input[type=radio]:checked.\!btn:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p)) !important;
+}
+
+    #invoice-table-group>.\!btn:not(:first-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  margin-left: -1px !important;
+}
+
+    #invoice-table-group>.\!btn:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+    .\!drawer-toggle:focus-visible~.\!drawer-content .\!drawer-button#invoice-table {
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--p)) !important;
+}
 
 *, ::before, ::after {
   --tw-translate-x: 0;
@@ -3590,12 +4364,6 @@ html {
 .max-w-2xl {
   max-width: 42rem;
 }
-.max-w-md {
-  max-width: 28rem;
-}
-.max-w-full {
-  max-width: 100%;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -3668,8 +4436,9 @@ html {
 .p-6 {
   padding: 1.5rem;
 }
-.p-4 {
-  padding: 1rem;
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -3762,11 +4531,6 @@ html {
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-none {
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .outline-red-500 {
   outline-color: #ef4444;
 }
@@ -3775,20 +4539,16 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
-
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
-
 .hover\:outline-red-700:hover {
   outline-color: #b91c1c;
 }
-
 @media (min-width: 768px) {
 
   .md\:steps-horizontal {
@@ -3839,7 +4599,6 @@ html {
     line-height: 1.5rem;
   }
 }
-
 @media (min-width: 1024px) {
 
   .lg\:card-side {

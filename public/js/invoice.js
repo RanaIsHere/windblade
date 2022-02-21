@@ -1,4 +1,4 @@
-$('#invoice-table').DataTable();
+$('#invoice-table').DataTable()
 
 document.getElementById('print-btn').addEventListener('click', function (e) {
     window.print()
@@ -62,7 +62,7 @@ function view_invoice(entity) {
                 package_price.innerText = 'Rp, ' + response.lists[i]['packages']["package_price"]
                 package_quantity.innerText = response.lists[i]['quantity']
 
-                price_total += parseInt(Number(response.lists[i]['packages']["package_price"]))
+                price_total += parseInt(Number(response.lists[i]['packages']["package_price"])) * parseInt(Number(response.lists[i]['quantity']))
                 quantity_total += parseInt(Number(response.lists[i]['quantity']))
             }
 

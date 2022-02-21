@@ -1,4 +1,4 @@
-var CHOSEN = [];
+var CHOSEN = []
 
 function get_member(entity, index) {
 	let table_element = entity.parentElement.parentElement

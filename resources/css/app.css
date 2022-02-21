@@ -7,3 +7,25 @@
         @apply btn btn-primary btn-sm rounded-btn h-full;
     }
 }
+
+@layer base {
+    .table.dataTable thead th{
+        @apply bg-neutral text-white;
+    }
+
+    #invoice-table  input {
+        @apply input input-primary input-bordered;
+    }
+
+    #invoice-table {
+        @apply !btn-group ;
+    }
+
+    #invoice-tablen {
+        @apply !btn !btn-outline;
+    }
+
+    #invoice-table {
+        @apply !btn !btn-primary;
+    }
+}
