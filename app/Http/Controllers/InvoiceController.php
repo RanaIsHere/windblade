@@ -29,4 +29,12 @@ class InvoiceController extends Controller
             return response()->json(['response' => [$invoice_details, $invoice_transaction, $member_details, $package_details, $outlet_details], 'lists' => $transaction_dets]);
         }
     }
+
+    public function full_invoice($invoice_code)
+    {
+        $transaction = Transactions::where('invoice_code', $invoice_code)->first();
+        $transaction_dets = TransactionDetails::with('packages')->where('transaction_id', $transaction->id)->get();
+
+        return view('dashboard.invoice', ['page_name' => 'Invoice', 'transactionData' => $transaction, 'invoiceData' => $transaction_dets]);
+    }
 }

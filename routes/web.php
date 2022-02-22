@@ -42,6 +42,7 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
 
     Route::get('/invoices', [DashboardController::class, 'view_invoices'])->name('page_invoices');
+    Route::get('/invoices/{invoice_code}', [InvoiceController::class, 'full_invoice'])->name('full_invoice');
     Route::post('/fetch-invoice', [InvoiceController::class, 'fetch_invoice'])->name('fetch_invoice');
 
     Route::post('/customer', [InputController::class, 'create_customer'])->name('create_customer');

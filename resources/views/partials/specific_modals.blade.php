@@ -203,9 +203,9 @@
                 </div>
             </div>
 
-            <div class="modal-action non-printable">
-                <button id="print-btn" class="btn btn-primary non-printable">Print</button>
-                <button type="button" class="btn btn-primary non-printable" onclick="exit_invoice()">Cancel</button>
+            <div class="modal-action">
+                <a id="print-btn" role="button" class="btn btn-primary">Print</a>
+                <button type="button" class="btn btn-primary" onclick="exit_invoice()">Cancel</button>
             </div>
         </div>
     </div>

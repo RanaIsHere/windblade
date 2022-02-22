@@ -1,4 +1,4 @@
-<div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content flex-col md:flex-row">
+<div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content flex-col md:flex-row non-printable">
     <div class="flex-none px-2 mx-2">
         <span class="text-2xl font-bold">
             <p class="text-primary">Windblade</p>

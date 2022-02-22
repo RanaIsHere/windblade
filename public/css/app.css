@@ -3075,15 +3075,6 @@ html {
   border-style: solid;
   border-bottom-width: calc(var(--tab-border, 1px) + 1px);
 }
-.tab-lifted {
-  border-top-left-radius: var(--tab-radius, .5rem);
-  border-top-right-radius: var(--tab-radius, .5rem);
-  border: 0 solid transparent;
-  border-bottom: var(--tab-border, 1px) solid var(--tab-border-color);
-  padding-left: var(--tab-padding, 1rem);
-  padding-right: var(--tab-padding, 1rem);
-  padding-top: var(--tab-border, 1px);
-}
 .tab-lifted.tab-active {
   background-color: var(--tab-bg);
   border-left-width: var(--tab-border, 1px);
@@ -3782,8 +3773,25 @@ html {
 .w-52 {
   width: 13rem;
 }
+.w-0 {
+  width: 0px;
+}
+.w-0\.5 {
+  width: 0.125rem;
+}
+.w-1 {
+  width: 0.25rem;
+}
+.w-20 {
+  width: 5rem;
+}
 .min-w-full {
   min-width: 100%;
+}
+.min-w-min {
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -3814,9 +3822,6 @@ html {
 .flex-col {
   flex-direction: column;
 }
-.place-items-center {
-  place-items: center;
-}
 .items-center {
   align-items: center;
 }
@@ -3826,8 +3831,8 @@ html {
 .justify-center {
   justify-content: center;
 }
-.justify-items-center {
-  justify-items: center;
+.gap-0 {
+  gap: 0px;
 }
 .overflow-x-auto {
   overflow-x: auto;
@@ -3935,6 +3940,9 @@ html {
 .font-medium {
   font-weight: 500;
 }
+.font-semibold {
+  font-weight: 600;
+}
 .normal-case {
   text-transform: none;
 }
@@ -3997,31 +4005,198 @@ html {
   outline-color: #b91c1c;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+    .sm\:table.dataTable thead th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  }
+    .sm\:table.dataTable thead th {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+    .sm\:table {
+    position: relative;
+    text-align: left;
+  }
+    .sm\:table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 10;
+  }
+    .sm\:table :where(th,td) {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+    .sm\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    --tw-border-opacity: 1;
+    border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+    border-bottom-width: 1px;
+  }
+    .sm\:table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+    .sm\:table :where(thead,tfoot) :where(th,td):first-child {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+  }
+    .sm\:table :where(thead,tfoot) :where(th,td):last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+    .sm\:table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  }
+    .sm\:table-compact :where(th,td) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: .5rem;
+  }
+    .sm\:table {
+    display: table;
+  }
+}
 
-  .md\:steps-horizontal {
+@media (min-width: 768px) {
+    .md\:table.dataTable thead th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  }
+    .md\:table.dataTable thead th {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+    .md\:table {
+    position: relative;
+    text-align: left;
+  }
+    .md\:table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 10;
+  }
+    .md\:table :where(th,td) {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+    .md\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .md\:table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    --tw-border-opacity: 1;
+    border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+    border-bottom-width: 1px;
+  }
+    .md\:table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+    .md\:table :where(thead,tfoot) :where(th,td):first-child {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+  }
+    .md\:table :where(thead,tfoot) :where(th,td):last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+    .md\:table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  }
+    .md\:steps-horizontal {
     grid-auto-columns: 1fr;
     display: inline-grid;
     overflow: hidden;
     overflow-x: auto;
     grid-auto-flow: column;
   }
-
-  .md\:steps-horizontal [class~=step] {
+    .md\:steps-horizontal [class~=step] {
     display: grid;
     place-items: center;
     text-align: center;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
-
-  .md\:steps-horizontal [class~=step] {
+    .md\:steps-horizontal [class~=step] {
     grid-template-rows: 40px 1fr;
     grid-template-columns: auto;
     min-width: 4rem;
   }
-
-  .md\:steps-horizontal [class~=step]:before {
+    .md\:steps-horizontal [class~=step]:before {
     height: .5rem;
     width: 100%;
     --tw-translate-x: 0px;
@@ -4029,64 +4204,330 @@ html {
     content: "";
     margin-left: -100%;
   }
-
-  .md\:flex {
+    .md\:table-compact :where(th,td) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: .5rem;
+  }
+    .md\:flex {
     display: flex;
   }
-
-  .md\:hidden {
+    .md\:table {
+    display: table;
+  }
+    .md\:hidden {
     display: none;
   }
-
-  .md\:flex-row {
+    .md\:flex-row {
     flex-direction: row;
   }
-
-  .md\:text-base {
+    .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-
-  .lg\:card-side {
+    .lg\:table.dataTable thead th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  }
+    .lg\:table.dataTable thead th {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+    .lg\:table {
+    position: relative;
+    text-align: left;
+  }
+    .lg\:table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 10;
+  }
+    .lg\:table :where(th,td) {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+    .lg\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    --tw-border-opacity: 1;
+    border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+    border-bottom-width: 1px;
+  }
+    .lg\:table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+    .lg\:table :where(thead,tfoot) :where(th,td):first-child {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+  }
+    .lg\:table :where(thead,tfoot) :where(th,td):last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+    .lg\:table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  }
+    .lg\:card-side {
     align-items: stretch;
     flex-direction: row;
   }
-
-  .lg\:card-side>figure {
+    .lg\:card-side>figure {
     height: 100%;
     max-width: none;
     width: auto;
   }
-
-  .lg\:card-side>figure>* {
+    .lg\:card-side>figure>* {
     width: auto;
     max-width: none;
   }
-
-  .lg\:m-10 {
+    .lg\:table-compact :where(th,td) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: .5rem;
+  }
+    .lg\:m-10 {
     margin: 2.5rem;
   }
-
-  .lg\:scale-100 {
+    .lg\:table {
+    display: table;
+  }
+    .lg\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
-
-  .lg\:flex-row {
+    .lg\:flex-row {
     flex-direction: row;
   }
-
-  .lg\:px-60 {
+    .lg\:px-60 {
     padding-left: 15rem;
     padding-right: 15rem;
   }
-
-  .lg\:text-left {
+    .lg\:text-left {
     text-align: left;
+  }
+}
+
+@media (min-width: 1280px) {
+    .xl\:table.dataTable thead th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  }
+    .xl\:table.dataTable thead th {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+    .xl\:table {
+    position: relative;
+    text-align: left;
+  }
+    .xl\:table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 10;
+  }
+    .xl\:table :where(th,td) {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+    .xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    --tw-border-opacity: 1;
+    border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+    border-bottom-width: 1px;
+  }
+    .xl\:table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+    .xl\:table :where(thead,tfoot) :where(th,td):first-child {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+  }
+    .xl\:table :where(thead,tfoot) :where(th,td):last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+    .xl\:table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  }
+    .xl\:table-compact :where(th,td) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: .5rem;
+  }
+    .xl\:table {
+    display: table;
+  }
+}
+
+@media (min-width: 1536px) {
+    .\32xl\:table.dataTable thead th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--n) / var(--tw-bg-opacity));
+  }
+    .\32xl\:table.dataTable thead th {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+    .\32xl\:table {
+    position: relative;
+    text-align: left;
+  }
+    .\32xl\:table th:first-child {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 10;
+  }
+    .\32xl\:table :where(th,td) {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+    .\32xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.active:nth-child(2n) td,.table tr.active:nth-child(2n) th,.table tr.active td,.table tr.active th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table tr.hover:hover td,.table tr.hover:hover th,.table tr.hover:nth-child(2n):hover td,.table tr.hover:nth-child(2n):hover th {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b3) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+    --tw-border-opacity: 1;
+    border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+    border-bottom-width: 1px;
+  }
+    .\32xl\:table :where(thead,tfoot) :where(th,td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+    .\32xl\:table :where(thead,tfoot) :where(th,td):first-child {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+  }
+    .\32xl\:table :where(thead,tfoot) :where(th,td):last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+    .\32xl\:table :where(tbody th,tbody td) {
+    --tw-bg-opacity: 1;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  }
+    .\32xl\:table-compact :where(th,td) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: .5rem;
+  }
+    .\32xl\:table {
+    display: table;
   }
 }
 

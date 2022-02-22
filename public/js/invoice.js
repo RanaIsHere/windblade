@@ -1,9 +1,5 @@
 $('#invoice-table').DataTable()
 
-document.getElementById('print-btn').addEventListener('click', function (e) {
-    window.print()
-})
-
 function exit_invoice() {
     let tbody = document.createElement('tbody')
 
@@ -69,6 +65,7 @@ function view_invoice(entity) {
             document.getElementById('total_quantity').innerText = quantity_total
             document.getElementById('total_price').innerText = price_total
             document.getElementById('very_total').innerHTML = response.response[1].transaction_paid
+            document.getElementById('print-btn').href = '/invoices/' + response.response[1].invoice_code
 
             quantity_total = 0
         }
