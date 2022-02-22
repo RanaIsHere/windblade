@@ -3,11 +3,25 @@
 @section('container')
     @include('partials.header')
 
+    @if (Session::has('success'))
+        <div class="alert shadow-lg alert-success non-printable">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="mx-2">{{ Session::get('success') }}</span>
+            </div>
+        </div>
+    @endif
+
     <div class="flex-row">
         <div class="flex-1 p-4">
             <div class="flex flex-row mb-4 items-center">
                 <div class="flex-1">
-                    <p class="text-2xl font-bold">#<span id="invoiceCode">{{ $transactionData->invoice_code }}</span></p>
+                    <p class="text-2xl font-bold">#<span id="invoiceCode">{{ $transactionData->invoice_code }}</span>
+                    </p>
                 </div>
 
                 <div class="flex-1 text-right">
