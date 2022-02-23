@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <div class="flex-row">
+    <div class="flex flex-row">
         <div class="flex-1 p-4">
             <div class="flex flex-row mb-4 items-center">
                 <div class="flex-1">
@@ -133,6 +133,15 @@
                         <tr>
                             <th></th>
                             <th></th>
+                            <th>Additional Fee</th>
+                            <th><span class="normal-case">Rp.</span> <span
+                                    id="trans_fee">{{ $transactionData->transaction_paid_extra }}</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
                             <th>Subtotal</th>
                             <th><span class="normal-case">Rp.</span> <span id="total_price"></span></th>
                             <th id="total_quantity">0</th>
@@ -142,7 +151,8 @@
                             <th>Discount</th>
                             <th><span id="discount">{{ $transactionData->transaction_discount }}</span>%</th>
                             <th><span class="normal-case">Rp.</span> <span
-                                    id="very_total">{{ $transactionData->transaction_paid }}</span></th>
+                                    id="very_total">{{ $transactionData->transaction_paid }}</span>
+                            </th>
                             <th></th>
                         </tr>
                     </tfoot>
