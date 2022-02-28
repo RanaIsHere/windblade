@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserManagementController;
@@ -84,4 +85,10 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/edit-outlet', [InputController::class, 'edit_outlet'])->name('edit_outlet');
 
     Route::post('/register-user', [UserManagementController::class, 'register_user'])->name('register_user');
+
+    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+    Route::post('/inventory', [InventoryController::class, 'create'])->name('add_inventory');
+    Route::post('/fetch-inventory', [InventoryController::class, 'fetch'])->name('fetch_inventory');
+    Route::post('/update-inventory', [InventoryController::class, 'update'])->name('update_inventory');
+    Route::post('/delete-inventory', [InventoryController::class, 'delete'])->name('delete_inventory');
 });

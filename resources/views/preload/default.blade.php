@@ -59,6 +59,10 @@
     @if ($page_name == 'Reports')
         <script src="{{ asset('js/reports.js') }}"></script>
     @endif
+
+    @if ($page_name == 'Inventory')
+        <script src="{{ asset('js/inventory.js') }}"></script>
+    @endif
 </body>
 
 </html>

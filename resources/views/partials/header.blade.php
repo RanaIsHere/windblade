@@ -16,6 +16,7 @@
                         <li><a href="/packages" class="dropdown-btn"> Package Management </a></li>
                         <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
                         <li><a href="/users" class="dropdown-btn"> User Management </a></li>
+                        <li><a href="/inventory" class="dropdown-btn"> Inventory Management </a></li>
                         <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
