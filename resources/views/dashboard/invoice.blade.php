@@ -108,7 +108,7 @@
                     </div>
                 </div> --}}
 
-                <table class="table table-compact min-w-full min-h-full text-center" id="invoice-package-table">
+                <table class="table table-compact w-full min-h-full text-center" id="invoice-package-table">
                     <thead>
                         <tr>
                             <th>#</th>
