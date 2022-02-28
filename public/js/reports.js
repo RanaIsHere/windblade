@@ -1,3 +1,7 @@
+$('#transaction-table').DataTable({
+    "pageLength": 6
+})
+
 function change_tab(entity) {
     const parent = entity.parentElement
 

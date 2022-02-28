@@ -43,6 +43,23 @@
         </div>
     @endif
 
+    @if ($errors->any())
+        <div class="alert shadow-lg alert-error">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>
+                    @foreach ($errors->all() as $errors)
+                        {{ $errors }}
+                    @endforeach
+                </span>
+            </div>
+        </div>
+    @endif
+
     <div class="w-full shadow stats text-center mb-4">
         <div class="stat">
             <div class="stat-figure text-primary">
@@ -209,7 +226,8 @@
                         <input type="checkbox" class="toggle toggle-accent" onclick="toggle_note(this)">
                     </label>
 
-                    <span class="text-justify text-sm opacity-50">Adding notes to the transaction will increase fee.</span>
+                    <span class="text-justify text-sm opacity-50">Adding notes to the transaction will increase
+                        fee.</span>
                 </div>
 
                 <div class="form-control w-full hidden" id="note_textarea">
@@ -250,8 +268,8 @@
                                 </label>
 
                                 <div class="flex-row">
-                                    <input type="date" name="deadline_time" id="deadline_input"
-                                        class="input input-bordered w-full" required>
+                                    <input type="date" name="deadline_time" id="deadline_input" class="date-input w-full"
+                                        required>
                                 </div>
 
                                 <div class="flex-row mt-2">

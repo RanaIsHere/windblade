@@ -65,7 +65,7 @@ class TransactionController extends Controller
             'notes' => ['required', 'nullable'],
             'deadline_time' => ['required'],
             'chosen_packages' => ['required'],
-            'discount' => ['required']
+            'discount' => ['required'],
         ]);
 
         if ($validatedData['transaction_price'] != 0) {

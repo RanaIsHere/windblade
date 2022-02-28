@@ -1,3 +1,5 @@
+import Chart from 'chart.js/auto';
+
 window._ = require('lodash');
 
 /**
@@ -9,7 +11,8 @@ window._ = require('lodash');
 window.axios = require('axios');
 
 window.$ = require('jquery');
-window.dt = require('datatables.net-dt')
+window.dt = require('datatables.net-dt');
+window.Chart = Chart;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
