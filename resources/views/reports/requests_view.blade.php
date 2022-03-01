@@ -10,7 +10,7 @@
     as $user)
                     <div class="card w-full bg-primary text-primary-content my-4">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $user->username }}</h2>
+                            <h2 class="card-title">{{ $user->username }}, {{ $user->roles }}</h2>
                             <p class="opacity-50">{{ $user->name }}</p>
                             <div class="justify-end card-actions">
                                 <button class="btn">Start Messaging</button>
@@ -27,17 +27,23 @@
                 <p class="opacity-50 font-extralight">Last online: </p>
             </div>
 
-            <div class="overflow-y-auto">
-                <div id="chat-box" class="bg-gray-700 text-primary h-96 px-2">
-                    --
+            <div class="flex flex-col">
+                <div id="chat-box" class="bg-gray-700 text-primary h-96 px-2 overflow-y-auto">
+                    <p>> Welcome, {{ Auth::user()->username }}</p>
+
+                    @foreach ($chatData as $chat)
+                        <p>{{ $chat->user->username }}: {{ $chat->message }}</p>
+                    @endforeach
                 </div>
 
                 <div id="message-box" class="bg-gray-900 text-primary-content p-2">
-                    <div class="input-group">
-                        <input type="text" class="input input-sm text-black input-bordered w-full"
-                            placeholder="Request something...">
-                        <button type="button" class="btn btn-sm btn-primary">Send</button>
-                    </div>
+                    <form id="messageForm">
+                        <div class="input-group">
+                            <input type="text" class="input input-sm text-black input-bordered w-full"
+                                placeholder="Request something..." id="chatInput">
+                            <button type="submit" class="btn btn-sm btn-primary" id="sendChat">Send</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

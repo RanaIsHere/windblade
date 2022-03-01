@@ -66,6 +66,7 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
 
 Route::middleware(['auth.basic', 'role:ADMIN,OWNER'])->group(function () {
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports');
+    Route::post('/sendRequestMessage', [ReportsController::class, 'sendRequestMessage']);
 });
 
 Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {

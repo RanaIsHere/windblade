@@ -1,5 +1,29 @@
+var socket = io('127.0.0.1:3000');
+
+socket.emit('connection')
+
 $('#transaction-table').DataTable({
     "pageLength": 6
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('messageForm').addEventListener('submit', function (e) {
+        e.preventDefault()
+
+        let messageData = document.getElementById('chatInput').value
+        document.getElementById('chatInput').value = ''
+
+        if (messageData != null || messageData != "") {
+            $.ajax({
+                type: 'POST',
+                url: '/sendRequestMessage',
+                data: { message: messageData },
+                success: function (response) {
+                    document.getElementById('chat-box').insertAdjacentHTML('beforeend', '<p>' + response.user + ': ' + response.response.message + '</p>')
+                }
+            })
+        }
+    })
 })
 
 function change_tab(entity) {
