@@ -47,7 +47,7 @@
                     label: 'Rupiah',
                     data: [
                         @foreach ($transactionData as $turd)
-                            {{ $turd->sum('transaction_paid') }},
+                            {{ $turd->transaction_paid }},
                         @endforeach
                     ],
                     backgroundColor: [
