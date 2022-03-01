@@ -44,6 +44,7 @@
     <div class="text-center my-10">
         <div class="btn-group inline-block">
             <button class="btn btn-outline btn-active w-32" id="package-view-btn">View</button>
+            <a href="/packages/export" role="button" class="btn btn-outline w-32" id="package-view-btn">Export</a>
             <button class="btn btn-outline w-32" id="package-creation-btn">Create</button>
         </div>
     </div>
