@@ -22,7 +22,6 @@ class InvoiceController extends Controller
             $transaction = Transactions::find($validatedData['id']);
             $transaction_dets = TransactionDetails::with('packages')->where('transaction_id', $transaction->id)->get();
 
-
             return response()->json(['response' => [$transaction->transactionDetails, $transaction, $transaction->members, $transaction->transactionDetails->packages, $transaction->outlets], 'lists' => $transaction_dets]);
         }
     }

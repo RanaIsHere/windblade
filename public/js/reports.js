@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             $.ajax({
                 type: 'POST',
                 url: '/sendRequestMessage',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 data: { message: messageData },
                 success: function (response) {
                     document.getElementById('chat-box').insertAdjacentHTML('beforeend', '<p>' + response.user + ': ' + response.response.message + '</p>')
