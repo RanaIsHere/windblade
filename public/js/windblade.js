@@ -4,10 +4,6 @@ $.ajaxSetup({
     }
 });
 
-document.addEventListener('DOMContentLoaded', function (e) {
-
-})
-
 // Modular Functions
 
 /*

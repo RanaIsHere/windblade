@@ -18,6 +18,9 @@ function view_invoice(entity) {
     $.ajax({
         type: 'POST',
         url: '/fetch-invoice',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: { id: id },
         success: function (response) {
             let quantity_total = 0
