@@ -3,8 +3,12 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +45,7 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     Route::get('/customers', [DashboardController::class, 'view_customers'])->name('page_customers');
 
     Route::get('/invoices', [DashboardController::class, 'view_invoices'])->name('page_invoices');
+    Route::get('/invoices/{invoice_code}', [InvoiceController::class, 'full_invoice'])->name('full_invoice');
     Route::post('/fetch-invoice', [InvoiceController::class, 'fetch_invoice'])->name('fetch_invoice');
 
     Route::post('/customer', [InputController::class, 'create_customer'])->name('create_customer');
@@ -61,6 +66,11 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     // Transaction END
 });
 
+Route::middleware(['auth.basic', 'role:ADMIN,OWNER'])->group(function () {
+    Route::get('/reports', [ReportsController::class, 'index'])->name('reports');
+    Route::post('/sendRequestMessage', [ReportsController::class, 'sendRequestMessage']);
+});
+
 Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::get('/users', [DashboardController::class, 'view_users'])->name('view_users');
     Route::get('/outlets', [DashboardController::class, 'view_outlets'])->name('page_outlets');
@@ -78,4 +88,19 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/edit-outlet', [InputController::class, 'edit_outlet'])->name('edit_outlet');
 
     Route::post('/register-user', [UserManagementController::class, 'register_user'])->name('register_user');
+
+    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+    Route::post('/inventory', [InventoryController::class, 'create'])->name('add_inventory');
+    Route::post('/fetch-inventory', [InventoryController::class, 'fetch'])->name('fetch_inventory');
+    Route::post('/update-inventory', [InventoryController::class, 'update'])->name('update_inventory');
+    Route::post('/delete-inventory', [InventoryController::class, 'delete'])->name('delete_inventory');
+
+    Route::get('/packages/export', [ExportController::class, 'exportPackages'])->name('export_packages');
+
+    Route::get('/customers/export', [ExportController::class, 'exportMembers'])->name('export_members');
+
+    Route::get('/reports/export/transactions', [ExportController::class, 'exportTransaction'])->name('export_transaction');
+
+    Route::post('/customers/import', [ImportController::class, 'importMembers'])->name('import_members');
+    Route::post('/packages/import', [ImportController::class, 'importPackages'])->name('import_packages');
 });

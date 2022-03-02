@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    .table.dataTable thead th{
+        @apply bg-neutral text-white;
+    }
+}
+
 @layer components {
     .dropdown-btn {
         @apply btn btn-primary btn-sm rounded-btn h-full;
+    }
+
+    .date-input {
+        @apply rounded-md p-2 py-2 shadow-sm border-black border-2 border-opacity-10;
     }
 }

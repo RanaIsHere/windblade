@@ -7,9 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('dataTables/datatables.min.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/print.css') }}">
+
     <title> Windblade - {{ $page_name }} </title>
 </head>
 
@@ -20,6 +23,8 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/windblade.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('dataTables/datatables.min.js') }}"></script>
 
     @if ($page_name == 'Register')
         <script src="{{ asset('js/register.js') }}"></script>
@@ -48,6 +53,25 @@
 
     @if ($page_name == 'Invoices')
         <script src="{{ asset('js/invoice.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Invoice')
+        <script src="{{ asset('js/print.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Reports')
+        <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+                integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('js/reports.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Inventory')
+        <script src="{{ asset('js/inventory.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Reports')
+        @stack('charts')
     @endif
 </body>
 

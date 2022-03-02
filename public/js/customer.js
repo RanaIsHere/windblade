@@ -1,4 +1,21 @@
-$('#customer-table').DataTable();
+$('#customer-table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'copy',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        },
+
+        {
+            extend: 'pdf',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        }
+    ]
+});
 
 document.addEventListener('DOMContentLoaded', function (e) {
 
@@ -39,6 +56,9 @@ function request_info(el, casual_input, real_input, modal) {
     $.ajax({
         type: 'POST',
         url: '/get-customer',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: { id: id },
         success: function (response) {
             console.log(response.response)

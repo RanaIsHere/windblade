@@ -10,6 +10,9 @@ function request_info(el, casual_input, real_input, modal) {
     $.ajax({
         type: 'POST',
         url: '/get-user',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: { id: id },
         success: function (response) {
             document.getElementById(casual_input).value = response.response.name

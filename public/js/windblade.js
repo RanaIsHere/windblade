@@ -4,10 +4,6 @@ $.ajaxSetup({
     }
 });
 
-document.addEventListener('DOMContentLoaded', function (e) {
-
-})
-
 // Modular Functions
 
 /*
@@ -96,4 +92,12 @@ function sift_table(table, filter) {
             tr[i].querySelectorAll('th')[1].querySelector('button').classList.remove('opacity-50')
         }
     }
+}
+
+/*
+    It just works!
+*/
+function link_href(href) {
+    document.getElementById('importModal').classList.add('modal-open')
+    document.getElementById('importForm').action = href
 }

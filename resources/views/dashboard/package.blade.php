@@ -2,7 +2,7 @@
 
 @section('container')
     @include('partials.modals')
-
+    @include('partials.importer')
     @include('partials.header')
 
     @if (Session::has('success'))
@@ -24,10 +24,35 @@
         </div>
     @endif
 
+    @if ($errors->any())
+        <div class="alert shadow-lg alert-error">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>
+                    @foreach ($errors->all() as $errors)
+                        {{ $errors }}
+                    @endforeach
+                </span>
+            </div>
+        </div>
+    @endif
+
     <div class="text-center my-10">
         <div class="btn-group inline-block">
             <button class="btn btn-outline btn-active w-32" id="package-view-btn">View</button>
             <button class="btn btn-outline w-32" id="package-creation-btn">Create</button>
+            <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-outline w-32 rounded-r-md rounded-l-none">More</label>
+                <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-72">
+                    <li><a href="/packages/export" role="button" class="btn btn-outline w-full my-2">Export</a></li>
+                    <li><button class="btn btn-outline w-full my-2" onclick="link_href('/packages/import')">Import</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

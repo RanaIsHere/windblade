@@ -1,8 +1,9 @@
-$('#invoice-table').DataTable();
+$('#invoice-table').DataTable()
 
 function exit_invoice() {
     let tbody = document.createElement('tbody')
 
+    document.getElementById('print-btn').removeAttribute('href')
     document.getElementById('view_invoice').classList.remove('modal-open')
     document.getElementById('invoice-buffer-table').remove()
 
@@ -17,6 +18,9 @@ function view_invoice(entity) {
     $.ajax({
         type: 'POST',
         url: '/fetch-invoice',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: { id: id },
         success: function (response) {
             let quantity_total = 0
@@ -57,13 +61,14 @@ function view_invoice(entity) {
                 package_price.innerText = 'Rp, ' + response.lists[i]['packages']["package_price"]
                 package_quantity.innerText = response.lists[i]['quantity']
 
-                price_total += parseInt(Number(response.lists[i]['packages']["package_price"]))
+                price_total += parseInt(Number(response.lists[i]['packages']["package_price"])) * parseInt(Number(response.lists[i]['quantity']))
                 quantity_total += parseInt(Number(response.lists[i]['quantity']))
             }
 
             document.getElementById('total_quantity').innerText = quantity_total
             document.getElementById('total_price').innerText = price_total
             document.getElementById('very_total').innerHTML = response.response[1].transaction_paid
+            document.getElementById('print-btn').href = '/invoices/' + response.response[1].invoice_code
 
             quantity_total = 0
         }

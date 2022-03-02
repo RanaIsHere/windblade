@@ -65,7 +65,7 @@ class TransactionController extends Controller
             'notes' => ['required', 'nullable'],
             'deadline_time' => ['required'],
             'chosen_packages' => ['required'],
-            'discount' => ['required']
+            'discount' => ['required'],
         ]);
 
         if ($validatedData['transaction_price'] != 0) {
@@ -175,7 +175,8 @@ class TransactionController extends Controller
                             $transaction_details->save();
                         }
 
-                        return redirect()->back()->with('success', 'Transaction successful! Invoice has been saved.');
+                        // return redirect()->back()->with('success', 'Transaction successful! Invoice has been saved.');
+                        return redirect('/invoices/' . $transaction->invoice_code . '')->with('success', 'Transaction successful!');
                     } else {
                         $transaction->delete();
                     }

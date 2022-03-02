@@ -1,4 +1,4 @@
-var CHOSEN = [];
+var CHOSEN = []
 
 function get_member(entity, index) {
 	let table_element = entity.parentElement.parentElement
@@ -7,6 +7,9 @@ function get_member(entity, index) {
 	$.ajax({
 		type: 'POST',
 		url: '/catch-member',
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
 		data: { id: id },
 		success: function (response) {
 			document.getElementById('member_input_real').value = response.response.id
@@ -45,6 +48,9 @@ function add_package(entity) {
 	if (!package_available(id)) {
 		$.ajax({
 			type: 'POST',
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: '/add-package',
 			data: { id: id },
 			success: function (response) {
