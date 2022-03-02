@@ -53,6 +53,8 @@ class PackagesExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder im
         $sheet->getStyle('A3:G3')->getFill()->applyFromArray(['fillType' => 'solid', 'rotation' => 0, 'color' => ['rgb' => '66CC8A']]);
         $sheet->getStyle('A3:G3')->getFont()->setBold(true);
         $sheet->getStyle('A3:G3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+        // Header
         $sheet->getStyle('A3:G3')->applyFromArray([
             'borders' => [
                 'allBorders' => [
@@ -62,6 +64,7 @@ class PackagesExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder im
             ]
         ]);
 
+        // Cells
         $sheet->getStyle('A4:G' . $sheet->getHighestRow())->applyFromArray([
             'borders' => [
                 'allBorders' => [

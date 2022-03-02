@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize
+class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -39,14 +40,14 @@ class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAu
     public function styles(Worksheet $sheet)
     {
         $sheet->insertNewRowBefore(1, 2);
-        $sheet->mergeCells('A1:G1');
+        $sheet->mergeCells('A1:D1');
         $sheet->setCellValue('A1', 'Transaction Table');
         $sheet->getStyle('A1')->getFont()->setBold(true);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A3:G3')->getFill()->applyFromArray(['fillType' => 'solid', 'rotation' => 0, 'color' => ['rgb' => '66CC8A']]);
-        $sheet->getStyle('A3:G3')->getFont()->setBold(true);
-        $sheet->getStyle('A3:G3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A3:G3')->applyFromArray([
+        $sheet->getStyle('A3:D3')->getFill()->applyFromArray(['fillType' => 'solid', 'rotation' => 0, 'color' => ['rgb' => '66CC8A']]);
+        $sheet->getStyle('A3:D3')->getFont()->setBold(true);
+        $sheet->getStyle('A3:D3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A3:D3')->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => Border::BORDER_THICK,
@@ -55,7 +56,7 @@ class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAu
             ]
         ]);
 
-        $sheet->getStyle('A4:G' . $sheet->getHighestRow())->applyFromArray([
+        $sheet->getStyle('A4:D' . $sheet->getHighestRow())->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => Border::BORDER_THIN,

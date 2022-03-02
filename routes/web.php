@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
@@ -95,5 +96,8 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/delete-inventory', [InventoryController::class, 'delete'])->name('delete_inventory');
 
     Route::get('/packages/export', [ExportController::class, 'exportPackages'])->name('export_packages');
+    Route::get('/customers/export', [ExportController::class, 'exportMembers'])->name('export_members');
     Route::get('/reports/export/transactions', [ExportController::class, 'exportTransaction'])->name('export_transaction');
+
+    Route::post('/customers/import', [ImportController::class, 'importMembers'])->name('import_members');
 });

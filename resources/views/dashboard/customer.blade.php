@@ -2,7 +2,7 @@
 
 @section('container')
     @include('partials.modals')
-
+    @include('partials.importer')
     @include('partials.header')
 
     @if (Session::has('success'))
@@ -45,6 +45,15 @@
         <div class="btn-group inline-block">
             <button class="btn btn-outline btn-active w-32" id="customer-view-btn">View</button>
             <button class="btn btn-outline w-32" id="customer-creation-btn">Create</button>
+            <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-outline w-32 rounded-r-md rounded-l-none">More</label>
+                <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-72">
+                    <li><a href="/customers/export" role="button" class="btn btn-outline w-full my-2">Export</a></li>
+                    <li><button class="btn btn-outline w-full my-2"
+                            onclick="document.getElementById('importModal').classList.add('modal-open')">Import</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

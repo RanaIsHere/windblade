@@ -1,4 +1,9 @@
-$('#package-table').DataTable();
+$('#package-table').DataTable()
+
+// $('#package-table').DataTable({
+//     responsive: true,
+//     "buttons": ['copy', 'csv', 'excel', 'pdf', 'print']
+// }).buttons().container().appendTo('#package-table_wrapper .bg-black')
 
 document.addEventListener('DOMContentLoaded', function (e) {
 
