@@ -1,4 +1,9 @@
-$('#customer-table').DataTable();
+$('#customer-table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'copy', 'pdf'
+    ]
+});
 
 document.addEventListener('DOMContentLoaded', function (e) {
 

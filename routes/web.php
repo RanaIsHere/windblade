@@ -96,7 +96,9 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/delete-inventory', [InventoryController::class, 'delete'])->name('delete_inventory');
 
     Route::get('/packages/export', [ExportController::class, 'exportPackages'])->name('export_packages');
-    Route::get('/customers/export', [ExportController::class, 'exportMembers'])->name('export_members');
+
+    Route::get('/customers/export_csv', [ExportController::class, 'exportMembersCSV'])->name('export_members');
+
     Route::get('/reports/export/transactions', [ExportController::class, 'exportTransaction'])->name('export_transaction');
 
     Route::post('/customers/import', [ImportController::class, 'importMembers'])->name('import_members');

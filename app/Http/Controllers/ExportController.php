@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Exports\MembersExport;
 use App\Exports\PackagesExport;
 use App\Exports\ReportTransactionsExport;
+use App\Models\Members;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class ExportController extends Controller
 {
@@ -15,9 +17,14 @@ class ExportController extends Controller
         return Excel::download(new PackagesExport, 'packages.xlsx');
     }
 
-    public function exportMembers()
+    public function exportMembersCSV()
     {
         return Excel::download(new MembersExport, 'members.xlsx');
+    }
+
+    public function exportMembersPDF()
+    {
+        //
     }
 
     public function exportTransaction()

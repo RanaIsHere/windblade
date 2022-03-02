@@ -48,7 +48,10 @@
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-outline w-32 rounded-r-md rounded-l-none">More</label>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-72">
-                    <li><a href="/customers/export" role="button" class="btn btn-outline w-full my-2">Export</a></li>
+                    <li><a href="/customers/export_csv" role="button" class="btn btn-outline w-full my-2">Export as CSV</a>
+                    </li>
+                    <li><a href="/customers/export_pdf" role="button" class="btn btn-outline w-full my-2">Export as PDF</a>
+                    </li>
                     <li><button class="btn btn-outline w-full my-2"
                             onclick="document.getElementById('importModal').classList.add('modal-open')">Import</button>
                     </li>
