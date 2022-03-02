@@ -97,3 +97,11 @@ function sift_table(table, filter) {
         }
     }
 }
+
+/*
+    It just works!
+*/
+function link_href(href) {
+    document.getElementById('importModal').classList.add('modal-open')
+    document.getElementById('importForm').action = href
+}

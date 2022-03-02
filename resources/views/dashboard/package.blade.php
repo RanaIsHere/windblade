@@ -2,7 +2,7 @@
 
 @section('container')
     @include('partials.modals')
-
+    @include('partials.importer')
     @include('partials.header')
 
     @if (Session::has('success'))
@@ -49,7 +49,8 @@
                 <label tabindex="0" class="btn btn-outline w-32 rounded-r-md rounded-l-none">More</label>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-72">
                     <li><a href="/packages/export" role="button" class="btn btn-outline w-full my-2">Export</a></li>
-                    <li><a href="/packages/import" role="button" class="btn btn-outline w-full my-2">Import</a></li>
+                    <li><button class="btn btn-outline w-full my-2" onclick="link_href('/packages/import')">Import</button>
+                    </li>
                 </ul>
             </div>
         </div>

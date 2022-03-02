@@ -1,9 +1,21 @@
-$('#package-table').DataTable()
+$('#package-table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'copy',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        },
 
-// $('#package-table').DataTable({
-//     responsive: true,
-//     "buttons": ['copy', 'csv', 'excel', 'pdf', 'print']
-// }).buttons().container().appendTo('#package-table_wrapper .bg-black')
+        {
+            extend: 'pdf',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        }
+    ]
+})
 
 document.addEventListener('DOMContentLoaded', function (e) {
 

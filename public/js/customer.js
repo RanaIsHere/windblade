@@ -1,7 +1,19 @@
 $('#customer-table').DataTable({
     dom: 'Bfrtip',
     buttons: [
-        'copy', 'pdf'
+        {
+            extend: 'copy',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        },
+
+        {
+            extend: 'pdf',
+            exportOptions: {
+                columns: ':visible:not(:last-child)'
+            }
+        }
     ]
 });
 
