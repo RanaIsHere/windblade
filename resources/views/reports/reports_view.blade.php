@@ -1,6 +1,10 @@
-<div id="reports-view" class="border-2 border-primary m-2 hidden">
+<div id="reports-view" class="border-2 border-primary m-2">
     <div class="flex flex-row p-2">
         <div class="flex-1">
+            <div class="text-center">
+                <a href="/reports/export/transactions" class="btn btn-sm m-2 btn-primary">Export as XLSX</a>
+            </div>
+
             <div class="overflow-x-auto">
                 <table class="table py-2 w-full select-none" id="transaction-table">
                     <thead>
