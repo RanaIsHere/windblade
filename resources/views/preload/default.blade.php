@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('dataTables/datatables.min.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/print.css') }}">
@@ -22,6 +23,8 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/windblade.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('dataTables/datatables.min.js') }}"></script>
 
     @if ($page_name == 'Register')
         <script src="{{ asset('js/register.js') }}"></script>
