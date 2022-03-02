@@ -33,6 +33,9 @@ function update_statistics() {
         $.ajax({
             type: 'POST',
             url: '/calculate-price',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             data: { id: chosen_id, discount: discount },
             success: function (response) {
                 PRICE = response.price

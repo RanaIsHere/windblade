@@ -19,14 +19,11 @@ class InvoiceController extends Controller
                 'id' => ['required']
             ]);
 
-            $invoice_transaction = Transactions::find($validatedData['id']);
-            $transaction_dets = TransactionDetails::with('packages')->where('transaction_id', $invoice_transaction->id)->get();
-            $invoice_details = TransactionDetails::find($validatedData['id']);
-            $member_details = Members::find($invoice_transaction->id);
-            $package_details = Packages::find($invoice_details->package_id);
-            $outlet_details = Outlets::find(Auth::user()->outlet_id);
+            $transaction = Transactions::find($validatedData['id']);
+            $transaction_dets = TransactionDetails::with('packages')->where('transaction_id', $transaction->id)->get();
 
-            return response()->json(['response' => [$invoice_details, $invoice_transaction, $member_details, $package_details, $outlet_details], 'lists' => $transaction_dets]);
+
+            return response()->json(['response' => [$transaction->transactionDetails, $transaction, $transaction->members, $transaction->transactionDetails->packages, $transaction->outlets], 'lists' => $transaction_dets]);
         }
     }
 
