@@ -3,10 +3,22 @@ var socket = io('127.0.0.1:3000');
 socket.emit('connection')
 
 $('#transaction-table').DataTable({
-    "pageLength": 6
+    "pageLength": 6,
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'copy',
+        },
+
+        {
+            extend: 'pdf',
+        }
+    ]
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+    $('#chat-box').scrollTop($('#chat-box').height() * 100)
+
     document.getElementById('messageForm').addEventListener('submit', function (e) {
         e.preventDefault()
 
@@ -22,10 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 data: { message: messageData },
                 success: function (response) {
-                    document.getElementById('chat-box').insertAdjacentHTML('beforeend', '<p>' + response.user + ': ' + response.response.message + '</p>')
+                    socket.emit('sendMessage', response.user, response.response.message)
                 }
             })
         }
+    })
+
+    socket.on('requestMessage', (user, message) => {
+        let chatbox = document.getElementById('chat-box')
+
+        chatbox.insertAdjacentHTML('beforeend', '<p>' + user + ': ' + message + '</p>')
+        $('#chat-box').scrollTop($('#chat-box').height() * 100)
     })
 })
 

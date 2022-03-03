@@ -1,4 +1,4 @@
-<div id="requests-view" class="border-2 border-primary m-2 hidden">
+<div id="requests-view" class="border-2 border-primary m-2">
     <div class="flex flex-row p-4">
         <div class="flex-1">
             <div class="bg-primary rounded-l-xl px-4 py-3 text-primary-content">
