@@ -26,6 +26,10 @@
 
     <script type="text/javascript" src="{{ asset('dataTables/datatables.min.js') }}"></script>
 
+    @if ($page_name == 'Simulation')
+        <script src="{{ asset('js/simulation.js') }}"></script>
+    @endif
+
     @if ($page_name == 'Register')
         <script src="{{ asset('js/register.js') }}"></script>
     @endif
