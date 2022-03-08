@@ -102,7 +102,7 @@ function updateTable(arr) {
 }
 
 function sort(arr) {
-    if (document.getElementById('filterInput').value == 'DESC') {
+    if (document.getElementById('filterInput').value == 'ASC') {
         console.log('DESC')
 
         let i, j, id, value

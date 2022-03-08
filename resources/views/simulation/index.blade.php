@@ -68,8 +68,8 @@
                 <div class="input-group">
                     <select name="filter" id="filterInput" class="select select-bordered w-full"
                         onchange="sort(get_id('simulation-table-tbody'))">
-                        <option value="DESC">Descending</option>
                         <option value="ASC">Ascending</option>
+                        <option value="DESC">Descending</option>
                     </select>
                 </div>
             </div>

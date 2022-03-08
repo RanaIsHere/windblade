@@ -44,7 +44,7 @@ function deleteItem(id_element, model_type, modal) {
 */
 
 function search(search, table) {
-    let record, success;
+    let record, success
     let search_value = search.value.toUpperCase()
     let table_element = document.getElementById(table)
     let rows = table_element.querySelector('tbody').getElementsByTagName('tr')
