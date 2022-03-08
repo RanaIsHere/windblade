@@ -100,20 +100,42 @@ function updateTable(arr) {
 }
 
 function sort(arr) {
-    let i, j, id, value
-    for (i = 1; i < arr.length; i++) {
-        value = arr[i]
-        id = arr[i]['id']
-        j = i - 1
+    if (document.getElementById('filterInput').value == 'DESC') {
+        console.log('DESC')
 
-        // console.log("X: " + arr[j]['id'] + " is larger than " + "Y: " + id + " is " + String(arr[j]['id'] > id))
+        let i, j, id, value
+        for (i = 1; i < arr.length; i++) {
+            value = arr[i]
+            id = arr[i]['id']
+            j = i - 1
 
-        while (j >= 0 && arr[j]['id'] > id) {
-            arr[j + 1] = arr[j]
-            j -= 1
+            // console.log("X: " + arr[j]['id'] + " is larger than " + "Y: " + id + " is " + String(arr[j]['id'] > id))
+
+            while (j >= 0 && arr[j]['id'] > id) {
+                arr[j + 1] = arr[j]
+                j -= 1
+            }
+            arr[j + 1] = value
         }
-        arr[j + 1] = value
-    }
 
-    updateTable(arr)
+        updateTable(arr)
+    } else {
+        console.log('ASC')
+        let i, j, id, value
+        for (i = 1; i < arr.length; i++) {
+            value = arr[i]
+            id = arr[i]['id']
+            j = i - 1
+
+            // console.log("X: " + arr[j]['id'] + " is larger than " + "Y: " + id + " is " + String(arr[j]['id'] > id))
+
+            while (j >= 0 && arr[j]['id'] < id) {
+                arr[j + 1] = arr[j]
+                j -= 1
+            }
+            arr[j + 1] = value
+        }
+
+        updateTable(arr)
+    }
 }

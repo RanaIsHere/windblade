@@ -60,11 +60,41 @@
 
     <div class="flex flex-row text-center">
         <div class="flex-1">
+            <div class="form-control mx-2">
+                <label class="label">
+                    <span class="label-text">Filter Type</span>
+                </label>
+
+                <div class="input-group">
+                    <select name="filter" id="filterInput" class="select select-bordered w-full"
+                        onchange="sort(get_id('simulation-table-tbody'))">
+                        <option value="DESC">Descending</option>
+                        <option value="ASC">Ascending</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 pt-[2.2rem]">
             <button class="btn btn-primary" onclick="sort(get_id('simulation-table-tbody'))">Sort</button>
+        </div>
+
+        <div class="flex-1">
+            <div class="form-control mx-2">
+                <label class="label">
+                    <span class="label-text">Search</span>
+                </label>
+
+                <div class="input-group">
+                    <input type="search" name="search" id="searchInput" placeholder="Insert a query here.."
+                        class="input input-bordered w-full"
+                        oninput="search(document.getElementById('searchInput'), 'simulation-table')">
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="flex flex-row">
+    <div class=" flex flex-row">
         <div class="flex-1">
             <div class="overflow-x-auto p-2">
                 <table class="table w-full text-center" id="simulation-table">
