@@ -60,7 +60,7 @@
 
     <div class="flex flex-row text-center">
         <div class="flex-1">
-            <button class="btn btn-primary">Sort</button>
+            <button class="btn btn-primary" onclick="sort(get_id('simulation-table-tbody'))">Sort</button>
         </div>
     </div>
 
