@@ -1,6 +1,8 @@
 let default_item = JSON.parse(localStorage.getItem('simulationData'))
 
-updateTable(default_item)
+if (localStorage.getItem('simulationData')) {
+    updateTable(default_item)
+}
 
 function submit_simulation() {
     let table = document.getElementById('simulation-table-tbody')
