@@ -4243,30 +4243,6 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-.pt-5 {
-  padding-top: 1.25rem;
-}
-.pt-6 {
-  padding-top: 1.5rem;
-}
-.pt-10 {
-  padding-top: 2.5rem;
-}
-.pt-9 {
-  padding-top: 2.25rem;
-}
-.pt-8 {
-  padding-top: 2rem;
-}
-.pt-\[8\.5rem\] {
-  padding-top: 8.5rem;
-}
-.pt-\[2\.5rem\] {
-  padding-top: 2.5rem;
-}
-.pt-\[2\.3rem\] {
-  padding-top: 2.3rem;
-}
 .pt-\[2\.2rem\] {
   padding-top: 2.2rem;
 }
