@@ -64,9 +64,7 @@
     @endif
 
     @if ($page_name == 'Reports')
-        <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
-                integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous">
-        </script>
+        <script src="{{ asset('socket.io/dist/socket.io.min.js') }}"></script>
         <script src="{{ asset('js/reports.js') }}"></script>
     @endif
 

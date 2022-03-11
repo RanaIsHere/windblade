@@ -17,7 +17,6 @@ io.on('connection', (socket) => {
         console.log('An user has joined ' + user + ' room!')
 
         socket.join(String(user) + String(id))
-        console.log(io.sockets.adapter.rooms)
     })
     socket.on('disconnect', (socket) => {
         console.log('An user has disconnected from the server')
