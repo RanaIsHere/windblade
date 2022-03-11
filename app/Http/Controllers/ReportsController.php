@@ -39,10 +39,12 @@ class ReportsController extends Controller
             $req->message = $validatedData['message'];
 
             if ($req->save()) {
+                $user_id = $req->user_id;
                 $user = User::where('id', $req->user_id)->first()->username;
                 $message = $req;
 
                 return response()->json([
+                    'id' => $user_id,
                     'response' => $message,
                     'user' => $user
                 ]);

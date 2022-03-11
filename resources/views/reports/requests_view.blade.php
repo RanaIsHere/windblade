@@ -1,19 +1,24 @@
-<div id="requests-view" class="border-2 border-primary m-2 hidden">
+<div id="requests-view" class="border-2 border-primary m-2">
     <div class="flex flex-row p-4">
         <div class="flex-1">
             <div class="bg-primary rounded-l-xl px-4 py-3 text-primary-content">
                 <p class="text-lg font-semibold">Users</p>
             </div>
 
+            <input type="hidden" id="fromId" value="{{ Auth::user()->id }}">
+
             <div class="overflow-y-scroll px-2">
                 @foreach (Auth::user()->where('outlet_id', Auth::user()->outlet_id)->get()->except(Auth::user()->id)
     as $user)
                     <div class="card w-full bg-primary text-primary-content my-4">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $user->username }}, {{ $user->roles }}</h2>
+                            <input type="hidden" value="{{ $user->id }}">
+                            <h2 class="card-title"><span>{{ $user->username }}</span>-
+                                <span>{{ $user->roles }}</span>
+                            </h2>
                             <p class="opacity-50">{{ $user->name }}</p>
                             <div class="justify-end card-actions">
-                                <button class="btn">Start Messaging</button>
+                                <button class="btn startMessage">Start Messaging</button>
                             </div>
                         </div>
                     </div>
@@ -32,7 +37,11 @@
                     <p>> Welcome, {{ Auth::user()->username }}</p>
 
                     @foreach ($chatData as $chat)
-                        <p>{{ $chat->user->username }}: {{ $chat->message }}</p>
+                        @if ($chat->user->id == Auth::user()->id)
+                            <p class="text-right">{{ $chat->user->username }}: {{ $chat->message }}</p>
+                        @else
+                            <p class="text-left">{{ $chat->user->username }}: {{ $chat->message }}</p>
+                        @endif
                     @endforeach
                 </div>
 

@@ -1,4 +1,4 @@
-<div id="reports-view" class="border-2 border-primary m-2">
+<div id="reports-view" class="border-2 border-primary m-2 hidden">
     <div class="flex flex-row p-2">
         <div class="flex-1">
             <div class="text-center">
