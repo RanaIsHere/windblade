@@ -1,6 +1,6 @@
-var socket = io('127.0.0.1:3000');
+// var socket = io('127.0.0.1:3000');
 
-socket.emit('connection')
+// socket.emit('connection')
 
 // socket.on('requestMessage', (id, user, message) => {
 //     let chatbox = document.getElementById('chat-box')
@@ -158,4 +158,20 @@ function addNotification() {
     </div>`
 
     notification_group.appendChild(notification)
+}
+
+// A function to search linearly in a table
+function searchTable(table, searchText) {
+    let rows = document.getElementById(table).children[1].rows;
+    for (let i = 0; i < rows.length; i++) {
+        let cells = rows[i].cells;
+        for (let j = 0; j < cells.length; j++) {
+            if (cells[j].innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                rows[i].style.display = '';
+                break;
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
+    }
 }

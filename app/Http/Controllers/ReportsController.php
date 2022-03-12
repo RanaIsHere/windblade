@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Members;
 use App\Models\Requests;
 use App\Models\TransactionDetails;
@@ -17,12 +18,14 @@ class ReportsController extends Controller
         $transactionData = Transactions::where('outlet_id', Auth::user()->outlet_id)->with('TransactionDetails')->get();
         $chatData = Requests::all();
         $memberData = Members::all();
+        $activityData = Activity::all();
 
         return view('reports.index', [
             'page_name' => 'Reports',
             'chatData' => $chatData,
             'transactionData' => $transactionData,
-            'memberData' => $memberData
+            'memberData' => $memberData,
+            'activityData' => $activityData
         ]);
     }
 
