@@ -11,7 +11,8 @@
                             <p>OUTLET: {{ $trad->outlets->outlet_name }}</p>
                             <p>CASHIER {{ $trad->user->name }}</p>
                             <div class="justify-end card-actions">
-                                <button class="btn">Report</button>
+                                <p class="hidden">{{ $trad->id }}</p>
+                                <button class="btn reportSchedule">Report</button>
                             </div>
                         </div>
                     </div>
@@ -83,16 +84,13 @@
                 </div>
             </div>
 
-            <div id="days">
-                <div class="flex flex-row flex-wrap text-center text-primary-content font-bold">
-                    @for ($i = 1; $i <= now()->daysInMonth; $i++)
-                        <div class="mx-5 my-2">
-                            <div class="rounded-full bg-green-300 p-5 w-16 hover:bg-green-400">
-                                <p>{{ $i }}</p>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
+            <div class="flex flex-row flex-wrap text-center text-primary-content font-bold" id="days">
+                @for ($i = 1; $i <= now()->daysInMonth; $i++)
+                    <div class="mx-5 my-2">
+                        <div class="rounded-full bg-green-300 p-5 w-16 hover:bg-green-400 cursor-pointer"
+                            onclick="this.style.backgroundColor = ''">{{ $i }}</div>
+                    </div>
+                @endfor
             </div>
         </div>
     </div>

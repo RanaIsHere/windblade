@@ -51,4 +51,15 @@ class ReportsController extends Controller
             }
         }
     }
+
+    public function report_schedule(Request $request)
+    {
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'id' => ['required']
+            ]);
+
+            return response()->json(['date' => Transactions::find($validatedData['id'])->transaction_deadline]);
+        }
+    }
 }
