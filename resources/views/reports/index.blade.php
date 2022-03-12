@@ -15,14 +15,13 @@
                     Schedule
                 </a>
 
-                <a id="request-tab" class="indicator tab tab-lg tab-bordered changeTabs">
+                {{-- Temporarily disabled --}}
+                {{-- <a id="request-tab" class="indicator tab tab-lg tab-bordered changeTabs">
                     Requests
-                    {{-- <span id="request-counter" class="indicator-item badge hidden">0</span> --}}
-                </a>
+                </a> --}}
 
                 <a id="request-tab" class="indicator tab tab-lg tab-bordered changeTabs">
                     Logs
-                    {{-- <span id="request-counter" class="indicator-item badge hidden">0</span> --}}
                 </a>
             </div>
         </div>
@@ -32,7 +31,7 @@
 
     @include('reports.schedule_view')
 
-    @include('reports.requests_view')
+    {{-- @include('reports.requests_view') --}}
 
     @include('reports.logs_view')
 @endsection

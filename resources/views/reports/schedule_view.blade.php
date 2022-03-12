@@ -23,18 +23,17 @@
         <div class="flex-1">
             <div id="month" class="bg-primary text-primary-content text-center p-4">
                 <div class="flex flex-row items-center">
-                    <div class="flex-none">
+                    {{-- <div class="flex-none">
                         <p class="font-bold">Previous</p>
-                    </div>
+                    </div> --}}
 
                     <div class="flex-1">
                         <h2 class="text-2xl font-medium">{{ now()->monthName }}</h2>
                         <p class="text-xl font-light">{{ now()->format('d') }} - {{ now()->dayName }}</p>
                     </div>
-
-                    <div class="flex-none">
+                    {{-- <div class="flex-none">
                         <p class="font-bold">Next</p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -86,6 +85,14 @@
 
             <div class="flex flex-row flex-wrap text-center text-primary-content font-bold" id="days">
                 @for ($i = 1; $i <= now()->daysInMonth; $i++)
+                    @if ($i == now()->day)
+                        <div class="mx-5 my-2">
+                            <div class="rounded-full bg-primary p-5 w-16">
+                                <p>{{ $i }}</p>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="mx-5 my-2">
                         <div class="rounded-full bg-green-300 p-5 w-16 hover:bg-green-400 cursor-pointer"
                             onclick="this.style.backgroundColor = ''">{{ $i }}</div>
