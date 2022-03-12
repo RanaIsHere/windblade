@@ -67,18 +67,33 @@ document.addEventListener('DOMContentLoaded', () => {
             socket.emit('joinRoom', id, user)
         })
     }
-})
 
-function change_tab(entity) {
-    const parent = entity.parentElement
+    for (let i = 0; i < document.getElementsByClassName('changeTabs').length; i++) {
+        document.getElementsByClassName('changeTabs')[i].addEventListener('click', function (entity) {
+            entity.preventDefault()
 
-    for (i = 0; i < parent.children.length; i++) {
-        if (parent.querySelectorAll('a')[i].classList.contains('tab-active')) {
-            parent.querySelectorAll('a')[i].classList.remove('tab-active')
-            parent.querySelectorAll('a')[i].classList.remove('text-opacity-100')
+            const parent = entity.currentTarget.parentElement
+            const tabs = ['reports', 'schedule', 'requests', 'logs']
 
-            entity.classList.add('tab-active')
-            entity.classList.add('text-opacity-100')
-        }
+            for (i = 0; i < parent.children.length; i++) {
+                if (parent.querySelectorAll('a')[i].classList.contains('tab-active')) {
+
+                    parent.querySelectorAll('a')[i].classList.remove('tab-active')
+                    parent.querySelectorAll('a')[i].classList.remove('text-opacity-100')
+
+                    entity.currentTarget.classList.add('tab-active')
+                    entity.currentTarget.classList.add('text-opacity-100')
+
+                    if (tabs[i] != String(entity.currentTarget.innerText).toLowerCase()) {
+                        if (Number(i) > Number(i + 1) == false) {
+                            if (Number(i) < Number(i - 1) == false) {
+                                document.getElementById(tabs[i] + '-view').classList.add('hidden')
+                                document.getElementById(String(entity.currentTarget.innerText).toLowerCase() + '-view').classList.remove('hidden')
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
-}
+})
