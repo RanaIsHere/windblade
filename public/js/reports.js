@@ -30,7 +30,28 @@ $('#transaction-table').DataTable({
     ]
 })
 
+// Make a datatable without pagination
+
+$('#activity-table').DataTable({
+    paging: false,
+    info: false,
+    searching: false
+})
+
 document.addEventListener('DOMContentLoaded', () => {
+    const all_tabs = Array.from(document.getElementById('tabsMenu').getElementsByTagName('a')).map(element => element.innerText.toLowerCase())
+
+    console.log(document.getElementById('tabsMenu').getElementsByTagName('a').length)
+
+    for (let i = 0; i < all_tabs.length; i++) {
+        if (document.getElementById('tabsMenu').getElementsByTagName('a').length > 1) {
+            document.getElementById(all_tabs[i] + '-view').classList.remove('hidden')
+        } else {
+            document.getElementById(all_tabs[i] + '-view').classList.remove('hidden')
+            document.getElementById('tabsMenu').getElementsByTagName('a')[i].classList.add('tab-active')
+        }
+    }
+
     // $('#chat-box').scrollTop($('#chat-box').height() * 100)
 
     // document.getElementById('messageForm').addEventListener('submit', function (e) {
@@ -71,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             entity.preventDefault()
 
             const parent = entity.currentTarget.parentElement
-            // const tabs = ['reports', 'schedule', 'requests', 'logs']
-            const tabs = ['reports', 'schedule', 'logs']
+            // const tabs = ['reports', 'schedule', 'requests', 'logs'] Temporarily disabled until enough information gathered
+
+            const tabs = Array.from(parent.getElementsByTagName('a')).map(element => element.innerText.toLowerCase())
 
             for (i = 0; i < parent.children.length; i++) {
                 if (parent.querySelectorAll('a')[i].classList.contains('tab-active')) {
