@@ -35,9 +35,8 @@
     @if (Auth::user()->roles === 'OWNER')
         @include('reports.reports_view')
         @include('reports.schedule_view')
+        {{-- @include('reports.requests_view') --}}
     @endif
-
-    {{-- @include('reports.requests_view') --}}
 
     @if (Auth::user()->roles === 'ADMIN')
         @include('reports.logs_view')
@@ -47,17 +46,46 @@
 @if (Auth::user()->roles === 'OWNER')
     @push('charts')
         <script>
+            function getAllDataFromCorrespondingMonth() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/getSumFromMonths',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        let monthly = response.transaction_monthly
+                        let yearly = response.transaction_yearly
+                        let monthly_data = []
+                        let yearly_data = []
+
+                        for (let i = 0; i < monthly.length; i++) {
+                            monthly_data.push(monthly[i].transaction_paid)
+                        }
+
+                        for (let i = 0; i < yearly.length; i++) {
+                            yearly_data.push(yearly[i].transaction_paid)
+                        }
+
+                        let monthly_sum = monthly_data.reduce((a, b) => a + b, 0)
+                        let yearly_sum = yearly_data.reduce((a, b) => a + b, 0)
+
+                        return monthly_sum
+                    }
+                });
+            }
+
+
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                     datasets: [{
                         label: 'Rupiah',
                         data: [
-                            @foreach ($transactionData as $turd)
-                                {{ $turd->transaction_paid }},
-                            @endforeach
+                            getAllDataFromCorrespondingMonth()
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',

@@ -44,9 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(document.getElementById('tabsMenu').getElementsByTagName('a').length)
 
     for (let i = 0; i < all_tabs.length; i++) {
-        if (document.getElementById('tabsMenu').getElementsByTagName('a').length > 1) {
-            document.getElementById(all_tabs[i] + '-view').classList.remove('hidden')
-        } else {
+        if (document.getElementById('tabsMenu').getElementsByTagName('a').length <= 1) {
             document.getElementById(all_tabs[i] + '-view').classList.remove('hidden')
             document.getElementById('tabsMenu').getElementsByTagName('a')[i].classList.add('tab-active')
         }
