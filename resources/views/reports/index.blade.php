@@ -71,7 +71,7 @@
                         let monthly_sum = monthly_data.reduce((a, b) => a + b, 0)
                         let yearly_sum = yearly_data.reduce((a, b) => a + b, 0)
 
-                        return monthly_sum
+                        return monthly_data
                     }
                 });
             }
@@ -85,7 +85,7 @@
                     datasets: [{
                         label: 'Rupiah',
                         data: [
-                            getAllDataFromCorrespondingMonth()
+                            console.log(getAllDataFromCorrespondingMonth())
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',

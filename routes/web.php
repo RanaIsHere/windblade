@@ -3,12 +3,14 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
@@ -68,6 +70,8 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
 });
 
 Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {
+    Route::get('/salary', [SalaryController::class, 'index'])->name('salary');
+
     Route::post('/reportSchedule', [ReportsController::class, 'report_schedule'])->name('reportSchedule');
     Route::post('/getSumFromMonths', [ReportsController::class, 'report_monthly'])->name('reportMonthly');
 });
@@ -82,6 +86,16 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::get('/outlets', [DashboardController::class, 'view_outlets'])->name('page_outlets');
     Route::get('/packages', [DashboardController::class, 'view_packages'])->name('page_packages');
     Route::get('/simulation', [SimulationController::class, 'index'])->name('view_simulation');
+
+    Route::get('/delivery', [DeliveryController::class, 'index'])->name('delivery');
+    Route::post('/delivery/create', [DeliveryController::class, 'store'])->name('store_delivery');
+    Route::post('/delivery/fetch_edit', [DeliveryController::class, 'edit'])->name('edit_delivery');
+    Route::post('/delivery/edit', [DeliveryController::class, 'update'])->name('update_delivery');
+    Route::post('/delivery/status', [DeliveryController::class, 'updateStatus'])->name('update_status');
+    Route::post('/delivery/delete', [DeliveryController::class, 'delete'])->name('delete_delivery');
+
+    Route::get('/delivery/export', [DeliveryController::class, 'exportData'])->name('export_delivery');
+    Route::post('/delivery/import', [DeliveryController::class, 'importData'])->name('import_delivery');
 
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');

@@ -16,4 +16,9 @@ class Members extends Model
     {
         return $this->hasMany(Transactions::class, 'member_id');
     }
+
+    public function deliveries()
+    {
+        return $this->hasMany(Deliveries::class, 'member_id');
+    }
 }

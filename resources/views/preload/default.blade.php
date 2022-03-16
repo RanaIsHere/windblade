@@ -75,6 +75,14 @@
     @if ($page_name == 'Reports')
         @stack('charts')
     @endif
+
+    @if ($page_name == 'Salaries')
+        <script src="{{ asset('js/salary.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Delivery')
+        @stack('deliveries')
+    @endif
 </body>
 
 </html>
