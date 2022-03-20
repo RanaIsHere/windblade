@@ -46,37 +46,6 @@
 @if (Auth::user()->roles === 'OWNER')
     @push('charts')
         <script>
-            function getAllDataFromCorrespondingMonth() {
-                $.ajax({
-                    type: 'POST',
-                    url: '/getSumFromMonths',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        let monthly = response.transaction_monthly
-                        let yearly = response.transaction_yearly
-                        let monthly_data = []
-                        let yearly_data = []
-
-                        for (let i = 0; i < monthly.length; i++) {
-                            monthly_data.push(monthly[i].transaction_paid)
-                        }
-
-                        for (let i = 0; i < yearly.length; i++) {
-                            yearly_data.push(yearly[i].transaction_paid)
-                        }
-
-                        let monthly_sum = monthly_data.reduce((a, b) => a + b, 0)
-                        let yearly_sum = yearly_data.reduce((a, b) => a + b, 0)
-
-                        return monthly_data
-                    }
-                });
-            }
-
-
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
                 type: 'line',
@@ -85,7 +54,7 @@
                     datasets: [{
                         label: 'Rupiah',
                         data: [
-                            console.log(getAllDataFromCorrespondingMonth())
+                            getAllDataFromCorrespondingMonth()
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -104,6 +73,47 @@
                     }
                 }
             });
+
+            function getAllDataFromCorrespondingMonth() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/reports/getSumFromMonths',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        let monthly = response.transaction_monthly
+                        let monthly_data = []
+
+                        for (let i = 0; i < monthly.length; i++) {
+                            let transaction_date = monthly[i].transaction_date
+                            let transaction_paid = monthly[i].transaction_paid
+
+                            if (i === 0) {
+                                monthly_data.push({
+                                    x: transaction_date,
+                                    y: transaction_paid
+                                })
+                            } else {
+                                let last_transaction_date = monthly_data[monthly_data.length - 1].x
+                                let last_transaction_paid = monthly_data[monthly_data.length - 1].y
+
+                                if (new Date(transaction_date).getMonth() === new Date(last_transaction_date)
+                                    .getMonth()) {
+                                    monthly_data[monthly_data.length - 1].y += transaction_paid
+                                } else {
+                                    monthly_data.push({
+                                        x: transaction_date,
+                                        y: transaction_paid
+                                    })
+                                }
+                            }
+                        }
+
+                        console.log(monthly_data)
+                    }
+                });
+            }
         </script>
     @endpush
 @endif

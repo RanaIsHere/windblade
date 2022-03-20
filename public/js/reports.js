@@ -41,7 +41,7 @@ $('#activity-table').DataTable({
 document.addEventListener('DOMContentLoaded', () => {
     const all_tabs = Array.from(document.getElementById('tabsMenu').getElementsByTagName('a')).map(element => element.innerText.toLowerCase())
 
-    console.log(document.getElementById('tabsMenu').getElementsByTagName('a').length)
+    // console.log(document.getElementById('tabsMenu').getElementsByTagName('a').length)    
 
     for (let i = 0; i < all_tabs.length; i++) {
         if (document.getElementById('tabsMenu').getElementsByTagName('a').length <= 1) {

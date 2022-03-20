@@ -58,16 +58,10 @@ class ReportsController extends Controller
     public function report_monthly(Request $request)
     {
         if ($request->ajax()) {
-            $transaction_monthly = Transactions::where('outlet_id', Auth::user()->outlet_id)->whereMonth('created_at', '=', date('m'))->with('TransactionDetails')->get();
-            $transaction_previous_month = Transactions::where('outlet_id', Auth::user()->outlet_id)->whereMonth('created_at', '=', date('m') - 1)->with('TransactionDetails')->get();
-            $transaction_previous_year = Transactions::where('outlet_id', Auth::user()->outlet_id)->whereYear('created_at', '=', date('Y') - 1)->with('TransactionDetails')->get();
-            $transaction_yearly = Transactions::where('outlet_id', Auth::user()->outlet_id)->whereYear('created_at', '=', date('Y'))->with('TransactionDetails')->get();
+            $transaction_monthly = Transactions::where('outlet_id', Auth::user()->outlet_id)->whereMonth('created_at', '<=', date('m'))->with('TransactionDetails')->get();
 
             return response()->json([
-                'transaction_monthly' => $transaction_monthly,
-                'transaction_yearly' => $transaction_yearly,
-                'transaction_previous_month' => $transaction_previous_month,
-                'transaction_previous_year' => $transaction_previous_year
+                'transaction_monthly' => $transaction_monthly
             ]);
         }
     }

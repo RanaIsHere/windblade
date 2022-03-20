@@ -73,7 +73,7 @@ Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {
     Route::get('/salary', [SalaryController::class, 'index'])->name('salary');
 
     Route::post('/reportSchedule', [ReportsController::class, 'report_schedule'])->name('reportSchedule');
-    Route::post('/getSumFromMonths', [ReportsController::class, 'report_monthly'])->name('reportMonthly');
+    Route::post('/reports/getSumFromMonths', [ReportsController::class, 'report_monthly'])->name('reportMonthly');
 });
 
 Route::middleware(['auth.basic', 'role:ADMIN,OWNER'])->group(function () {
