@@ -18,6 +18,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class PackagesExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithCustomValueBinder, WithEvents
 {
     /**
+     * Return packages where an outlet_id is placed within an user
      * @return \Illuminate\Support\Collection
      */
     public function collection()
@@ -25,11 +26,19 @@ class PackagesExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder im
         return Packages::where('outlet_id', Auth::user()->outlet_id)->get();
     }
 
+    /**
+     * Deprecated
+     * @return array
+     */
     public function registerEvents(): array
     {
         return [];
     }
 
+    /**
+     * Return a headings to be put into the export
+     * @return array
+     */
     public function headings(): array
     {
         return [
@@ -43,6 +52,10 @@ class PackagesExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder im
         ];
     }
 
+    /**
+     * Format many specific columns and row of the export with specific styles
+     * @param Worksheet $sheet
+     */
     public function styles(Worksheet $sheet)
     {
         $sheet->insertNewRowBefore(1, 2);

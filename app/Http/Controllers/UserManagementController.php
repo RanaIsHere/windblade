@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
 {
+    /**
+     * On POST request from a FORM, first validate if all input si filled correctly, then insert them one by one in order
+     * - Owner
+     * - Outlet
+     * - Admin
+     * If one each of them inserts successfully, then continue until all is success, then return with a notification on a view.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function register_owner(Request $request)
     {
         $validatedData = $request->validate([
@@ -74,6 +83,11 @@ class UserManagementController extends Controller
         }
     }
 
+    /**
+     * Add a new USER to a specific outlet with specified roles by FORM POST request, and return with a view page to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function register_user(Request $request)
     {
         $validatedData = $request->validate([
@@ -98,6 +112,11 @@ class UserManagementController extends Controller
         }
     }
 
+    /**
+     * Add a new USER to a specific outlet with specified roles by FORM POST request, and return with a view page to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function get_user(Request $request)
     {
         if ($request->ajax()) {
@@ -111,6 +130,11 @@ class UserManagementController extends Controller
         }
     }
 
+    /**
+     * Update a USER with specified roles by FORM POST request, and return with a view page to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit_user(Request $request)
     {
         $validatedData = $request->validate([

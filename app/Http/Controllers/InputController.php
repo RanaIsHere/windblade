@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class InputController extends Controller
 {
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create_package(Request $request)
     {
         $validatedData = $request->validate([
@@ -35,6 +40,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create_outlet(Request $request)
     {
         $validatedData = $request->validate([
@@ -60,6 +70,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create_customer(Request $request)
     {
         $validatedData = $request->validate([
@@ -85,6 +100,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit_package(Request $request)
     {
         $validatedData = $request->validate([
@@ -110,6 +130,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit_outlet(Request $request)
     {
         $validatedData = $request->validate([
@@ -136,6 +161,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Returns a view to the user after processing the form on POST request, and inserting records by fields one by one, before saving it (inserting) in the database.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit_customer(Request $request)
     {
         $validatedData = $request->validate([
@@ -162,6 +192,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Get a POST Request by AJAX to get customer data and return it as JSON.        
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_customer(Request $request)
     {
         if ($request->ajax()) {
@@ -175,6 +210,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Get a POST Request by AJAX to get package data, and outlet name and return it as JSON.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_package(Request $request)
     {
         if ($request->ajax()) {
@@ -188,6 +228,11 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Get a POST Request by AJAX to get outlet data, and outlet name and return it as JSON.        
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_outlet(Request $request)
     {
         if ($request->ajax()) {
@@ -201,6 +246,13 @@ class InputController extends Controller
         }
     }
 
+    /**
+     * Catch a POST Request to delete a specific item by model_type and id.
+     * If statement will catch the right model_type, and delete accordingly to the model.
+     * Then return a view back to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function delete_item(Request $request)
     {
         $validatedData = $request->validate([

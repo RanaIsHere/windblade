@@ -16,6 +16,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
 {
     /**
+     * Return a collection of Members by specific select.
      * @return \Illuminate\Support\Collection
      */
     public function collection()
@@ -23,6 +24,10 @@ class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
         return Members::all(['id', 'member_name', 'member_address', 'member_phone', 'member_gender']);
     }
 
+    /**
+     * Return a headings to be put into the export
+     * @return array
+     */
     public function headings(): array
     {
         return [
@@ -34,6 +39,10 @@ class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
         ];
     }
 
+    /**
+     * Format a specific column of the export
+     * @return array
+     */
     public function columnFormats(): array
     {
         return [
@@ -41,6 +50,11 @@ class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
         ];
     }
 
+    /**
+     * Format a many columns and rows of the export with specific styles
+     * @param Worksheet $sheet
+     * @return array
+     */
     public function styles(Worksheet $sheet)
     {
         $sheet->insertNewRowBefore(1, 2);

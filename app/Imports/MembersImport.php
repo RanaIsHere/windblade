@@ -14,11 +14,20 @@ class MembersImport implements ToModel, WithStartRow
      * @return \Illuminate\Database\Eloquent\Model|null
      */
 
+    /**
+     * Which should the row start to pull in the import from the Excel?
+     * @return int
+     */
     public function startRow(): int
     {
         return 4;
     }
 
+    /**
+     * Return a model of Members, which will be used to insert data into the database
+     * @param array $row
+     * @return array
+     */
     public function model(array $row)
     {
         return new Members([

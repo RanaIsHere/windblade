@@ -15,6 +15,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles
 {
     /**
+     * Return a collection of Transactions by specific select.
      * @return \Illuminate\Support\Collection
      */
     public function collection()
@@ -22,11 +23,20 @@ class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAu
         return Transactions::where('outlet_id', Auth::user()->outlet_id)->get(['id', 'member_id', 'transaction_paid', 'transaction_date']);
     }
 
+    /**
+     * @deprecated
+     * Register events
+     * @return array
+     */
     public function registerEvents(): array
     {
         return [];
     }
 
+    /**
+     * Return a headings to be put into the export
+     * @return array
+     */
     public function headings(): array
     {
         return [
@@ -37,6 +47,10 @@ class ReportTransactionsExport implements FromCollection, WithHeadings, ShouldAu
         ];
     }
 
+    /**
+     * Format many specific columns and row of the export with specific styles
+     * @param Worksheet $sheet
+     */
     public function styles(Worksheet $sheet)
     {
         $sheet->insertNewRowBefore(1, 2);

@@ -16,6 +16,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class DeliveryExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
 {
     /**
+     * Return a collection of Deliveries by specific select.
      * @return \Illuminate\Support\Collection
      */
     public function collection()
@@ -23,6 +24,10 @@ class DeliveryExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         return Deliveries::all('id', 'member_id', 'carrier', 'status');
     }
 
+    /**
+     * Return a headings to be put into the export
+     * @return array
+     */
     public function headings(): array
     {
         return [
@@ -33,6 +38,10 @@ class DeliveryExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         ];
     }
 
+    /**
+     * Format a specific column of the export
+     * @param Worksheet $sheet
+     */
     public function columnFormats(): array
     {
         return [
@@ -40,6 +49,10 @@ class DeliveryExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         ];
     }
 
+    /**
+     * Format a many columns and rows of the export with specific styles
+     * @param Worksheet $sheet
+     */
     public function styles(Worksheet $sheet)
     {
         $sheet->insertNewRowBefore(1, 2);

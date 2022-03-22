@@ -11,16 +11,28 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
+    /**
+     * Return an Object calling a method by download, and create a new object by the PackagesExport with a file name set 
+     * @return \Maatwebsite\Excel\BinaryFileResponse
+     */
     public function exportPackages()
     {
         return Excel::download(new PackagesExport, 'packages.xlsx');
     }
 
+    /**
+     * Return an Object calling a method by download, and create a new object by the MembersExport with a file name set
+     * @return \Maatwebsite\Excel\BinaryFileResponse
+     */
     public function exportMembers()
     {
         return Excel::download(new MembersExport, 'members.xlsx');
     }
 
+    /**
+     * Return an Object calling a method by download, and create a new object by the ReportTransactionsExport with a file name set 
+     * @return \Maatwebsite\Excel\BinaryFileResponse
+     */
     public function exportTransaction()
     {
         return Excel::download(new ReportTransactionsExport, 'transaction.xlsx');

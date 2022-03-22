@@ -12,8 +12,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DeliveryController extends Controller
 {
-    // Function untuk mengembalikan view pada halaman browser user
-
+    /**
+     * Function untuk mengembalikan view pada halaman browser user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $deliveryData = Deliveries::all();
@@ -26,8 +28,11 @@ class DeliveryController extends Controller
         ]);
     }
 
-    // Function untuk menyetor data yang terkirim oleh user ke database, dan mengembalikan notifikasi
-
+    /**
+     * Function untuk menyetor data yang terkirim oleh user ke database, dan mengembalikan notifikasi
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -48,9 +53,11 @@ class DeliveryController extends Controller
             return redirect()->back()->with('failure', 'Delivery failed!');
         }
     }
-
-    // Function untuk query data yang sudah di set dari AJAX, yaitu mencari suatu data.
-
+    /**
+     * Function untuk query data yang sudah di set dari AJAX, yaitu mencari suatu data.       
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function edit(Request $request)
     {
         if ($request->ajax()) {
@@ -63,9 +70,11 @@ class DeliveryController extends Controller
             return response()->json(['response' => $delivery]);
         }
     }
-
-    // Function untuk menyetor data yang diganti, dan terkirim oleh user ke dalam database, dan mengembalikan notifikasi
-
+    /**
+     * Function untuk menyetor data yang diganti, dan terkirim oleh user ke dalam database, dan mengembalikan notifikasi
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $validatedData = $request->validate([
@@ -87,9 +96,11 @@ class DeliveryController extends Controller
             return redirect()->back()->with('failure', 'Delivery failed to edit!');
         }
     }
-
-    // Function untuk menyetor data status yang diganti secara asynchronous oleh user ke dalam database.
-
+    /**
+     * Function untuk menyetor data status yang diganti secara asynchronous oleh user ke dalam database.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
@@ -106,9 +117,11 @@ class DeliveryController extends Controller
             }
         }
     }
-
-    // Function untuk meng-delete data dengan id yang user sudah memilih di front-end.
-
+    /**
+     * Function untuk meng-delete data dengan id yang user sudah memilih di front-end.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(Request $request)
     {
         $validatedData = $request->validate([
@@ -123,16 +136,18 @@ class DeliveryController extends Controller
             return redirect()->back()->with('success', 'Delivery failed to delete itself!');
         }
     }
-
-    // Export dan import yang memakai package LARAVEL EXCEL dan membuat suatu object dari Export/Import untuk dijalankan.
-
+    /** 
+     * Export dan import yang memakai package LARAVEL EXCEL dan membuat suatu object dari Export/Import untuk dijalankan. 
+     * @return \Maatwebsite\Excel\Facades\Excel
+     */
     public function exportData()
     {
         return Excel::download(new DeliveryExport, 'delivery.xlsx');
     }
-
-    // Storage dipakai untuk menyetor file import tersebut ke dalam folder temporary di public, dan ngedelete sesudah di import.
-
+    /** 
+     * Storage dipakai untuk menyetor file import tersebut ke dalam folder temporary di public, dan ngedelete sesudah di import.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function importData(Request $request)
     {
         $request->validate([
