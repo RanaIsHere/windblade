@@ -51,7 +51,7 @@ class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
     }
 
     /**
-     * Format a many columns and rows of the export with specific styles
+     * Format many columns and rows of the export with specific styles
      * @param Worksheet $sheet
      * @return array
      */

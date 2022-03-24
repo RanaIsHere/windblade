@@ -83,6 +83,10 @@
     @if ($page_name == 'Delivery')
         @stack('deliveries')
     @endif
+
+    @if ($page_name == 'Simulated Tranactions')
+        <script src="{{ asset('js/simulated_transaction.js') }}"></script>
+    @endif
 </body>
 
 </html>

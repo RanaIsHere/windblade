@@ -47,7 +47,7 @@ class AuthController extends Controller
     }
 
     /**
-     *A function called by the logout request by GET to remove the current session and logout then regenerating the token
+     * A function called by the logout request by GET to remove the current session and logout then regenerating the token
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */

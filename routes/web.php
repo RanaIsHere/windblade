@@ -11,6 +11,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\SimulatedTransactionController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
@@ -67,6 +68,9 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     Route::post('/transaction', [TransactionController::class, 'start_transaction'])->name('start_transaction');
 
     // Transaction END
+
+    // Simulation OF Transaction
+    Route::get('/transaction-simulation', [SimulatedTransactionController::class, 'index'])->name('view_simulated_transaction');
 });
 
 Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {
