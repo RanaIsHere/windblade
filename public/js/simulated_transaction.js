@@ -197,13 +197,15 @@ function setSorter() {
             console.log(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText)
 
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('E-MONEY')) {
-                table.getElementsByTagName('tr')[i].style.display = 'table-row'
+                // table.getElementsByTagName('tr')[i].style.display = 'table-row'
+                table.getElementsByTagName('tr')[i].classList.remove('hidden')
             }
         }
     } else {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('E-MONEY')) {
-                table.getElementsByTagName('tr')[i].style.display = 'none'
+                // table.getElementsByTagName('tr')[i].style.display = 'none'
+                table.getElementsByTagName('tr')[i].classList.add('hidden')
             }
         }
     }
@@ -211,13 +213,15 @@ function setSorter() {
     if (sortCash) {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('CASH')) {
-                table.getElementsByTagName('tr')[i].style.display = 'table-row'
+                // table.getElementsByTagName('tr')[i].style.display = 'table-row'
+                table.getElementsByTagName('tr')[i].classList.remove('hidden')
             }
         }
     } else {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('CASH')) {
-                table.getElementsByTagName('tr')[i].style.display = 'none'
+                // table.getElementsByTagName('tr')[i].style.display = 'none'
+                table.getElementsByTagName('tr')[i].classList.add('hidden')
             }
         }
     }
