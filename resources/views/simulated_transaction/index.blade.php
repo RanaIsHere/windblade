@@ -47,7 +47,7 @@
 
                         <div class="flex">
                             <input type="number" name="quantity" id="quantityInput" min="1" value="1"
-                                class="input input-sm input-bordered w-full" onchange="calculateQty(this)" required>
+                                class="input input-sm input-bordered w-full" required>
                         </div>
                     </div>
                 </div>

@@ -48,14 +48,14 @@ document.getElementById('transactForm').addEventListener('submit', function (e) 
     nameElement.innerText = packageName.value
     priceElement.innerText = getPackagePrice()
     quantityElement.innerText = quantity.value
+    totalPriceElement.innerText = Number(getPackagePrice()) * Number(quantity.value)
 
-    if (Number(priceInput) >= 50000) {
-        discountElement.innerText = Number(priceInput) * (15 / 100)
+    if (Number(totalPriceElement.innerText) >= 50000) {
+        discountElement.innerText = Number(totalPriceElement.innerText) * (15 / 100)
     } else {
         discountElement.innerText = 0
     }
 
-    totalPriceElement.innerText = Number(getPackagePrice()) * Number(quantity.value)
     typeElement.innerText = cashRadioInput.checked ? 'CASH' : 'E-MONEY'
 
     document.getElementById('priceInput').innerText = 0
@@ -132,25 +132,6 @@ function changePackage(entity) {
     } else if (entity.value == 'SHOE_DETERGENT') {
         document.getElementById('priceInput').innerText = shoe_detergent
     }
-
-    calculateQty(document.getElementById('quantityInput'))
-}
-
-function calculateQty(entity) {
-    const package = document.getElementById('packageInput')
-    let price = 0
-
-    if (package.value == 'DETERGENT') {
-        price = detergent
-    } else if (package.value == 'PERFUME') {
-        price = perfume
-    } else if (package.value == 'SHOE_DETERGENT') {
-        price = shoe_detergent
-    }
-
-    const quantity = entity.value
-
-    document.getElementById('priceInput').innerText = Number(price) * Number(quantity)
 }
 
 function updateTotal() {
