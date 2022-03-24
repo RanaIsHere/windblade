@@ -113,24 +113,42 @@ function getPackagePrice() {
     const package = document.getElementById('packageInput')
     let price = 0
 
-    if (package.value == 'DETERGENT') {
-        price = detergent
-    } else if (package.value == 'PERFUME') {
-        price = perfume
-    } else if (package.value == 'SHOE_DETERGENT') {
-        price = shoe_detergent
+    switch (package.value) {
+        case 'DETERGENT':
+            price = detergent
+            break;
+        case 'PERFUME':
+            price = perfume
+            break;
+        case 'SHOE_DETERGENT':
+            price = shoe_detergent
+            break;
+
+        default:
+            price = 0
+            break;
     }
 
     return price
 }
 
 function changePackage(entity) {
-    if (entity.value == 'DETERGENT') {
-        document.getElementById('priceInput').innerText = detergent
-    } else if (entity.value == 'PERFUME') {
-        document.getElementById('priceInput').innerText = perfume
-    } else if (entity.value == 'SHOE_DETERGENT') {
-        document.getElementById('priceInput').innerText = shoe_detergent
+    switch (entity.value) {
+        case 'DETERGENT':
+            document.getElementById('priceInput').innerText = detergent
+            break;
+
+        case 'PERFUME':
+            document.getElementById('priceInput').innerText = perfume
+            break;
+
+        case 'SHOE_DETERGENT':
+            document.getElementById('priceInput').innerText = shoe_detergent
+            break;
+
+        default:
+            document.getElementById('priceInput').innerText = 0
+            break;
     }
 }
 
@@ -197,14 +215,12 @@ function setSorter() {
             console.log(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText)
 
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('E-MONEY')) {
-                // table.getElementsByTagName('tr')[i].style.display = 'table-row'
                 table.getElementsByTagName('tr')[i].classList.remove('hidden')
             }
         }
     } else {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('E-MONEY')) {
-                // table.getElementsByTagName('tr')[i].style.display = 'none'
                 table.getElementsByTagName('tr')[i].classList.add('hidden')
             }
         }
@@ -213,14 +229,12 @@ function setSorter() {
     if (sortCash) {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('CASH')) {
-                // table.getElementsByTagName('tr')[i].style.display = 'table-row'
                 table.getElementsByTagName('tr')[i].classList.remove('hidden')
             }
         }
     } else {
         for (let i = 0; i < table.children.length; i++) {
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('CASH')) {
-                // table.getElementsByTagName('tr')[i].style.display = 'none'
                 table.getElementsByTagName('tr')[i].classList.add('hidden')
             }
         }
