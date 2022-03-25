@@ -24,6 +24,7 @@
                             </a>
                         </li>
                         <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
+                        <li><a href="/items" class="dropdown-btn"> Items </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
                     @endif

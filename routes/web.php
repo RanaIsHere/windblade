@@ -9,6 +9,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SimulatedTransactionController;
@@ -100,6 +101,14 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
 
     Route::get('/delivery/export', [DeliveryController::class, 'exportData'])->name('export_delivery');
     Route::post('/delivery/import', [DeliveryController::class, 'importData'])->name('import_delivery');
+
+    Route::get('/items', [ItemController::class, 'index'])->name('items');
+    Route::post('/items/create', [ItemController::class, 'store'])->name('create_item');
+    Route::post('/items/edit', [ItemController::class, 'edit'])->name('edit_item');
+    Route::post('/items/update', [ItemController::class, 'update'])->name('update_item');
+    Route::post('/items/update-status', [ItemController::class, 'status'])->name('update_status_item');
+    Route::post('/items/delete', [ItemController::class, 'delete'])->name('delete_item');
+    Route::post('/items/destroy', [ItemController::class, 'destroy'])->name('destroy_item');
 
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
