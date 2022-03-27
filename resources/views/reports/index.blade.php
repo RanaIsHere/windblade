@@ -6,7 +6,7 @@
 
     <div class="flex flex-row">
         <div class="flex-1 p-4">
-            <div class="tabs mx-auto justify-center" id="tabsMenu">
+            <div class="tabs mx-auto justify-center non-printable" id="tabsMenu">
                 @if (Auth::user()->roles === 'OWNER')
                     <a id="report-tab" class="tab tab-lg tab-bordered tab-active text-opacity-100 changeTabs">
                         Reports
@@ -17,6 +17,7 @@
                     </a>
 
                     {{-- Temporarily disabled --}}
+                    {{-- This was used with Socket.io for realtime chat, an ambitious feature --}}
                     {{-- <a id="request-tab" class="indicator tab tab-lg tab-bordered changeTabs">
                     Requests
                 </a> --}}
