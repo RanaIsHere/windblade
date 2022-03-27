@@ -1,6 +1,6 @@
 <div id="editModal" class="modal">
     <div class="modal-box min-w-full text-center">
-        <p>Add items to modal</p>
+        <p>Edit existing items</p>
 
         <form action="/items/update" method="post">
             @csrf
@@ -86,7 +86,7 @@
             <button type="submit" class="btn btn-primary my-10 mx-2">Edit Item</button>
 
             <button type="button" class="btn btn-primary my-10 mx-2"
-                onclick="document.getElementById('addModal').classList.remove('modal-open')">Cancel</button>
+                onclick="document.getElementById('editModal').classList.remove('modal-open')">Cancel</button>
         </form>
     </div>
 </div>

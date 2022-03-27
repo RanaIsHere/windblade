@@ -11,7 +11,9 @@
             </div>
             <div class="flex flex-row m-4">
                 <div class="flex-1">
-                    <button type="submit" class="btn btn-primary btn-sm">Import</button>
+                    <button type="submit" class="btn btn-primary btn-sm mx-2">Import</button>
+                    <button type="button" class="btn btn-primary btn-sm mx-2"
+                        onclick="document.getElementById('importModal').classList.remove('modal-open')">Cancel</button>
                 </div>
             </div>
         </form>

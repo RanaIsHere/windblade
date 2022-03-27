@@ -43,7 +43,7 @@ class ItemExport implements FromCollection, WithHeadings, ShouldAutoSize, WithSt
     {
         $sheet->insertNewRowBefore(1, 2);
         $sheet->mergeCells('A1:G1');
-        $sheet->setCellValue('A1', 'Customer Table');
+        $sheet->setCellValue('A1', 'Item List Table');
         $sheet->getStyle('A1')->getFont()->setBold(true);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A3:G3')->getFill()->applyFromArray(['fillType' => 'solid', 'rotation' => 0, 'color' => ['rgb' => '66CC8A']]);

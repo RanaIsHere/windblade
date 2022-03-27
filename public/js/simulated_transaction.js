@@ -1,8 +1,7 @@
+const defaultArray = JSON.parse(localStorage.getItem('transactionData'))
 const detergent = 15000
 const perfume = 10000
 const shoe_detergent = 25000
-
-let defaultArray = JSON.parse(localStorage.getItem('transactionData'))
 
 if (localStorage.getItem('transactionData')) {
     updateTable(defaultArray)
@@ -18,6 +17,7 @@ document.getElementById('transactForm').addEventListener('submit', function (e) 
     const dateInput = document.getElementById('dateInput')
     const cashRadioInput = document.getElementById('cashRadioInput')
     const transferRadioInput = document.getElementById('transferRadioInput')
+
 
     const table = document.getElementById('transactor-table')
     const tbody = table.getElementsByTagName('tbody')[0]
@@ -212,7 +212,7 @@ function setSorter() {
 
     if (sortMoney) {
         for (let i = 0; i < table.children.length; i++) {
-            console.log(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText)
+            // console.log(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText)
 
             if (String(table.getElementsByTagName('tr')[i].getElementsByTagName('td')[7].innerText) == String('E-MONEY')) {
                 table.getElementsByTagName('tr')[i].classList.remove('hidden')
