@@ -18,16 +18,29 @@
                         <li><a href="/users" class="dropdown-btn"> User Management </a></li>
                         <li><a href="/inventory" class="dropdown-btn"> Inventory Management </a></li>
                         <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
+                        <li>
+                            <a href="{{ route('view_simulated_transaction') }}" class="dropdown-btn"> Simulated
+                                Transactions
+                            </a>
+                        </li>
+                        <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
+                        <li><a href="/items" class="dropdown-btn"> Items </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
                     @endif
 
                     @if (Auth::user()->roles == 'OWNER')
+                        <li><a href="{{ route('salary') }}" class="dropdown-btn"> Salary </a></li>
                         <li><a href="{{ route('reports') }}" class="dropdown-btn"> Reports </a></li>
                     @endif
 
                     @if (Auth::user()->roles == 'CASHIER')
                         <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
+                        <li>
+                            <a href="{{ route('view_simulated_transaction') }}" class="dropdown-btn"> Simulated
+                                Transactions
+                            </a>
+                        </li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a class="dropdown-btn"> Reports </a></li>
                     @endif

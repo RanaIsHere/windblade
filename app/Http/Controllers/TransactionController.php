@@ -15,6 +15,11 @@ use function GuzzleHttp\Promise\queue;
 
 class TransactionController extends Controller
 {
+    /**
+     * Return datas of member by specific id as a response of JSON.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_member(Request $request)
     {
         if ($request->ajax()) {
@@ -28,6 +33,11 @@ class TransactionController extends Controller
         }
     }
 
+    /** 
+     *  Return datas of packages by specific id as a response of JSON.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_package(Request $request)
     {
         if ($request->ajax()) {
@@ -41,6 +51,10 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * With a request of AJAX and selecting a specific id on packages, return a response of JSON.
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function add_package(Request $request)
     {
         if ($request->ajax()) {
@@ -54,6 +68,17 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     *  Start transaction by inserting a new row with current user logged in to the site,
+     *  validating the input used by transaction, make sure that the transaction_price is NOT zero,
+     *  then start checking each qualification one by one. If all qualification is true,
+     *  Then insert a new transaction row with specified pay type. Momentarily set INVOICE_CODE as NULL, until after saving.
+     *  
+     *  If packages has multiple rows to be added, then loop through the packages data and insert them one by one.
+     *  If the insertion has failed, then delete the transaction row and return the user with failed
+     *  If the insertion has succeeded, then return the user to invoice view with successful notifications.
+     * @return \Illuminate\Http\Response
+     */
     public function start_transaction(Request $request)
     {
         $validatedData = $request->validate([

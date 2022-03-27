@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CalculationController extends Controller
 {
+    /** 
+     * Calculate the price of discount sent by AJAX POST from Transaction, if valid, 
+     * calculate the total of discount and package price,
+     * then return the total of discount and package price, and the value of tax divied by 2 of the total of discount and package price 
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function calculate_price(Request $request)
     {
         if ($request->ajax()) {

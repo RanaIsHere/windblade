@@ -1,20 +1,20 @@
-var socket = io('127.0.0.1:3000');
+// var socket = io('127.0.0.1:3000');
 
-socket.emit('connection')
+// socket.emit('connection')
 
-socket.on('requestMessage', (id, user, message) => {
-    let chatbox = document.getElementById('chat-box')
+// socket.on('requestMessage', (id, user, message) => {
+//     let chatbox = document.getElementById('chat-box')
 
-    console.log(id === Number(document.getElementById('fromId').value))
+//     console.log(id === Number(document.getElementById('fromId').value))
 
-    if (id === Number(document.getElementById('fromId').value)) {
-        chatbox.insertAdjacentHTML('beforeend', '<p class="text-right">' + user + ': ' + message + '</p>')
-    } else {
-        chatbox.insertAdjacentHTML('beforeend', '<p>' + user + ': ' + message + '</p>')
-    }
+//     if (id === Number(document.getElementById('fromId').value)) {
+//         chatbox.insertAdjacentHTML('beforeend', '<p class="text-right">' + user + ': ' + message + '</p>')
+//     } else {
+//         chatbox.insertAdjacentHTML('beforeend', '<p>' + user + ': ' + message + '</p>')
+//     }
 
-    $('#chat-box').scrollTop($('#chat-box').height() * 100)
-})
+//     $('#chat-box').scrollTop($('#chat-box').height() * 100)
+// })
 
 $('#transaction-table').DataTable({
     "pageLength": 6,
@@ -30,55 +30,168 @@ $('#transaction-table').DataTable({
     ]
 })
 
+// Make a datatable without pagination
+
+$('#activity-table').DataTable({
+    paging: false,
+    info: false,
+    searching: false
+})
+
 document.addEventListener('DOMContentLoaded', () => {
-    $('#chat-box').scrollTop($('#chat-box').height() * 100)
+    const all_tabs = Array.from(document.getElementById('tabsMenu').getElementsByTagName('a')).map(element => element.innerText.toLowerCase())
 
-    document.getElementById('messageForm').addEventListener('submit', function (e) {
-        e.preventDefault()
+    // console.log(document.getElementById('tabsMenu').getElementsByTagName('a').length)    
 
-        let messageData = document.getElementById('chatInput').value
-        document.getElementById('chatInput').value = ''
-
-        if (messageData != null || messageData != "") {
-            $.ajax({
-                type: 'POST',
-                url: '/sendRequestMessage',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: { message: messageData },
-                success: function (response) {
-                    socket.emit('sendMessage', response.id, response.user, response.response.message)
-                }
-            })
+    for (let i = 0; i < all_tabs.length; i++) {
+        if (document.getElementById('tabsMenu').getElementsByTagName('a').length <= 1) {
+            document.getElementById(all_tabs[i] + '-view').classList.remove('hidden')
+            document.getElementById('tabsMenu').getElementsByTagName('a')[i].classList.add('tab-active')
         }
-    })
+    }
 
-    for (let i = 0; i < document.getElementsByClassName('startMessage').length; i++) {
-        document.getElementsByClassName('startMessage')[i].addEventListener('click', function (e) {
-            e.preventDefault()
+    // $('#chat-box').scrollTop($('#chat-box').height() * 100)
 
-            let card = this.parentElement.parentElement
-            let id = card.getElementsByTagName('input')[0].value
-            let user = card.getElementsByTagName('h2')[0].getElementsByTagName('span')[0].innerText
+    // document.getElementById('messageForm').addEventListener('submit', function (e) {
+    //     e.preventDefault()
 
-            // console.log(username + role + id)
+    //     let messageData = document.getElementById('chatInput').value
+    //     document.getElementById('chatInput').value = ''
 
-            socket.emit('joinRoom', id, user)
+    //     if (messageData != null || messageData != "") {
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/sendRequestMessage',
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             data: { message: messageData },
+    //             success: function (response) {
+    //                 socket.emit('sendMessage', response.id, response.user, response.response.message)
+    //             }
+    //         })
+    //     }
+    // })
+
+    // for (let i = 0; i < document.getElementsByClassName('startMessage').length; i++) {
+    //     document.getElementsByClassName('startMessage')[i].addEventListener('click', function (e) {
+    //         e.preventDefault()
+
+    //         let card = this.parentElement.parentElement
+    //         let id = card.getElementsByTagName('input')[0].value
+    //         let user = card.getElementsByTagName('h2')[0].getElementsByTagName('span')[0].innerText
+
+    //         socket.emit('joinRoom', id, user)
+    //     })
+    // }
+
+    for (let i = 0; i < document.getElementsByClassName('changeTabs').length; i++) {
+        document.getElementsByClassName('changeTabs')[i].addEventListener('click', function (entity) {
+            entity.preventDefault()
+
+            const parent = entity.currentTarget.parentElement
+            // const tabs = ['reports', 'schedule', 'requests', 'logs'] Temporarily disabled until enough information gathered
+
+            const tabs = Array.from(parent.getElementsByTagName('a')).map(element => element.innerText.toLowerCase())
+
+            for (i = 0; i < parent.children.length; i++) {
+                if (parent.querySelectorAll('a')[i].classList.contains('tab-active')) {
+
+                    parent.querySelectorAll('a')[i].classList.remove('tab-active')
+                    parent.querySelectorAll('a')[i].classList.remove('text-opacity-100')
+
+                    entity.currentTarget.classList.add('tab-active')
+                    entity.currentTarget.classList.add('text-opacity-100')
+
+                    if (tabs[i] != String(entity.currentTarget.innerText).toLowerCase()) {
+                        if (Number(i) > Number(i + 1) == false) {
+                            if (Number(i) < Number(i - 1) == false) {
+                                document.getElementById(tabs[i] + '-view').classList.add('hidden')
+                                document.getElementById(String(entity.currentTarget.innerText).toLowerCase() + '-view').classList.remove('hidden')
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    for (let i = 0; i < document.getElementsByClassName('reportSchedule').length; i++) {
+        document.getElementsByClassName('reportSchedule')[i].addEventListener('click', function (event) {
+            event.preventDefault()
+
+            const parent = event.currentTarget.parentNode
+            const id = parent.getElementsByTagName('p')[0].innerText
+
+            event.currentTarget.classList.add('loading')
+
+            setTimeout(function () {
+                $.ajax({
+                    url: '/reportSchedule',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: { id: Number(id) },
+                    success: function (response) {
+                        const currentDate = new Date()
+                        const date = new Date(response.date)
+                        const month = date.getMonth()
+                        const day = date.getDate()
+                        const currentDay = currentDate.getDate()
+                        const dayElement = document.getElementById('days')
+
+                        for (let i = 0; i < dayElement.children.length; i++) {
+                            if (dayElement.children[i].getElementsByTagName('div')[0].innerText != currentDay) {
+                                if (dayElement.children[i].getElementsByTagName('div')[0].innerText == day) {
+                                    dayElement.children[i].getElementsByTagName('div')[0].style.backgroundColor = '#98c761'
+                                }
+                            }
+                        }
+
+                        event.target.classList.remove('loading')
+                        addNotification()
+                    }
+                })
+            }, 1000)
         })
     }
 })
 
-function change_tab(entity) {
-    const parent = entity.parentElement
+function addNotification() {
+    const notification_group = document.getElementById('notification-group')
+    let notification = document.createElement('div')
+    notification.classList.add('card')
+    notification.classList.add('w-80')
+    notification.classList.add('bg-green-200')
+    notification.classList.add('shadow-xl')
+    notification.classList.add('mt-4')
 
-    for (i = 0; i < parent.children.length; i++) {
-        if (parent.querySelectorAll('a')[i].classList.contains('tab-active')) {
-            parent.querySelectorAll('a')[i].classList.remove('tab-active')
-            parent.querySelectorAll('a')[i].classList.remove('text-opacity-100')
+    notification.innerHTML = `
+    <div class="card-body">
+        <div class="flex">
+            <h2 class="card-title mx-2">Schedule found!</h2>
+            <button class="btn btn-primary btn-sm mx-2"
+                onclick="this.parentElement.parentElement.parentElement.remove()">
+                Close</button>
+        </div>  
+    </div>`
 
-            entity.classList.add('tab-active')
-            entity.classList.add('text-opacity-100')
+    notification_group.appendChild(notification)
+}
+
+// A function to search linearly in a table
+function searchTable(table, searchText) {
+    let rows = document.getElementById(table).children[1].rows;
+    for (let i = 0; i < rows.length; i++) {
+        let cells = rows[i].cells;
+        for (let j = 0; j < cells.length; j++) {
+            if (cells[j].innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                rows[i].style.display = '';
+                break;
+            } else {
+                rows[i].style.display = 'none';
+            }
         }
     }
 }

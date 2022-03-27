@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
+    /**
+     * Return the view of the inventory page.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $inventoryData = Inventory::all();
@@ -14,6 +18,11 @@ class InventoryController extends Controller
         return view('inventory.index', ['page_name' => 'Inventory', 'inventoryData' => $inventoryData]);
     }
 
+    /**
+     * Call a function by AJAX on POST request with id data and find an Inventory with said ID, then return a response as JSON
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
@@ -27,6 +36,11 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Call a function by form on POST request and validate the data, then immediately create (insert) a new row to Inventory table, then return a view to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create(Request $request)
     {
         $validatedData = $request->validate([
@@ -44,6 +58,11 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Call a function of update by form on POST request, validate the data, then update the row in Inventory table with the given ID, then return a view to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function update(Request $request)
     {
         $validatedData = $request->validate([
@@ -70,6 +89,11 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Call a function of delete by form on POST request, validate the data, then delete the row in Inventory table with the given ID, then return a view to the user.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function delete(Request $request)
     {
         $validatedData = $request->validate([

@@ -10,6 +10,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
 {
+    /**
+     * Call a function by importMember by form on POST request, validate and process the file by moving the file into a temp folder and inserting a new row into the database,
+     * then return the result of the import to the view.
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function importMembers(Request $request)
     {
         $request->validate([
@@ -30,6 +36,12 @@ class ImportController extends Controller
         }
     }
 
+    /**
+     * Call a function by importPackages by form on POST request, validate and process the file by moving the file into a temp folder and inserting a new row into the database,
+     * then return the result of the import to the view.
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function importPackages(Request $request)
     {
         $request->validate([
