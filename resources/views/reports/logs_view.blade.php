@@ -9,10 +9,11 @@
                 <option value="OUTLETS">OUTLETS</option>
                 <option value="PACKAGES">PACKAGES</option>
                 <option value="TRANSACTIONS">TRANSACTIONS</option>
+                <option value="ITEMS">ITEMS (TO)</option>
             </select>
 
             <div class="overflow-x-auto">
-                <table class="table w-full" id="activity-table">
+                <table class="table w-full py-4" id="activity-table">
                     <thead>
                         <tr>
                             <th>#</th>

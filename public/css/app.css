@@ -3614,6 +3614,14 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
   border-radius: 9999px;
   padding: 0;
 }
+.input-lg {
+  height: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 2;
+}
 .input-sm {
   height: 2rem;
   padding-left: .75rem;
@@ -4042,6 +4050,9 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 .m-2 {
   margin: 0.5rem;
 }
+.m-auto {
+  margin: auto;
+}
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -4110,6 +4121,12 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 }
 .mt-6 {
   margin-top: 1.5rem;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
 }
 .inline-block {
   display: inline-block;
