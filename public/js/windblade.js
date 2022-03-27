@@ -101,3 +101,38 @@ function link_href(href) {
     document.getElementById('importModal').classList.add('modal-open')
     document.getElementById('importForm').action = href
 }
+
+
+/*
+    This function is used to create an element in the notification-group within notification.blade.php
+    Upon instantiation, another element will be created as div with increasing classlist. An inner html too will be added,
+    the function takes in a parameter, a message, to be filled in the innerHTML below.
+
+    This function also has a timer (setTimeout) of 3000 milliseconds, which will remove the element after 3 seconds.
+*/
+const notify = (message) => {
+    const notification_group = document.getElementById('notification-group')
+    let notification = document.createElement('div')
+    notification.classList.add('card')
+    notification.classList.add('z-[100]') // Z-index 100
+    notification.classList.add('w-80')
+    notification.classList.add('bg-green-200')
+    notification.classList.add('shadow-xl')
+    notification.classList.add('mt-4')
+
+    notification.innerHTML = `
+    <div class="card-body">
+        <div class="flex">
+            <h2 class="card-title mx-2">` + message + `</h2>
+            <button class="btn btn-primary btn-sm mx-2"
+                onclick="this.parentElement.parentElement.parentElement.remove()">
+                Close</button>
+        </div>  
+    </div>`
+
+    notification_group.appendChild(notification)
+
+    setTimeout(() => {
+        notification.remove()
+    }, 3000)
+}

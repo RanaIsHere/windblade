@@ -110,6 +110,9 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::post('/items/delete', [ItemController::class, 'delete'])->name('delete_item');
     Route::post('/items/destroy', [ItemController::class, 'destroy'])->name('destroy_item');
 
+    Route::get('/items/export', [ItemController::class, 'export'])->name('export_item');
+    Route::post('/items/import', [ItemController::class, 'import'])->name('import_item');
+
     Route::post('/package', [InputController::class, 'create_package'])->name('create_package');
     Route::post('/outlet', [InputController::class, 'create_outlet'])->name('create_outlet');
 

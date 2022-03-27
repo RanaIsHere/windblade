@@ -1,10 +1,10 @@
 @extends('preload.default')
 
 @section('container')
-    @include('partials.notifications')
     @include('items.create')
     @include('items.delete')
     @include('items.edit')
+    @include('items.import')
     @include('partials.header')
 
     <div class="flex flex-row m-4">
@@ -16,8 +16,9 @@
     <div class="flex flex-row m-4">
         <div class="flex-1">
             <button class="btn btn-primary btn-sm mr-2" id="addDataBtn">Add Data</button>
-            <button class="btn btn-info btn-sm mx-2">Export</button>
-            <button class="btn btn-warning btn-sm mx-2">Import</button>
+            <a href="{{ route('export_item') }}" class="btn btn-info btn-sm mx-2"> Export </a>
+            <button class="btn btn-warning btn-sm mx-2"
+                onclick="document.getElementById('importModal').classList.add('modal-open')"> Import </button>
         </div>
     </div>
 
@@ -72,4 +73,6 @@
             </table>
         </div>
     </div>
+
+    @include('partials.notifications')
 @endsection
