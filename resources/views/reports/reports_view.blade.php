@@ -3,6 +3,7 @@
         <div class="flex-1">
             <div class="text-center">
                 <a href="/reports/export/transactions" class="btn btn-sm m-2 btn-primary">Export as XLSX</a>
+                <a href="/reports/export/transactions" class="btn btn-sm m-2 btn-primary">Export as PDF</a>
             </div>
 
             <div class="overflow-x-auto">
