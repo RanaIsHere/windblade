@@ -6,7 +6,7 @@
     @include('partials.header')
 
     @if (Session::has('success'))
-        <div class="alert alert-success" id="alert-div">
+        <div class="alert alert-success non-printable" id="alert-div">
             <div class="flex-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,7 +25,7 @@
     @endif
 
     @if ($errors->any())
-        <div class="alert shadow-lg alert-error">
+        <div class="alert shadow-lg alert-error non-printable">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
                     viewBox="0 0 24 24">
@@ -41,9 +41,13 @@
         </div>
     @endif
 
-    <div class="text-center my-10">
-        <div class="btn-group inline-block">
+    <div class="text-center my-10 non-printable">
+        <div class="inline-block">
             <p class="text-xl font-bold">OUTLET MANAGEMENT</p>
+        </div>
+
+        <div class="my-2">
+            <button class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
         </div>
     </div>
 
@@ -60,7 +64,7 @@
                         <div class="flex-1">
                             <h2 class="text-sm font-bold">NAME</h2>
                             <p class="text-xl font-bold"> {{ $util->outlet_name }} </p>
-                            <p class="font-sm opacity-50" id="table_outlet_id">{{ $util->id }}</p>
+                            <p class="font-sm opacity-50 non-printable" id="table_outlet_id">{{ $util->id }}</p>
                         </div>
 
                         <div class="flex-1">
@@ -75,7 +79,7 @@
                         <h2 class="text-xl font-bold">{{ $util->user->count() }}</h2>
                     </div>
 
-                    <div class="card-actions inline-block">
+                    <div class="card-actions inline-block non-printable">
                         <button type="button" class="btn btn-primary"
                             onclick="request_info(this, 'outlet_input_modal', 'outlet_input_real_modal', 'editoutlets')">Edit</button>
                     </div>

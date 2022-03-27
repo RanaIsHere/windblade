@@ -54,7 +54,9 @@
 
     <div class="flex-none hidden md:flex">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">{{ Auth::user()->name }}</div>
+            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">
+                {{ Auth::user()->name }}
+            </div>
 
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
                 <a class="dropdown-btn my-1">Profile</a>
