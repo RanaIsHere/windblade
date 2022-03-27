@@ -46,16 +46,16 @@
 @if (Auth::user()->roles === 'OWNER')
     @push('charts')
         <script>
+            const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    labels: month,
                     datasets: [{
                         label: 'Rupiah',
-                        data: [
-                            getAllDataFromCorrespondingMonth()
-                        ],
+                        data: [],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                         ],
@@ -74,6 +74,11 @@
                 }
             });
 
+            getAllDataFromCorrespondingMonth()
+
+            /**
+             * Get all data from corresponding month by AJAX request, and then 
+             */
             function getAllDataFromCorrespondingMonth() {
                 $.ajax({
                     type: 'POST',
@@ -91,26 +96,29 @@
 
                             if (i === 0) {
                                 monthly_data.push({
-                                    x: transaction_date,
+                                    x: month[new Date(transaction_date).getMonth()],
                                     y: transaction_paid
                                 })
                             } else {
-                                let last_transaction_date = monthly_data[monthly_data.length - 1].x
+                                let last_transaction_date = monthly[i - 1].transaction_date
                                 let last_transaction_paid = monthly_data[monthly_data.length - 1].y
 
-                                if (new Date(transaction_date).getMonth() === new Date(last_transaction_date)
-                                    .getMonth()) {
+                                if (month[new Date(transaction_date).getMonth()] ===
+                                    month[new Date(last_transaction_date).getMonth()]) {
+
                                     monthly_data[monthly_data.length - 1].y += transaction_paid
                                 } else {
                                     monthly_data.push({
-                                        x: transaction_date,
+                                        x: month[new Date(transaction_date).getMonth()],
                                         y: transaction_paid
                                     })
                                 }
                             }
                         }
 
-                        console.log(monthly_data)
+                        myChart.data.datasets[0].data = monthly_data
+                        // console.log(myChart.data.datasets[0].data)
+                        myChart.update();
                     }
                 });
             }
