@@ -33,8 +33,8 @@ class ExportController extends Controller
      * Return an Object calling a method by download, and create a new object by the ReportTransactionsExport with a file name set 
      * @return \Maatwebsite\Excel\BinaryFileResponse
      */
-    public function exportTransaction()
+    public function exportReports()
     {
-        return Excel::download(new ReportTransactionsExport, 'transaction.xlsx');
+        return Excel::download(new ReportTransactionsExport, date('Y-m-d H:i:s') . '_transaction.xlsx');
     }
 }
