@@ -34,8 +34,7 @@ $('#transaction-table').DataTable({
 
 $('#activity-table').DataTable({
     paging: false,
-    info: false,
-    searching: false
+    info: false
 })
 
 document.addEventListener('DOMContentLoaded', () => {

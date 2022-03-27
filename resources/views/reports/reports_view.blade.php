@@ -1,8 +1,9 @@
 <div id="reports-view" class="border-2 border-primary m-2">
     <div class="flex flex-row p-2">
-        <div class="flex-1">
+        <div class="flex-1 non-printable">
             <div class="text-center">
-                <a href="/reports/export/transactions" class="btn btn-sm m-2 btn-primary">Export as XLSX</a>
+                <a href="/reports/export" class="btn btn-sm m-2 btn-primary">Export as XLSX</a>
+                <button class="btn btn-sm m-2 btn-primary" onclick="window.print()">Export Page as PDF</button>
             </div>
 
             <div class="overflow-x-auto">
@@ -29,7 +30,7 @@
             </div>
         </div>
 
-        <div class="flex-1 px-2">
+        <div class="flex-1 px-2" id="printing-location">
             <div class="shadow stats stats-vertical lg:stats-horizontal w-full text-center select-none">
                 <div class="stat">
                     <div class="stat-title">Workers</div>

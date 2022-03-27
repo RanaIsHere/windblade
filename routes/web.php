@@ -77,6 +77,7 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
 Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {
     Route::get('/salary', [SalaryController::class, 'index'])->name('salary');
 
+    Route::get('/reports/export', [ExportController::class, 'exportReports'])->name('export_reports');
     Route::post('/reportSchedule', [ReportsController::class, 'report_schedule'])->name('reportSchedule');
     Route::post('/reports/getSumFromMonths', [ReportsController::class, 'report_monthly'])->name('reportMonthly');
 });
@@ -135,8 +136,6 @@ Route::middleware(['auth.basic', 'role:ADMIN'])->group(function () {
     Route::get('/packages/export', [ExportController::class, 'exportPackages'])->name('export_packages');
 
     Route::get('/customers/export', [ExportController::class, 'exportMembers'])->name('export_members');
-
-    Route::get('/reports/export/transactions', [ExportController::class, 'exportTransaction'])->name('export_transaction');
 
     Route::post('/customers/import', [ImportController::class, 'importMembers'])->name('import_members');
     Route::post('/packages/import', [ImportController::class, 'importPackages'])->name('import_packages');
