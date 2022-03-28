@@ -23,6 +23,11 @@
                                 Transactions
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
+                                Laundry Transactions
+                            </a>
+                        </li>
                         <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
                         <li><a href="/items" class="dropdown-btn"> Items </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
@@ -39,6 +44,11 @@
                         <li>
                             <a href="{{ route('view_simulated_transaction') }}" class="dropdown-btn"> Simulated
                                 Transactions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
+                                Laundry Transactions
                             </a>
                         </li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>

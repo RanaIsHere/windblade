@@ -16,6 +16,7 @@ use App\Http\Controllers\SimulatedTransactionController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\WashController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -72,6 +73,8 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
 
     // Simulation OF Transaction
     Route::get('/transaction-simulation', [SimulatedTransactionController::class, 'index'])->name('view_simulated_transaction');
+
+    Route::get('/wash-transaction', [WashController::class, 'index'])->name('view_wash_transaction');
 });
 
 Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {
