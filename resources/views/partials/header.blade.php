@@ -23,6 +23,16 @@
                                 Transactions
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
+                                Laundry Transactions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('view_data_usage') }}" class="dropdown-btn">
+                                Data Usages
+                            </a>
+                        </li>
                         <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
                         <li><a href="/items" class="dropdown-btn"> Items </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
@@ -41,6 +51,11 @@
                                 Transactions
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
+                                Laundry Transactions
+                            </a>
+                        </li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a class="dropdown-btn"> Reports </a></li>
                     @endif
@@ -54,7 +69,9 @@
 
     <div class="flex-none hidden md:flex">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">{{ Auth::user()->name }}</div>
+            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">
+                {{ Auth::user()->name }}
+            </div>
 
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
                 <a class="dropdown-btn my-1">Profile</a>

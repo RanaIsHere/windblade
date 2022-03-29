@@ -91,6 +91,14 @@
     @if ($page_name == 'Items')
         <script src="{{ asset('js/item.js') }}"></script>
     @endif
+
+    @if ($page_name == 'Laundry Transactions')
+        <script src="{{ asset('js/laundry_transaction.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Data Usage')
+        <script src="{{ asset('js/datausage.js') }}"></script>
+    @endif
 </body>
 
 </html>

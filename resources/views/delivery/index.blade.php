@@ -111,6 +111,8 @@
             </div>
         </div>
     </div>
+
+    @include('partials.notifications')
 @endsection
 
 @push('deliveries')
@@ -157,6 +159,8 @@
                             entity.getElementsByTagName('option')[i].setAttribute('selected', 'selected')
                         }
                     }
+
+                    notify('Status successfully changed!')
                 }
             })
 
