@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataUsageController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
@@ -75,6 +76,19 @@ Route::middleware(['auth.basic', 'role:ADMIN,CASHIER'])->group(function () {
     Route::get('/transaction-simulation', [SimulatedTransactionController::class, 'index'])->name('view_simulated_transaction');
 
     Route::get('/wash-transaction', [WashController::class, 'index'])->name('view_wash_transaction');
+
+    Route::get('/data-usage', [DataUsageController::class, 'index'])->name('view_data_usage');
+    Route::post('/data-usage/create', [DataUsageController::class, 'store'])->name('create_data_usage');
+
+    Route::post('/data-usage/fetch-edit', [DataUsageController::class, 'edit'])->name('fetch_edit_data_usage');
+    Route::post('/data-usage/update', [DataUsageController::class, 'update'])->name('update_data_usage');
+    Route::post('/data-usage/status', [DataUsageController::class, 'status'])->name('update_data_usage_status');
+
+    Route::post('/data-usage/fetch-delete', [DataUsageController::class, 'delete'])->name('fetch_delete_data_usage');
+    Route::post('/data-usage/delete', [DataUsageController::class, 'destroy'])->name('delete_data_usage');
+
+    Route::get('/data-usage/export', [DataUsageController::class, 'export'])->name('export_data_usage');
+    Route::post('/data-usage/import', [DataUsageController::class, 'import'])->name('import_data_usage');
 });
 
 Route::middleware(['auth.basic', 'role:OWNER'])->group(function () {

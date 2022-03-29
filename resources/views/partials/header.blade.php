@@ -28,6 +28,11 @@
                                 Laundry Transactions
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('view_data_usage') }}" class="dropdown-btn">
+                                Data Usages
+                            </a>
+                        </li>
                         <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
                         <li><a href="/items" class="dropdown-btn"> Items </a></li>
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>

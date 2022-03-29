@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\DataUsages;
 use App\Models\Deliveries;
 use App\Models\Items;
 use App\Models\Members;
@@ -10,6 +11,7 @@ use App\Models\Packages;
 use App\Models\TransactionDetails;
 use App\Models\Transactions;
 use App\Models\User;
+use App\Observers\DataUsageObserver;
 use App\Observers\DeliveryObserver;
 use App\Observers\ItemObserver;
 use App\Observers\MemberObserver;
@@ -51,5 +53,6 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Deliveries::observe(DeliveryObserver::class);
         Items::observe(ItemObserver::class);
+        DataUsages::observe(DataUsageObserver::class);
     }
 }
