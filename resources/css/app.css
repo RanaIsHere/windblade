@@ -10,7 +10,7 @@
 
 @layer components {
     .dropdown-btn {
-        @apply btn btn-primary btn-sm rounded-btn h-full;
+        @apply btn btn-primary text-white btn-sm rounded-btn h-full;
     }
 
     .date-input {

@@ -11,6 +11,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SimulatedTransactionController;
@@ -44,6 +45,9 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth.basic'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('view_profile');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

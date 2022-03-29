@@ -69,14 +69,22 @@
 
     <div class="flex-none hidden md:flex">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">
-                {{ Auth::user()->name }}
-            </div>
+            <div class="grid grid-flow-col align-middle place-items-center">
+                <label class="avatar online min-w-fit placeholder mx-2">
+                    <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                        <span class="text-3xl">{{ Str::limit(ucwords(Auth::user()->name), 1, '') }}</span>
+                    </div>
+                </label>
 
-            <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-52">
-                <a class="dropdown-btn my-1">Profile</a>
-                <a href="/logout" class="dropdown-btn my-1">Logout</a>
-            </ul>
+                <div tabindex="0" class="m-1 btn btn-primary text-white btn-sm text-xs md:text-base">
+                    {{ Auth::user()->name }}
+                </div>
+
+                <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box bottom-[-6rem] w-52">
+                    <a href="{{ route('view_profile') }}" class="dropdown-btn my-1">Profile</a>
+                    <a href="/logout" class="dropdown-btn my-1">Logout</a>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
