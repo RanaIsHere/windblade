@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/print.css') }}">
 
+    <script src="https://kit.fontawesome.com/d7732c7642.js" crossorigin="anonymous"></script>
+
     <title> Windblade - {{ $page_name }} </title>
 </head>
 
@@ -98,6 +100,10 @@
 
     @if ($page_name == 'Data Usage')
         <script src="{{ asset('js/datausage.js') }}"></script>
+    @endif
+
+    @if ($page_name == 'Profile')
+        <script src="{{ asset('js/profile.js') }}"></script>
     @endif
 </body>
 

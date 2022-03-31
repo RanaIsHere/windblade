@@ -15,10 +15,10 @@
         </div>
     </div>
 
-    <div class="flex flex-row p-2 m-2 rounded-md bg-stone-100   ">
+    <div class="flex flex-row p-2 m-2 rounded-md bg-stone-100 pb-10">
         <div class="flex-1 max-w-sm border-r-2 pr-2">
             <div class="avatar">
-                <div class="min-w-fit rounded-full">
+                <div class="min-w-fit rounded-full border-2 border-black">
                     <img src="{{ Auth::user()->profile_picture != ''? asset('profiles/' . Auth::user()->profile_picture): asset('profiles/default.png') }}"
                         alt="Profile picture" class="min-w-fit">
                 </div>
@@ -26,10 +26,7 @@
 
             <p class="font-semibold">Biodata</p>
             <p class="font-light text-md opacity-70" id="biodata">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec euismod, nisl eget consectetur consectetur,
-                nisi nisl tincidunt nisi, euismod consectetur nisi
-                nisi euismod.
+                {{ Auth::user()->biodata }}
             </p>
         </div>
 
@@ -78,22 +75,40 @@
 
         <div class="flex-1 border-r-2 pr-2">
             <div class="flex flex-col justify-center items-center">
-                <div class="bg-stone-200 rounded-md m-2 w-full">
-                    <div class="form-control p-2">
-                        <label class="label">
-                            <span class="label-text">Status</span>
-                        </label>
+                <div class="rounded-md pb-4 m-2 w-full">
+                    <form action="{{ route('update_profile') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-control p-2">
+                            <label class="label">
+                                <span class="label-text">Profile Picture</span>
+                            </label>
 
-                        <div class="flex-row">
-                            <select name="online_status" id="onlineStatusInput"
-                                class="select select-sm select-bordered w-full" required>
-                                <option value="ONLINE">Online</option>
-                                <option value="OFFLINE">Offline</option>
-                            </select>
+                            <div class="input-group">
+                                <input type="file" name="file" class="input input-bordered p-2" id="fileInput" hidden>
+                                <input type="text" class="input input-bordered w-full p-2" id="fileNameInput" readonly>
+                                <button type="button" class="btn btn-primary text-white" onclick="uploadBtn()">
+                                    <i class="fa-solid fa-upload"></i>
+                                    <p class="mx-2">Upload</p>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-control p-2">
+                            <label class="label">
+                                <span class="label-text">Biodata</span>
+                            </label>
+
+                            <div class="flex-row">
+                                <textarea name="biodata" id="biodataInput" class="textarea textarea-bordered w-full p-2"
+                                    required>{{ Auth::user()->biodata }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary my-2 text-white">Edit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

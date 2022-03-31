@@ -72,7 +72,12 @@
             <div class="grid grid-flow-col align-middle place-items-center">
                 <label class="avatar online min-w-fit placeholder mx-2">
                     <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
-                        <span class="text-3xl">{{ Str::limit(ucwords(Auth::user()->name), 1, '') }}</span>
+                        @if (Auth::user()->profile_picture != null && Auth::user()->profile_picture != '')
+                            <img src="{{ Auth::user()->profile_picture != ''? asset('profiles/' . Auth::user()->profile_picture): asset('profiles/default.png') }}"
+                                alt="Profile picture" class="min-w-fit">
+                        @else
+                            <span class="text-3xl">{{ Str::limit(ucwords(Auth::user()->name), 1, '') }}</span>
+                        @endif
                     </div>
                 </label>
 

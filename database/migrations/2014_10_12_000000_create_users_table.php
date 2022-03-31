@@ -16,7 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('outlet_id');
-            $table->text('profile_picture');
+            $table->text('profile_picture')->nullable();
+            $table->text('biodata')->nullable();
+            $table->enum('online_status', ['ONLINE', 'OFFLINE'])->default('ONLINE');
             $table->string('name');
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();

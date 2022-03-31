@@ -47,6 +47,7 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view_dashboard'])->name('page_dashboard');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('view_profile');
+    Route::post('/profile/edit', [ProfileController::class, 'update'])->name('update_profile');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

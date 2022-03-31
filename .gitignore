@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/import
+/public/profiles/*
+!/public/profiles/default.png
 /storage/*.key
 /vendor
 .env
