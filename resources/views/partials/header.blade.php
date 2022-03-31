@@ -8,7 +8,7 @@
     <div class="flex-1 px-2 mx-2">
         <div class="items-stretch flex">
             <div class="dropdown">
-                <div tabindex="0" class="m-1 btn btn-primary btn-sm text-xs md:text-base">Management</div>
+                <div tabindex="0" class="m-1 btn btn-primary btn-sm text-white text-xs md:text-base">Management</div>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-primary rounded-box w-72">
                     <li><a href="/dashboard" class="btn btn-primary btn-sm rounded-btn h-full"> Dashboard </a></li>
                     @if (Auth::user()->roles == 'ADMIN')
@@ -16,14 +16,14 @@
                         <li><a href="/packages" class="dropdown-btn"> Package Management </a></li>
                         <li><a href="/customers" class="dropdown-btn"> Customer Management </a></li>
                         <li><a href="/users" class="dropdown-btn"> User Management </a></li>
-                        <li><a href="/inventory" class="dropdown-btn"> Inventory Management </a></li>
+                        {{-- <li><a href="/inventory" class="dropdown-btn"> Inventory Management </a></li> --}}
                         <li><a href="/transactions" class="dropdown-btn"> Transactions </a></li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('view_simulated_transaction') }}" class="dropdown-btn"> Simulated
                                 Transactions
                             </a>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
                                 Laundry Transactions
                             </a>
@@ -32,9 +32,9 @@
                             <a href="{{ route('view_data_usage') }}" class="dropdown-btn">
                                 Data Usages
                             </a>
-                        </li>
-                        <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li>
-                        <li><a href="/items" class="dropdown-btn"> Items </a></li>
+                        </li> --}}
+                        {{-- <li><a href="/delivery" class="dropdown-btn"> Delivery </a></li> --}}
+                        {{-- <li><a href="/items" class="dropdown-btn"> Items </a></li> --}}
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a href="/reports" class="dropdown-btn"> Reports </a></li>
                     @endif
@@ -51,11 +51,11 @@
                                 Transactions
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('view_wash_transaction') }}" class="dropdown-btn">
                                 Laundry Transactions
                             </a>
-                        </li>
+                        </li> --}}
                         <li><a href="/invoices" class="dropdown-btn"> Invoices </a></li>
                         <li><a class="dropdown-btn"> Reports </a></li>
                     @endif

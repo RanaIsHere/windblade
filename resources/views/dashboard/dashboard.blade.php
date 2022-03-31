@@ -43,10 +43,17 @@
                 </div>
             </article>
 
-            <section class="flex-1 ml-4">
-                <img src="{{ asset('images/dashboard.png') }}" class="h-[50%] w-[100%]">
+            <section class="flex-1 ml-4 text-center">
+                {{-- <img src="{{ asset('images/dashboard.png') }}" class="h-[50%] w-[100%]"> --}}
+                <div class="avatar items-center justify-center">
+                    <div class="h-[50%] w-[50%] rounded-full border-2 border-black">
+                        <img src="{{ Auth::user()->profile_picture != ''? asset('profiles/' . Auth::user()->profile_picture): asset('profiles/default.png') }}"
+                            alt="Profile picture" class="h-[50%] w-[50%]    ">
+                    </div>
+                </div>
 
-                <p class="text-xl mt-6">Welcome, <span class="font-bold">{{ Auth::user()->name }}</span> back to
+                <p class="text-xl mt-6">Welcome, <span class="font-bold">{{ Auth::user()->name }}</span> back
+                    to
                     <span class="font-bold">{{ Auth::user()->outlets->outlet_name }}</span>!
                 </p>
                 <span class="opacity-50 mt-2">You were registered in {{ Auth::user()->created_at }}</span>
